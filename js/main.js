@@ -362,6 +362,35 @@
       window.open('https://wa.me/201055673184?text=' + encodeURIComponent(msg), '_blank', 'noopener');
     });
 
+    // hero flip: hover on desktop (CSS); on touch screens tap or auto-flip every few seconds
+    const hv = $('#heroVisual');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (hv) {
+      hv.addEventListener('click', () => hv.classList.toggle('flipped'));
+      if (matchMedia('(hover: none)').matches && !reduce) setInterval(() => hv.classList.toggle('flipped'), 4000);
+    }
+
+    // 3D tilt + glare that follows the cursor on project cards
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
+      let active = null;
+      const reset = (el) => { el.classList.remove('tilting'); el.style.removeProperty('--rx'); el.style.removeProperty('--ry'); };
+      document.addEventListener('mousemove', (e) => {
+        const el = e.target.closest('.card, .feature-visual');
+        if (active && active !== el) { reset(active); active = null; }
+        if (!el) return;
+        active = el;
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        const max = el.classList.contains('card') ? 8 : 5;
+        el.classList.add('tilting');
+        el.style.setProperty('--ry', ((x - 0.5) * max * 2).toFixed(2) + 'deg');
+        el.style.setProperty('--rx', ((0.5 - y) * max * 2).toFixed(2) + 'deg');
+        el.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        el.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+      }, { passive: true });
+      document.addEventListener('mouseleave', () => { if (active) { reset(active); active = null; } });
+    }
+
     // follow OS theme changes when the user hasn't picked one
     if (window.matchMedia) {
       matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', (e) => {
