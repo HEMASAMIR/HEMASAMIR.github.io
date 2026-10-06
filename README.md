@@ -215,6 +215,38 @@ npx serve .        # أو: python -m http.server
 الريبو ده `HEMASAMIR.github.io`، فـ **GitHub Pages** بينشره تلقائياً على
 **https://hemasamir.github.io** مع كل push على `main`.
 
+## 🤖 تفعيل الذكاء الاصطناعي (Vercel)
+
+الموقع فيه **حاسبة تكلفة بالذكاء الاصطناعي** و**مساعد شات "اسأل إبراهيم"**.
+من غير إعداد، الاتنين شغالين بمحرك داخلي سريع. عشان يشتغلوا بـ **Claude AI** الحقيقي:
+
+1. ادخل [vercel.com](https://vercel.com) بحساب GitHub ← **Add New → Project** ← اختار الريبو `HEMASAMIR.github.io` ← **Deploy** (من غير أي تغيير في الإعدادات).
+2. اعمل مفتاح API من [platform.claude.com](https://platform.claude.com) ← **API Keys**.
+3. في Vercel: **Settings → Environment Variables** وضيف:
+
+   | المتغيّر | لازم؟ | الاستخدام |
+   |---|---|---|
+   | `ANTHROPIC_API_KEY` | ✅ | مفتاح Claude — بيفضل على السيرفر ومحدش يشوفه |
+   | `TELEGRAM_BOT_TOKEN` | اختياري | توكن بوت تيليجرام (من [@BotFather](https://t.me/BotFather)) |
+   | `TELEGRAM_CHAT_ID` | اختياري | رقم الشات بتاعك — يوصلك إشعار فوري بكل عميل |
+
+4. **Redeploy** من تبويب Deployments.
+5. افتح `js/extras-data.js` وحط رابط Vercel بتاعك في `vercelFallback`:
+   ```js
+   vercelFallback: 'https://your-project.vercel.app',
+   ```
+   كده الموقع على `hemasamir.github.io` كمان هيستخدم الذكاء الاصطناعي.
+
+| الملف | الوظيفة |
+|---|---|
+| `api/ai.js` | حاسبة التكلفة + الشات — Claude (`claude-opus-5-5`) بمخرجات JSON منظمة |
+| `api/lead.js` | إشعار تيليجرام فوري لما عميل يستخدم الحاسبة / الباقات / الحجز |
+| `js/extras.js` | واجهة الحاسبة، الشات، البحث الذكي، تقييمات App Store الحية، الباقات |
+| `js/extras-data.js` | **الأسعار والباقات** والإعدادات والترجمة — عدّل الأسعار من هنا |
+| `cv.html` | مصدر الـ CV — اطبعه PDF من كروم لو عدّلته (`?lang=en` للإنجليزي) |
+
+> التكلفة: كل استخدام للحاسبة أو الشات بقروش بسيطة، وفيه حماية من الإساءة (حد أقصى للطلبات لكل زائر).
+
 ---
 
 <div align="center">

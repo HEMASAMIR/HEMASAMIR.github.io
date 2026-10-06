@@ -85,8 +85,14 @@
     return h;
   }
 
+  // live App Store ratings are filled in by extras.js → window.RATINGS = { id: { r, n } }
+  const ratingBadge = (p) => {
+    const r = window.RATINGS && window.RATINGS[p.id];
+    return r && r.n ? `<span class="badge badge-rating">★ ${r.r.toFixed(1)} <small>(${r.n})</small></span>` : '';
+  };
   const badges = (p) =>
     (p.live ? `<span class="badge badge-live"><span class="dot-live"></span>${p.links && (p.links.appstore || p.links.play) ? t('onStores') : t('live')}</span>` : '') +
+    ratingBadge(p) +
     p.cat.map((c) => `<span class="badge">${t(c)}</span>`).join('');
 
   /* ---------- Featured ---------- */
@@ -118,8 +124,11 @@
   let filter = 'all';
   let expanded = false;
   const PAGE = 9;
+  let searchIds = null; // ordered ids from the smart search, or null
   function renderGrid() {
-    const all = PROJECTS.filter((p) => filter === 'all' || (filter === 'live' ? p.live : p.cat.includes(filter)));
+    const all = searchIds
+      ? searchIds.map((id) => PROJECTS.find((p) => p.id === id)).filter(Boolean)
+      : PROJECTS.filter((p) => filter === 'all' || (filter === 'live' ? p.live : p.cat.includes(filter)));
     const list = expanded ? all : all.slice(0, PAGE);
     const more = $('#showMore');
     more.hidden = all.length <= PAGE;
@@ -181,7 +190,9 @@
     observeReveals();
     restartTyped();
     if (current) openModal(current.id, gIndex);
+    langListeners.forEach((fn) => fn(l));
   }
+  const langListeners = [];
 
   /* ---------- Theme ---------- */
   function applyTheme(th) {
@@ -319,6 +330,8 @@
       if (!b) return;
       filter = b.dataset.filter;
       expanded = false;
+      searchIds = null;
+      const si = $('#smartSearch'); if (si) { si.value = ''; si.dispatchEvent(new Event('pf:cleared')); }
       $$('#filters .chip').forEach((c) => c.classList.toggle('active', c === b));
       renderGrid();
     });
@@ -470,6 +483,22 @@
         <span class="lang-legend">${rows.map((r) => `<em style="--c:${r.c}">${r.k} ${r.p}%</em>`).join('')}</span>`;
     }).catch(() => {});
   }
+
+  /* ---------- Small API for extras.js ---------- */
+  window.PF = {
+    lang: () => lang,
+    t,
+    icon,
+    openModal,
+    onLang: (fn) => langListeners.push(fn),
+    rerender: () => { renderFeatured(); renderGrid(); observeReveals(); },
+    setSearch: (ids) => {
+      searchIds = ids;
+      expanded = !!ids;
+      $$('#filters .chip').forEach((c) => c.classList.toggle('active', !ids && c.dataset.filter === filter));
+      renderGrid();
+    },
+  };
 
   /* ---------- Init ---------- */
   $('#year').textContent = new Date().getFullYear();

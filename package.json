@@ -1,0 +1,9 @@
+{
+  "name": "ebrahim-samir-portfolio",
+  "private": true,
+  "type": "module",
+  "description": "Static portfolio + Vercel serverless AI endpoints (cost estimator, chat assistant, lead alerts).",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

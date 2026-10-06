@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /cv.html
+
+Sitemap: https://hemasamir.github.io/sitemap.xml

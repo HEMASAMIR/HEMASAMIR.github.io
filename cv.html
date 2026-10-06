@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CV — Eng. Ebrahim Samir</title>
+<meta name="robots" content="noindex" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Cairo', sans-serif; color: #0b1324; background: #e5e9f0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html[lang="en"] body { font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif; }
+  .page { width: 210mm; height: 297mm; margin: 0 auto; background: #fff; display: grid; grid-template-columns: 70mm 1fr; overflow: hidden; }
+  .side { background: linear-gradient(170deg, #0b1d33, #102a43 55%, #1e1b4b); color: #e2e8f0; padding: 13mm 8mm 10mm; display: flex; flex-direction: column; gap: 6.5mm; position: relative; }
+  .side::before { content: ''; position: absolute; top: 0; inset-inline: 0; height: 2.2mm; background: linear-gradient(90deg, #14b8a6, #3b82f6, #a855f7); }
+  .photo { width: 36mm; height: 36mm; border-radius: 50%; padding: 1.2mm; background: linear-gradient(135deg, #14b8a6, #6366f1, #a855f7); align-self: center; }
+  .photo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 1mm solid #102a43; }
+  .side h3 { font-size: 10pt; font-weight: 900; color: #5eead4; letter-spacing: .02em; margin-bottom: 2.4mm; padding-bottom: 1.6mm; border-bottom: 1px solid rgba(255,255,255,.14); }
+  html[lang="en"] .side h3 { text-transform: uppercase; letter-spacing: .12em; font-size: 8.5pt; }
+  .contact li, .langs li { list-style: none; font-size: 8.6pt; display: flex; gap: 2.4mm; align-items: center; margin-bottom: 2mm; word-break: break-all; }
+  .contact li b { color: #fff; font-weight: 700; }
+  .ico { width: 5.6mm; height: 5.6mm; border-radius: 1.6mm; background: rgba(255,255,255,.1); display: grid; place-items: center; flex-shrink: 0; font-size: 8pt; }
+  .skills { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+  .skills span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 7.4pt; font-weight: 700; padding: .9mm 2.2mm; border-radius: 1.6mm; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.14); color: #f1f5f9; }
+  .bars div { margin-bottom: 2mm; font-size: 8.2pt; font-weight: 700; }
+  .bars i { display: block; height: 1.4mm; border-radius: 1mm; background: rgba(255,255,255,.12); margin-top: .8mm; overflow: hidden; }
+  .bars i::after { content: ''; display: block; height: 100%; width: var(--w); background: linear-gradient(90deg, #14b8a6, #6366f1); border-radius: 1mm; }
+  .qr { margin-top: auto; display: flex; gap: 3mm; align-items: center; font-size: 7.6pt; color: #94a3b8; }
+  .qr img { width: 19mm; height: 19mm; border-radius: 2mm; background: #fff; padding: 1mm; }
+  .qr b { color: #fff; display: block; font-size: 8.4pt; }
+
+  .main { padding: 13mm 11mm 10mm; display: flex; flex-direction: column; gap: 5.2mm; }
+  .head h1 { font-size: 25pt; font-weight: 900; line-height: 1.1; }
+  .head h1 small { display: block; font-size: 10pt; font-weight: 800; letter-spacing: .3em; background: linear-gradient(90deg, #0d9488, #6366f1); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1mm; }
+  html[lang="ar"] .head h1 small { letter-spacing: .05em; }
+  .head .role { font-size: 11.5pt; font-weight: 800; color: #2563eb; margin-top: 1.2mm; }
+  .head p { font-size: 9.2pt; color: #334155; margin-top: 2mm; line-height: 1.75; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.4mm; }
+  .stats div { border-radius: 2.6mm; padding: 2.4mm; background: linear-gradient(135deg, #ecfeff, #eef2ff); text-align: center; }
+  .stats b { display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15pt; font-weight: 900; color: #0d9488; line-height: 1.1; }
+  .stats span { font-size: 7.4pt; font-weight: 700; color: #475569; }
+  .main h2 { font-size: 11pt; font-weight: 900; display: flex; align-items: center; gap: 2.4mm; margin-bottom: 2.2mm; }
+  .main h2::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, #cbd5e1, transparent); }
+  html[dir="rtl"] .main h2::after { background: linear-gradient(270deg, #cbd5e1, transparent); }
+  .main h2 i { width: 2.2mm; height: 2.2mm; border-radius: 50%; background: linear-gradient(135deg, #14b8a6, #6366f1); }
+  .job { margin-bottom: 2.6mm; }
+  .job-top { display: flex; justify-content: space-between; gap: 3mm; align-items: baseline; }
+  .job b { font-size: 9.8pt; }
+  .job em { font-style: normal; font-size: 8pt; font-weight: 700; color: #64748b; white-space: nowrap; }
+  .job .co { font-size: 8.6pt; font-weight: 700; color: #0d9488; }
+  .job ul { margin-top: 1mm; padding-inline-start: 4mm; }
+  .job li { font-size: 8.5pt; color: #334155; margin-bottom: .6mm; line-height: 1.6; }
+  .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4mm; }
+  .proj { border: 1px solid #e2e8f0; border-radius: 2.6mm; padding: 2.4mm 2.8mm; }
+  .proj b { font-size: 8.9pt; display: flex; justify-content: space-between; gap: 2mm; }
+  .proj b small { font-size: 6.8pt; font-weight: 800; color: #16a34a; background: #dcfce7; padding: .2mm 1.6mm; border-radius: 4mm; white-space: nowrap; align-self: center; }
+  .proj p { font-size: 7.8pt; color: #475569; line-height: 1.5; margin-top: .4mm; }
+  .proj span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 6.8pt; font-weight: 700; color: #6366f1; }
+  .edu { font-size: 9pt; }
+  .edu b { font-size: 9.6pt; }
+  .foot { margin-top: auto; font-size: 7.6pt; color: #94a3b8; display: flex; justify-content: space-between; border-top: 1px solid #e2e8f0; padding-top: 2mm; }
+  /* Cairo is taller than Latin fonts — tighten the Arabic page so it fits one A4 sheet */
+  html[lang="ar"] .side { gap: 4.6mm; padding-top: 11mm; }
+  html[lang="ar"] .photo { width: 31mm; height: 31mm; }
+  html[lang="ar"] .main { gap: 3.8mm; padding-top: 11mm; }
+  html[lang="ar"] .head p, html[lang="ar"] .job li { line-height: 1.55; }
+  html[lang="ar"] .contact li { margin-bottom: 1.4mm; }
+  html[lang="ar"] .skills span { padding: .6mm 2mm; }
+  html[lang="ar"] .bars div { margin-bottom: 1.4mm; }
+  html[lang="ar"] .proj p { line-height: 1.4; }
+  @media screen { .page { margin: 10mm auto; box-shadow: 0 20px 60px rgba(15,23,42,.25); } }
+</style>
+</head>
+<body>
+<div class="page" id="cv"></div>
+<script>
+(function () {
+  const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  const A = lang === 'ar';
+  const T = A ? {
+    contact: 'التواصل', skills: 'المهارات التقنية', strengths: 'نقاط القوة', langs: 'اللغات',
+    pre: 'المهندس', name: 'إبراهيم سمير', role: 'مهندس برمجيات · Flutter و Web',
+    about: 'مهندس برمجيات بخبرة أكتر من 4 سنين في بناء تطبيقات موبايل ومواقع ولوحات تحكم جاهزة للإنتاج. نشرت أكتر من 10 تطبيقات على App Store و Google Play لعملاء في 10 دول منها مصر ودول الخليج وألمانيا. بشتغل بـ Clean Architecture و SOLID، وبجهّز CI/CD للنشر التلقائي، وبضيف مميزات ذكاء اصطناعي للمنتجات.',
+    stats: [['+4', 'سنوات خبرة'], ['+10', 'تطبيق منشور'], ['+48', 'مشروع GitHub'], ['10', 'دول']],
+    exp: 'الخبرة العملية', projects: 'مشاريع مختارة', edu: 'التعليم',
+    jobs: [
+      { t: 'مهندس برمجيات — Flutter و Web', co: 'عمل حر · عملاء في مصر والخليج وألمانيا', d: '2022 — الآن', li: ['تصميم وبرمجة ونشر +10 تطبيقات Android و iOS بـ Flutter وClean Architecture و BLoC.', 'بناء مواقع ومتاجر ولوحات تحكم بـ Next.js و Supabase مع دعم كامل للعربي.', 'إعداد CI/CD بـ GitHub Actions و Fastlane للنشر التلقائي على المتاجر.'] },
+      { t: 'مطوّر المنصة والتطبيق', co: 'Deutsch Welt Akademie', d: '', li: ['منصة تعليم ألماني (A1→B2) بفيديو محمي DRM وكتب ولوحة إدارة — Next.js و Django.', 'تطبيق موبايل موجّه للسوق المصري والخليجي والألماني.'] },
+    ],
+    edu1: 'بكالوريوس علوم الحاسب', edu2: 'جامعة المنوفية — تقدير جيد جدًا',
+    strengthsList: [['Clean Architecture', 95], ['UI / UX دقيق 60 FPS', 92], ['CI/CD والنشر', 88], ['أمان وتشفير', 85]],
+    langsList: ['العربية — اللغة الأم', 'الإنجليزية — مهنية'], live: 'منشور', scan: 'امسح لزيارة البورتفوليو', made: 'بورتفوليو ومشاريع: hemasamir.github.io',
+  } : {
+    contact: 'Contact', skills: 'Tech skills', strengths: 'Strengths', langs: 'Languages',
+    pre: 'ENGINEER', name: 'Ebrahim Samir', role: 'Software Engineer · Flutter & Web',
+    about: 'Software engineer with 4+ years of experience building production-ready mobile apps, websites and dashboards. Shipped 10+ apps to the App Store and Google Play for clients in 10 countries including Egypt, the Gulf and Germany. I work with Clean Architecture and SOLID, set up CI/CD for automated releases, and add AI features to products.',
+    stats: [['4+', 'Years'], ['10+', 'Published apps'], ['48+', 'GitHub repos'], ['10', 'Countries']],
+    exp: 'Experience', projects: 'Selected projects', edu: 'Education',
+    jobs: [
+      { t: 'Software Engineer — Flutter & Web', co: 'Freelance · clients in Egypt, the Gulf & Germany', d: '2022 — Present', li: ['Designed, built and shipped 10+ Android & iOS apps in Flutter with Clean Architecture and BLoC.', 'Built websites, online stores and dashboards with Next.js and Supabase, with full Arabic RTL support.', 'Set up CI/CD with GitHub Actions and Fastlane for automated store releases.'] },
+      { t: 'Platform & App Developer', co: 'Deutsch Welt Akademie', d: '', li: ['German learning platform (A1→B2) with DRM video, books and an admin dashboard — Next.js & Django.', 'Mobile app built for learners in Egypt, the Gulf and Germany.'] },
+    ],
+    edu1: 'B.Sc. Computer Science', edu2: 'Menoufia University — Grade: Very Good',
+    strengthsList: [['Clean Architecture', 95], ['Pixel-perfect 60 FPS UI', 92], ['CI/CD & releases', 88], ['Security & encryption', 85]],
+    langsList: ['Arabic — native', 'English — professional'], live: 'Live', scan: 'Scan to visit the portfolio', made: 'Portfolio & projects: hemasamir.github.io',
+  };
+  const P = A ? [
+    ['QuickIn', 'حجز شاليهات وإقامات على طريقة Airbnb', 'Flutter · Supabase · CI/CD', 1],
+    ['رفيق المسلم', 'مواقيت الصلاة والقرآن والأذكار — ★ 5.0', 'Flutter', 1],
+    ['مترو مصر', 'مترو بدون إنترنت + مساعد ذكاء اصطناعي و AR', 'Flutter · Gemini AI', 1],
+    ['منارة', 'منصة إدارة تعليمية بـ 5 بوابات وحضور QR', 'Next.js · Supabase', 0],
+    ['Blue Square OCR', 'فحص آلي لعلب الأدوية بالكاميرا (~14ms)', 'Python · Computer Vision', 0],
+    ['Incense', 'تطبيق ومتجر لبراند عطور سعودي فاخر', 'Flutter · Next.js', 1],
+  ] : [
+    ['QuickIn', 'Airbnb-style stays booking platform', 'Flutter · Supabase · CI/CD', 1],
+    ['Rafiq Muslim', 'Prayer times, Quran audio & azkar — ★ 5.0', 'Flutter', 1],
+    ['Metro Masr', 'Offline metro app with AI assistant & AR', 'Flutter · Gemini AI', 1],
+    ['Manara', 'Education management SaaS with 5 portals', 'Next.js · Supabase', 0],
+    ['Blue Square OCR', 'Computer-vision inspection of pharma cartons (~14 ms)', 'Python · Computer Vision', 0],
+    ['Incense', 'App + store for a luxury Saudi perfume brand', 'Flutter · Next.js', 1],
+  ];
+  const skills = ['Flutter', 'Dart', 'BLoC / Cubit', 'Clean Architecture', 'Next.js', 'React', 'TypeScript', 'Tailwind', 'Firebase', 'Supabase', 'REST / Dio', 'GraphQL', 'WebSockets', 'Django REST', 'Google Maps', 'GitHub Actions', 'Fastlane', 'Claude AI', 'Python', 'Git'];
+  document.getElementById('cv').innerHTML = `
+  <aside class="side">
+    <div class="photo"><img src="assets/img/avatar.jpg" alt=""></div>
+    <div><h3>${T.contact}</h3><ul class="contact">
+      <li><span class="ico">📱</span><b dir="ltr">+20 105 567 3184</b></li>
+      <li><span class="ico">✉️</span><span>01055673184hs@gmail.com</span></li>
+      <li><span class="ico">🌐</span><span>hemasamir.github.io</span></li>
+      <li><span class="ico">💻</span><span>github.com/HEMASAMIR</span></li>
+      <li><span class="ico">in</span><span>linkedin.com/in/ibrahim-sameer-8b3987241</span></li>
+      <li><span class="ico">📍</span><span>${A ? 'مصر — متاح أونلاين لكل الدول' : 'Egypt — available worldwide'}</span></li>
+    </ul></div>
+    <div><h3>${T.skills}</h3><div class="skills">${skills.map((s) => `<span>${s}</span>`).join('')}</div></div>
+    <div><h3>${T.strengths}</h3><div class="bars">${T.strengthsList.map(([n, w]) => `<div>${n}<i style="--w:${w}%"></i></div>`).join('')}</div></div>
+    <div><h3>${T.langs}</h3><ul class="langs">${T.langsList.map((l) => `<li>• ${l}</li>`).join('')}</ul></div>
+    <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&margin=0&data=https%3A%2F%2Fhemasamir.github.io" alt=""><span><b>hemasamir.github.io</b>${T.scan}</span></div>
+  </aside>
+  <main class="main">
+    <div class="head"><h1><small>${T.pre}</small>${T.name}</h1><div class="role">${T.role}</div><p>${T.about}</p></div>
+    <div class="stats">${T.stats.map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join('')}</div>
+    <section><h2><i></i>${T.exp}</h2>${T.jobs.map((j) => `<div class="job"><div class="job-top"><b>${j.t}</b>${j.d ? `<em>${j.d}</em>` : ''}</div><div class="co">${j.co}</div><ul>${j.li.map((l) => `<li>${l}</li>`).join('')}</ul></div>`).join('')}</section>
+    <section><h2><i></i>${T.projects}</h2><div class="projects">${P.map(([n, d, s, live]) => `<div class="proj"><b>${n}${live ? `<small>● ${T.live}</small>` : ''}</b><p>${d}</p><span>${s}</span></div>`).join('')}</div></section>
+    <section class="edu"><h2><i></i>${T.edu}</h2><b>${T.edu1}</b><div>${T.edu2}</div></section>
+    <div class="foot"><span>${T.made}</span><span>${new Date().getFullYear()}</span></div>
+  </main>`;
+})();
+</script>
+</body>
+</html>
