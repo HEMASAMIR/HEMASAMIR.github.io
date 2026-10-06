@@ -986,3 +986,25 @@ html[lang="en"] .footer-cta h3 { font-weight: 800; }
   .footer-bottom { justify-content: center; text-align: center; }
   .to-top { width: 46px; height: 46px; bottom: 18px; inset-inline-start: 16px; }
 }
+
+/* footer wordmark v2: vivid, alternates English ↔ Arabic */
+.footer-word {
+  display: grid; justify-items: center; background: none !important; animation: none !important; color: inherit !important;
+  -webkit-text-fill-color: initial; margin: 8px 0 0; padding-bottom: .16em; perspective: 900px;
+  mask-image: linear-gradient(to bottom, #000 88%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, #000 88%, transparent 100%);
+}
+.footer-word .fw {
+  grid-area: 1 / 1; white-space: nowrap; line-height: 1;
+  background: linear-gradient(100deg, #14b8a6 0%, #3b82f6 35%, #a855f7 65%, #14b8a6 100%); background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shine 6s linear infinite alternate, wordSwap 9s cubic-bezier(.7,0,.3,1) infinite;
+}
+.footer-word .fw-en { font-family: var(--font-en); letter-spacing: -.045em; }
+.footer-word .fw-ar { font-family: 'Cairo', sans-serif; font-size: .92em; letter-spacing: 0; line-height: 1.15; animation-delay: 0s, -4.5s; direction: rtl; }
+@keyframes wordSwap {
+  0%, 42% { opacity: 1; transform: none; filter: blur(0); }
+  50%, 92% { opacity: 0; transform: rotateX(70deg) translateY(-20%); filter: blur(8px); }
+  100% { opacity: 1; transform: none; filter: blur(0); }
+}
+.footer-word { filter: drop-shadow(0 10px 28px color-mix(in srgb, var(--primary-2) 30%, transparent)); }
+.c-link .tap { font-style: normal; font-family: var(--font); font-weight: 600; font-size: 13px; color: #93a3bb; }

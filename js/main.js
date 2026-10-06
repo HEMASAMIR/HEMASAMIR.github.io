@@ -356,6 +356,17 @@
     addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
+    // email links: on desktop open Gmail compose directly (no mail app needed); phones keep mailto
+    if (!matchMedia('(hover: none)').matches) {
+      document.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href^="mailto:"]');
+        if (!a) return;
+        e.preventDefault();
+        const to = a.getAttribute('href').slice(7);
+        window.open('https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to), '_blank', 'noopener');
+      });
+    }
+
     // contact form -> WhatsApp
     $('#contactForm').addEventListener('submit', (e) => {
       e.preventDefault();
