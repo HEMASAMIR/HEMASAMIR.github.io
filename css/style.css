@@ -1028,3 +1028,18 @@ html[lang="en"] .footer-cta h3 { font-weight: 800; }
 /* keep floating buttons (WhatsApp / back-to-top) clear of the footer bottom bar */
 .footer-bottom { padding-inline: 76px; }
 @media (max-width: 640px) { .footer-bottom { padding-inline: 0; padding-bottom: 90px; flex-direction: column; } }
+
+/* wordmark v3: "Engineer" eyebrow above the name */
+.footer-word .fw { display: flex; flex-direction: column; align-items: center; gap: .06em; }
+.footer-word .fw-pre {
+  font-size: .2em; font-weight: 800; letter-spacing: .5em; text-transform: uppercase; line-height: 1.4;
+  background: inherit; -webkit-background-clip: text; background-clip: text; color: transparent; opacity: .9;
+}
+.footer-word .fw-ar .fw-pre { letter-spacing: .12em; font-size: .24em; }
+.footer-word .fw-name { background: inherit; -webkit-background-clip: text; background-clip: text; color: transparent; }
+.footer-word .fw-en .fw-name { line-height: .95; }
+.footer-word .fw-ar { line-height: normal; gap: 0; }
+.footer-word .fw-ar .fw-pre { line-height: 1.1; }
+.footer-word .fw-ar .fw-name { line-height: 1.4; }
+.footer-word .fw-pre { font-size: max(.2em, 12px); }
+.footer-word .fw-ar .fw-pre { font-size: max(.24em, 14px); }
