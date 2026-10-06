@@ -347,8 +347,8 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
     const has = (re) => re.test(s);
     let reply, projects = [], handoff = false;
     if (has(/(سعر|اسعار|كام|تكلف|بكام|price|cost|budget|ميزاني)/)) {
-      reply = ar ? `الأسعار بتبدأ من ${money(PRICING[0].from)} للمواقع، و${money(PRICING[1].from)} لتطبيقات الموبايل والمتاجر، و${money(PRICING[2].from)} للأنظمة المتكاملة. جرّب حاسبة التكلفة بالذكاء الاصطناعي في الصفحة وهتطلعلك خطة بالسعر لفكرتك بالظبط.`
-        : `Prices start at ${money(PRICING[0].from)} for websites, ${money(PRICING[1].from)} for mobile apps and stores, and ${money(PRICING[2].from)} for complete systems. Try the AI cost estimator on this page for an exact plan for your idea.`;
+      reply = ar ? 'السعر بيتحدد حسب فكرتك ومميزاتها بالظبط. ابعتلي تفاصيل مشروعك على واتساب وهبعتلك عرض سعر مجاني خلال 24 ساعة — أو جرّب حاسبة التكلفة في الصفحة.'
+        : 'Pricing depends on exactly what your idea needs. Send me your project details on WhatsApp and I will send a free quote within 24 hours — or try the cost estimator on this page.';
       handoff = true;
     } else if (has(/(وقت|مده|اسبوع|شهر|امتي|how long|time|week|deadline)/)) {
       reply = ar ? 'الموقع بياخد من أسبوع لأسبوعين، تطبيق الموبايل أو المتجر من 4 لـ 8 أسابيع، والنظام المتكامل من 8 لـ 16 أسبوع — وبتستلم نسخ تجريبية تجربها بنفسك كل فترة.'
@@ -459,7 +459,7 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
         ${p.popular ? `<span class="price-pop">★ ${t('prPopular')}</span>` : ''}
         <h3>${esc(p[L()].name)}</h3>
         <p class="price-tag">${esc(p[L()].tag)}</p>
-        <div class="price-amount"><small>${t('prFrom')}</small><b>${usd(p.from)}</b>${localLine(p.from)}<span>${p.weeks} ${t('prWeeks')}</span></div>
+        <div class="price-amount"><small>${t('prFrom')}</small><b class="price-quote">${t('prQuote')}</b><span>⏱ ${p.weeks} ${t('prWeeks')}</span></div>
         <ul>${p[L()].features.map((f) => `<li><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${esc(f)}</li>`).join('')}</ul>
         <button type="button" class="btn ${p.popular ? 'btn-primary' : 'btn-ghost'} btn-block" data-plan="${p.id}">${t('prStart')}</button>
       </div>`).join('');
@@ -483,7 +483,7 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
   function initPricing() {
     if (!$('#pricingGrid')) return;
     renderCurrency();
-    $('#curSelect').addEventListener('change', (e) => {
+    $('#curSelect')?.addEventListener('change', (e) => {
       cur = e.target.value; store.set('currency', cur);
       renderPricing();
       if (est.last && !$('#estResult').hidden) renderEstimate(est.last);
@@ -492,8 +492,8 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
     $('#pricingGrid').addEventListener('click', (e) => {
       const b = e.target.closest('[data-plan]'); if (!b) return;
       const p = PRICING.find((x) => x.id === b.dataset.plan);
-      wa(`${t('prWa')} "${p[L()].name}" (${t('prFrom')} ${money(p.from)})`);
-      notifyLead('pricing', `${p.en.name} — from ${usd(p.from)}`);
+      wa(`${t('prWa')} "${p[L()].name}"`);
+      notifyLead('pricing', p.en.name);
     });
     $('#bookForm').addEventListener('submit', (e) => {
       e.preventDefault();

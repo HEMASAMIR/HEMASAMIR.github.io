@@ -133,6 +133,7 @@
 .price-tag { color: var(--muted); font-weight: 600; font-size: 14px; margin-top: -8px; }
 .price-amount { display: flex; flex-direction: column; padding: 14px 0; border-block: 1px dashed var(--border); }
 .price-amount small { color: var(--muted); font-weight: 700; font-size: 13px; }
+.price-amount b.price-quote { font-family: var(--font); font-size: 26px; }
 .price-amount b { font-family: var(--font-en); font-size: 42px; font-weight: 900; line-height: 1.1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .price-amount span { color: var(--text-2); font-weight: 700; font-size: 13.5px; }
 .price-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; flex: 1; align-content: start; }

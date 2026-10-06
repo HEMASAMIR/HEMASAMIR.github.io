@@ -73,3 +73,4 @@ html[lang="ar"] .lp-price b { font-family: var(--font); }
 .article .back { font-weight: 800; color: var(--primary); }
 @media (max-width: 960px) { .lp-points { grid-template-columns: 1fr 1fr; } .lp-work, .lp-prices, .posts { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .lp-points, .lp-work, .lp-prices, .posts { grid-template-columns: 1fr; } .lp-hero { padding-top: 40px; } .article p, .article li { font-size: 16px; } }
+.lp-price b.lp-quote { font-family: var(--font); font-size: 24px; }

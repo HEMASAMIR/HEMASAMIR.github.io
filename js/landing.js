@@ -8,8 +8,8 @@
   const c = CURRENCIES[L.cur];
   const local = (n) => { const v = Math.round((n * c.rate) / c.round) * c.round; const num = v.toLocaleString(ar ? 'ar-EG' : 'en-US'); return c.sym ? `${c.sym}${num}` : `${num} ${c[L.lang]}`; };
   const T = ar
-    ? { why: `ليه تختارني لمشروعك في ${L.country}؟`, work: 'من شغلي', prices: `الأسعار بـ${c.ar}`, from: 'يبدأ من', faq: 'أسئلة شائعة', cta: 'احسب تكلفة مشروعك بالذكاء الاصطناعي', wa: 'كلّمني واتساب', all: 'شوف كل الأعمال', ctaT: 'جاهز تبدأ؟', ctaS: 'استشارة مجانية + خطة واضحة وعرض سعر خلال 24 ساعة.', approx: 'تقريبي — يتأكد بعد فهم التفاصيل', waMsg: `أهلاً م. إبراهيم 👋 أنا من ${L.country} ومهتم بعمل مشروع`, home: 'الرئيسية', other: 'خدماتي في دول تانية' }
-    : { why: `Why work with me in ${L.country}?`, work: 'Selected work', prices: `Pricing in ${c.en}`, from: 'From', faq: 'FAQ', cta: 'Estimate your project with AI', wa: 'Chat on WhatsApp', all: 'See all work', ctaT: 'Ready to start?', ctaS: 'Free consultation + a clear plan and quote within 24 hours.', approx: 'approximate — confirmed after we discuss details', waMsg: `Hi Eng. Ebrahim 👋 I am based in ${L.country} and interested in a project`, home: 'Home', other: 'Services in other countries' };
+    ? { why: `ليه تختارني لمشروعك في ${L.country}؟`, work: 'من شغلي', prices: 'الباقات', from: 'يبدأ من', faq: 'أسئلة شائعة', cta: 'احسب تكلفة مشروعك بالذكاء الاصطناعي', wa: 'كلّمني واتساب', all: 'شوف كل الأعمال', ctaT: 'جاهز تبدأ؟', ctaS: 'استشارة مجانية + خطة واضحة وعرض سعر خلال 24 ساعة.', approx: 'السعر بيتحدد حسب احتياجك — عرض سعر مجاني خلال 24 ساعة', waMsg: `أهلاً م. إبراهيم 👋 أنا من ${L.country} ومهتم بعمل مشروع`, home: 'الرئيسية', other: 'خدماتي في دول تانية' }
+    : { why: `Why work with me in ${L.country}?`, work: 'Selected work', prices: 'Packages', from: 'From', faq: 'FAQ', cta: 'Estimate your project with AI', wa: 'Chat on WhatsApp', all: 'See all work', ctaT: 'Ready to start?', ctaS: 'Free consultation + a clear plan and quote within 24 hours.', approx: 'Pricing depends on your needs — free quote within 24 hours', waMsg: `Hi Eng. Ebrahim 👋 I am based in ${L.country} and interested in a project`, home: 'Home', other: 'Services in other countries' };
   const P = L.projects.map((id) => PROJECTS.find((p) => p.id === id)).filter(Boolean);
   const names = { 'saudi-arabia': ['السعودية', 'Saudi Arabia'], uae: ['الإمارات', 'UAE'], kuwait: ['الكويت', 'Kuwait'], qatar: ['قطر', 'Qatar'], egypt: ['مصر', 'Egypt'], germany: ['ألمانيا', 'Germany'] };
   const wa = `https://wa.me/201055673184?text=${encodeURIComponent(T.waMsg)}`;
@@ -39,7 +39,7 @@
     </div></section>
     <section class="section"><div class="container">
       <div class="section-head in"><h2>${T.prices}</h2><p>${T.approx}</p></div>
-      <div class="lp-prices">${PRICING.map((p) => `<div class="lp-price ${p.popular ? 'pop' : ''}"><h3>${esc(p[L.lang].name)}</h3><small>${T.from}</small><b>${local(p.from)}</b><span>≈ $${p.from.toLocaleString('en-US')} · ${p.weeks} ${ar ? 'أسابيع' : 'weeks'}</span><ul>${p[L.lang].features.slice(0, 4).map((f) => `<li>✓ ${esc(f)}</li>`).join('')}</ul></div>`).join('')}</div>
+      <div class="lp-prices">${PRICING.map((p) => `<div class="lp-price ${p.popular ? 'pop' : ''}"><h3>${esc(p[L.lang].name)}</h3><b class="lp-quote">${ar ? 'عرض سعر مجاني' : 'Free custom quote'}</b><span>⏱ ${p.weeks} ${ar ? 'أسابيع' : 'weeks'}</span><ul>${p[L.lang].features.slice(0, 4).map((f) => `<li>✓ ${esc(f)}</li>`).join('')}</ul></div>`).join('')}</div>
     </div></section>
     <section class="section section-alt"><div class="container lp-faq-wrap">
       <div class="section-head in"><h2>${T.faq}</h2></div>
