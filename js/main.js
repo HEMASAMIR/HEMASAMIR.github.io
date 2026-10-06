@@ -152,6 +152,7 @@
       </li>`).join('');
     $("#why-list").innerHTML = WHY.map((w, i) => `<div class="why-item reveal" style="--d:${i * 70}ms">${icon(w.icon)}<span>${w[lang]}</span></div>`).join('');
     $('#stack').innerHTML = STACK.map((s) => `<span>${s}</span>`).join('');
+    $('#footServices').innerHTML = SERVICES.map((s) => `<li><a href="#services">${s[lang][0]}</a></li>`).join('');
     // cover wall: two rows scrolling in opposite directions
     const covers = PROJECTS.filter((p) => p.device === 'art' || p.device === 'browser');
     const half = Math.ceil(covers.length / 2);
@@ -374,7 +375,13 @@
     // scroll progress bar
     const bar = $('#progress');
     if (bar) {
-      const upd = () => { const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? Math.min(1, scrollY / h) : 0})`; };
+      const top = $('#toTop'), ring = $('#toTopRing'), C = 2 * Math.PI * 21;
+      if (ring) ring.style.strokeDasharray = C;
+      const upd = () => {
+        const h = document.documentElement.scrollHeight - innerHeight, p = h > 0 ? Math.min(1, scrollY / h) : 0;
+        bar.style.transform = `scaleX(${p})`;
+        if (top) { top.classList.toggle('show', scrollY > 600); ring.style.strokeDashoffset = C * (1 - p); }
+      };
       addEventListener('scroll', upd, { passive: true }); upd();
     }
 
