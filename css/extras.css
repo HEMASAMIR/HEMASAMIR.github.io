@@ -266,3 +266,327 @@
 .footer-countries b { color: var(--text-2); }
 .footer-countries a { padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); font-weight: 700; color: var(--text-2); transition: border-color .2s, color .2s, transform .2s; }
 .footer-countries a:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+
+/* =========================================================
+   Interactive Mobile Simulator
+   ========================================================= */
+.simulator-section {
+  background: radial-gradient(800px 450px at 50% 0%, rgba(13,148,136,.09), transparent 70%),
+              radial-gradient(700px 400px at 10% 100%, rgba(99,102,241,.08), transparent 70%);
+}
+.eyebrow-sim { color: #0d9488; background: rgba(13,148,136,.1); border-color: rgba(13,148,136,.3); }
+[data-theme="dark"] .eyebrow-sim { color: #2dd4bf; }
+
+.sim-wrapper { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
+.sim-apps { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.sim-app-tab {
+  display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px;
+  background: var(--surface); border: 1.5px solid var(--border); font-weight: 800; font-size: 14.5px;
+  color: var(--text-2); cursor: pointer; transition: all .25s cubic-bezier(.3,1.4,.5,1);
+}
+.sim-app-tab:hover { border-color: var(--primary); color: var(--text); transform: translateY(-2px); }
+.sim-app-tab.active {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, var(--surface)), var(--surface));
+  border-color: var(--primary); color: var(--primary);
+  box-shadow: 0 10px 24px -10px var(--primary); transform: translateY(-2px);
+}
+.sim-app-tab img { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; }
+
+.sim-stage {
+  display: grid; grid-template-columns: 330px 1fr; gap: 42px; align-items: center;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 32px;
+  padding: 36px 40px; box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+}
+.sim-stage::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(500px 300px at 30% 20%, rgba(13,148,136,.06), transparent 70%);
+}
+
+/* 3D Phone Container */
+.sim-phone-wrap {
+  perspective: 1200px; display: flex; justify-content: center;
+  transition: transform .3s ease-out;
+}
+.sim-phone {
+  width: 310px; border-radius: 48px; background: #0f172a; position: relative;
+  box-shadow: 0 30px 70px -15px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.12), inset 0 0 0 2px rgba(255,255,255,0.08);
+  transition: transform .25s ease-out, box-shadow .25s ease-out;
+  transform-style: preserve-3d;
+}
+.sim-phone:hover {
+  box-shadow: 0 35px 85px -15px rgba(13,148,136,0.25), 0 0 0 1.5px var(--primary);
+}
+.phone-frame {
+  padding: 10px 10px 14px; border-radius: 48px; background: #020617;
+  border: 4px solid #334155; position: relative; overflow: hidden;
+}
+
+/* Dynamic Island */
+.phone-dynamic-island {
+  position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+  width: 104px; height: 26px; border-radius: 20px; background: #000; z-index: 30;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 8px;
+  box-shadow: 0 0 1px 1px rgba(255,255,255,0.1); transition: all .3s cubic-bezier(.3,1.4,.5,1);
+}
+.phone-dynamic-island:hover { width: 140px; }
+.di-camera { width: 8px; height: 8px; border-radius: 50%; background: #0f172a; border: 1.5px solid #1e293b; }
+.di-sensor { width: 4px; height: 4px; border-radius: 50%; background: #1e293b; }
+.di-pill { display: flex; align-items: center; gap: 4px; }
+.di-dot { width: 5px; height: 5px; border-radius: 50%; background: #10b981; animation: bob 1.8s ease-in-out infinite; }
+.di-text { font-size: 8px; font-weight: 800; color: #fff; font-family: var(--font-en); white-space: nowrap; opacity: .85; }
+
+/* Status Bar */
+.phone-status-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 14px 4px; font-family: var(--font-en); font-size: 11px; font-weight: 800; color: #fff;
+  position: relative; z-index: 20;
+}
+.ps-icons { display: flex; align-items: center; gap: 5px; }
+.ps-signal { font-size: 9px; opacity: .9; }
+.ps-wifi { width: 12px; height: 12px; color: #fff; }
+.ps-battery { width: 18px; height: 9px; border-radius: 3px; border: 1.5px solid #fff; padding: 1px; display: inline-flex; }
+.ps-battery i { width: 70%; height: 100%; background: #10b981; border-radius: 1px; }
+
+/* Phone Screen */
+.phone-screen {
+  border-radius: 36px; overflow: hidden; height: 480px; position: relative;
+  background: #0b1324; display: flex; flex-direction: column;
+}
+.sim-fps-chip {
+  position: absolute; top: 12px; inset-inline-end: 12px; z-index: 25;
+  display: inline-flex; align-items: center; gap: 5px; padding: 4px 8px; border-radius: 999px;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); border: 1px solid rgba(16,185,129,0.3);
+  font-family: var(--font-en); font-size: 10px; font-weight: 900; color: #10b981;
+}
+.fps-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; box-shadow: 0 0 6px #10b981; }
+.sim-fps-chip small { color: #94a3b8; font-weight: 600; font-size: 9px; }
+
+.sim-viewport { flex: 1; position: relative; overflow: hidden; background: #0b1324; }
+.sim-img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  display: block; transition: transform .35s cubic-bezier(.2,.9,.3,1), opacity .25s ease;
+}
+.sim-img.switching { opacity: 0; transform: scale(0.97); }
+.sim-screen-overlay {
+  position: absolute; bottom: 8px; inset-inline-start: 8px; z-index: 10;
+}
+.sim-badge {
+  display: inline-block; padding: 4px 10px; border-radius: 8px; font-size: 10.5px; font-weight: 800;
+  background: rgba(0,0,0,0.75); color: #fff; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* In-phone Bottom Bar */
+.sim-bottom-bar {
+  display: flex; justify-content: space-around; align-items: center; padding: 8px 6px 10px;
+  background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 20;
+}
+.sim-btn-tab {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  background: none; border: 0; padding: 4px 8px; border-radius: 10px; cursor: pointer;
+  color: #94a3b8; font-size: 9.5px; font-weight: 700; transition: all .2s;
+}
+.sim-btn-tab:hover, .sim-btn-tab.active { color: #14b8a6; }
+.sim-btn-tab.active { transform: translateY(-2px); }
+.sim-btn-tab svg { width: 16px; height: 16px; }
+
+.phone-home-indicator {
+  width: 100px; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.4);
+  margin: 6px auto 0;
+}
+.phone-glare {
+  position: absolute; inset: 0; border-radius: 48px; pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%, rgba(255,255,255,0.02) 100%);
+}
+
+/* Side Meta Card */
+.sim-meta { display: flex; flex-direction: column; gap: 20px; }
+.sim-app-card { display: flex; flex-direction: column; gap: 16px; }
+.sim-card-head { display: flex; align-items: center; gap: 16px; }
+.sim-app-icon { width: 56px; height: 56px; border-radius: 16px; object-fit: cover; box-shadow: var(--shadow); }
+.sim-card-head h3 { font-size: 24px; font-weight: 900; margin: 0; }
+.sim-card-tags { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.sim-store-rating {
+  font-family: var(--font-en); font-weight: 900; font-size: 13px; color: #b45309;
+  background: rgba(245,158,11,.14); border: 1px solid rgba(245,158,11,.3); padding: 3px 8px; border-radius: 8px;
+}
+[data-theme="dark"] .sim-store-rating { color: #fbbf24; }
+.sim-store-pill {
+  font-size: 12.5px; font-weight: 700; color: var(--text-2); background: var(--surface-2);
+  padding: 3px 10px; border-radius: 8px; border: 1px solid var(--border);
+}
+.sim-card-desc { font-size: 15.5px; line-height: 1.6; color: var(--text-2); margin: 0; }
+
+.sim-specs { display: flex; flex-direction: column; gap: 12px; margin: 6px 0; }
+.sim-spec-item {
+  display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border-radius: 16px;
+  background: var(--surface-2); border: 1px solid var(--border); transition: border-color .2s;
+}
+.sim-spec-item:hover { border-color: var(--primary); }
+.spec-ico { font-size: 20px; flex-shrink: 0; }
+.sim-spec-item strong { display: block; font-size: 14.5px; font-weight: 800; color: var(--text); }
+.sim-spec-item small { display: block; font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+.sim-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+
+@media (max-width: 900px) {
+  .sim-stage { grid-template-columns: 1fr; gap: 32px; padding: 24px 20px; }
+  .sim-phone-wrap { order: -1; }
+  .sim-phone { width: 280px; }
+  .phone-screen { height: 430px; }
+}
+
+/* =========================================================
+   AI Architecture Advisor
+   ========================================================= */
+.advisor-section {
+  background: radial-gradient(900px 500px at 50% 0%, rgba(99,102,241,.10), transparent 70%),
+              radial-gradient(700px 400px at 90% 100%, rgba(13,148,136,.10), transparent 70%);
+}
+.advisor-box {
+  max-width: 980px; margin: 0 auto; border-radius: 30px; padding: 36px 32px; position: relative;
+  border: 1px solid transparent; box-shadow: var(--shadow-lg);
+  background: linear-gradient(var(--surface), var(--surface)) padding-box,
+              conic-gradient(from var(--ang), #6366f1, #0d9488, #a855f7, #3b82f6, #6366f1) border-box;
+  animation: rot 9s linear infinite; display: flex; flex-direction: column; gap: 26px;
+}
+
+.adv-step { display: flex; flex-direction: column; gap: 12px; }
+.adv-step-badge {
+  font-size: 14px; font-weight: 900; color: var(--primary);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.adv-grid-types, .adv-grid-priorities {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+}
+.adv-opt-card {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;
+  padding: 16px 12px; border-radius: 18px; border: 1.5px solid var(--border); background: var(--surface);
+  font-weight: 800; font-size: 13.5px; cursor: pointer; transition: all .25s cubic-bezier(.3,1.4,.5,1);
+}
+.adv-opt-card span.opt-icon { font-size: 26px; transition: transform .3s; }
+.adv-opt-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.adv-opt-card.active {
+  border-color: #6366f1; background: rgba(99,102,241,.09); color: #6366f1;
+  box-shadow: 0 10px 24px -12px #6366f1; transform: translateY(-2px);
+}
+.adv-opt-card.active span.opt-icon { transform: scale(1.2) rotate(-8deg); }
+
+.adv-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.adv-chip {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 999px;
+  background: var(--surface-2); border: 1px solid var(--border); font-size: 13px; font-weight: 700;
+  color: var(--text-2); cursor: pointer; transition: all .2s;
+}
+.adv-chip:hover { border-color: var(--primary); color: var(--primary); }
+.adv-chip.active {
+  background: #6366f1; border-color: #6366f1; color: #fff;
+  box-shadow: 0 6px 18px -6px #6366f1;
+}
+
+.adv-generate-btn {
+  align-self: center; min-width: 300px; font-size: 16.5px; color: #fff !important;
+  background: linear-gradient(120deg, #6366f1, #0d9488, #7c3aed); background-size: 200% auto;
+  animation: shine 4s linear infinite alternate; box-shadow: 0 16px 34px -14px #6366f1;
+}
+
+/* Blueprint Output Card */
+.adv-blueprint {
+  border-radius: 24px; padding: 28px; background: var(--surface-2); border: 1.5px solid var(--border);
+  display: flex; flex-direction: column; gap: 20px; animation: pop .4s cubic-bezier(.2,.9,.3,1.2);
+}
+.adv-blueprint[hidden] { display: none; }
+.bp-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.bp-head h3 { font-size: 20px; font-weight: 900; margin: 0; display: flex; align-items: center; gap: 8px; }
+.bp-badge-ready {
+  font-family: var(--font-en); font-weight: 800; font-size: 11.5px; padding: 4px 10px; border-radius: 999px;
+  background: rgba(16,185,129,.12); color: #10b981; border: 1px solid rgba(16,185,129,.3);
+}
+
+.bp-layers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.bp-layer {
+  padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.bp-layer small { font-size: 12px; font-weight: 700; color: var(--muted); }
+.bp-layer strong { font-size: 14.5px; font-weight: 900; color: var(--text); }
+.bp-layer span { font-size: 12px; color: var(--text-2); line-height: 1.4; }
+
+.bp-rationale {
+  padding: 16px 18px; border-radius: 16px; background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
+}
+.bp-rationale strong { display: block; font-size: 14px; font-weight: 900; color: var(--primary); margin-bottom: 4px; }
+.bp-rationale p { font-size: 13.5px; color: var(--text-2); line-height: 1.6; margin: 0; }
+
+.bp-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.bp-proof { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-2); }
+.bp-proof b { color: var(--primary); }
+
+@media (max-width: 860px) {
+  .adv-grid-types, .adv-grid-priorities { grid-template-columns: 1fr 1fr; }
+  .bp-layers { grid-template-columns: 1fr 1fr; }
+  .adv-generate-btn { width: 100%; min-width: 0; }
+}
+@media (max-width: 580px) {
+  .bp-layers { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   Smart Interactive FAQ
+   ========================================================= */
+.faq-section { background: var(--bg); }
+.faq-container { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+.faq-accordion { display: flex; flex-direction: column; gap: 12px; }
+
+.faq-item {
+  border-radius: 18px; border: 1px solid var(--border); background: var(--surface);
+  overflow: hidden; transition: border-color .25s, box-shadow .25s;
+}
+.faq-item.active {
+  border-color: var(--primary); box-shadow: 0 8px 24px -12px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+.faq-q {
+  width: 100%; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  background: none; border: 0; font: inherit; font-size: 16.5px; font-weight: 800; color: var(--text);
+  text-align: start; cursor: pointer; transition: color .2s;
+}
+.faq-item:hover .faq-q { color: var(--primary); }
+.faq-chevron {
+  width: 20px; height: 20px; flex-shrink: 0; color: var(--muted);
+  transition: transform .3s cubic-bezier(.3,1.4,.5,1), color .2s;
+}
+.faq-item.active .faq-chevron { transform: rotate(180deg); color: var(--primary); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height .35s ease-out, padding .35s ease;
+  padding: 0 22px;
+}
+.faq-item.active .faq-a { max-height: 300px; padding: 0 22px 20px; }
+.faq-a p { font-size: 15px; line-height: 1.7; color: var(--text-2); margin: 0; }
+
+/* Custom Question Box */
+.faq-ask-box {
+  padding: 24px 28px; border-radius: 24px; background: var(--surface-2); border: 1.5px solid var(--border);
+  display: flex; flex-direction: column; gap: 14px;
+}
+.faq-ask-header { display: flex; flex-direction: column; gap: 2px; }
+.faq-ask-header strong { font-size: 16px; font-weight: 900; color: var(--text); display: flex; align-items: center; gap: 6px; }
+.faq-ask-header small { color: var(--muted); font-size: 13px; font-weight: 600; }
+.faq-ask-form { display: flex; gap: 10px; }
+.faq-ask-form input {
+  flex: 1; min-width: 0; padding: 12px 18px; border-radius: 14px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); font: inherit; font-size: 14.5px; font-weight: 600; outline: 0;
+}
+.faq-ask-form input:focus { border-color: var(--primary); }
+.faq-ask-reply {
+  padding: 16px 18px; border-radius: 16px; background: var(--surface); border: 1px solid var(--primary);
+  display: flex; flex-direction: column; gap: 10px; animation: pop .3s ease-out;
+}
+.faq-ask-reply[hidden] { display: none; }
+.faq-ask-reply p { font-size: 14.5px; line-height: 1.6; color: var(--text); margin: 0; }
+@media (max-width: 640px) {
+  .faq-q { padding: 16px 18px; font-size: 15px; }
+  .faq-ask-form { flex-direction: column; }
+  .faq-ask-box { padding: 18px; }
+}
+

@@ -530,10 +530,374 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
     }).catch(() => {});
   }
 
+  /* =========================================================
+     Interactive Mobile Simulator
+     ========================================================= */
+  let simActiveApp = SIMULATOR_APPS[0];
+  let simActiveScreen = simActiveApp.screens[0];
+
+  function renderSimulator() {
+    const tabsContainer = $('#simApps');
+    if (!tabsContainer) return;
+
+    tabsContainer.innerHTML = SIMULATOR_APPS.map((app) => `
+      <button type="button" class="sim-app-tab ${app.id === simActiveApp.id ? 'active' : ''}" data-sim-app="${app.id}">
+        <img src="${app.icon}" alt="" />
+        <span>${esc(app.name[L()])}</span>
+      </button>
+    `).join('');
+
+    const diText = $('#simDiText');
+    if (diText) diText.textContent = `${simActiveApp.name[L()].split('—')[0].trim()}`;
+
+    const img = $('#simScreenImg');
+    const badge = $('#simScreenBadge');
+    if (img && simActiveScreen) {
+      img.classList.add('switching');
+      setTimeout(() => {
+        img.src = simActiveScreen.img;
+        if (badge) badge.textContent = simActiveScreen.badge;
+        img.classList.remove('switching');
+      }, 120);
+    }
+
+    const bottomBar = $('#simBottomBar');
+    if (bottomBar) {
+      bottomBar.innerHTML = simActiveApp.screens.map((s) => `
+        <button type="button" class="sim-btn-tab ${s.id === simActiveScreen.id ? 'active' : ''}" data-screen-id="${s.id}">
+          <svg viewBox="0 0 24 24" class="i"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M15 3v18"/></svg>
+          <span>${esc(s.label[L()])}</span>
+        </button>
+      `).join('');
+    }
+
+    const cardIcon = $('#simCardIcon');
+    const cardTitle = $('#simCardTitle');
+    const cardRating = $('#simCardRating');
+    const cardTag = $('#simCardTag');
+    const cardDesc = $('#simCardDesc');
+    const storeLink = $('#simStoreLink');
+    const storeBtnText = $('#simStoreBtnText');
+
+    if (cardIcon) cardIcon.src = simActiveApp.icon;
+    if (cardTitle) cardTitle.textContent = simActiveApp.name[L()];
+    if (cardRating) cardRating.textContent = simActiveApp.rating;
+    if (cardTag) cardTag.textContent = simActiveApp.tag[L()];
+    if (cardDesc) cardDesc.textContent = simActiveApp.desc[L()];
+
+    if (storeLink) {
+      if (simActiveApp.storeUrl) {
+        storeLink.href = simActiveApp.storeUrl;
+        storeLink.style.display = 'inline-flex';
+        if (storeBtnText) storeBtnText.textContent = simActiveApp.storeName;
+      } else {
+        storeLink.style.display = 'none';
+      }
+    }
+  }
+
+  function initSimulator() {
+    const wrap = $('#simPhoneWrap');
+    const phone = $('#simPhone');
+    if (!wrap || !phone) return;
+
+    renderSimulator();
+
+    $('#simApps')?.addEventListener('click', (e) => {
+      const tab = e.target.closest('[data-sim-app]');
+      if (!tab) return;
+      const app = SIMULATOR_APPS.find((a) => a.id === tab.dataset.simApp);
+      if (app && app.id !== simActiveApp.id) {
+        simActiveApp = app;
+        simActiveScreen = app.screens[0];
+        renderSimulator();
+      }
+    });
+
+    $('#simBottomBar')?.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-screen-id]');
+      if (!btn) return;
+      const scr = simActiveApp.screens.find((s) => s.id === btn.dataset.screenId);
+      if (scr && scr.id !== simActiveScreen.id) {
+        simActiveScreen = scr;
+        renderSimulator();
+      }
+    });
+
+    if (window.matchMedia && matchMedia('(min-width: 900px)').matches) {
+      wrap.addEventListener('mousemove', (e) => {
+        const rect = wrap.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const rx = -y * 12;
+        const ry = x * 12;
+        phone.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(1.02)`;
+      });
+      wrap.addEventListener('mouseleave', () => {
+        phone.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+      });
+    }
+
+    const fpsEl = $('#simFps');
+    if (fpsEl) {
+      setInterval(() => {
+        const fps = (59.8 + Math.random() * 0.2).toFixed(1);
+        fpsEl.textContent = `${fps} FPS`;
+      }, 2500);
+    }
+  }
+
+  /* =========================================================
+     AI Architecture & Tech Stack Advisor
+     ========================================================= */
+  let advState = {
+    type: 'mobile',
+    priority: 'speed',
+    features: ['payments', 'realtime']
+  };
+
+  function renderAdvisorInputs() {
+    const typesGrid = $('#advTypes');
+    const priGrid = $('#advPriorities');
+    const featChips = $('#advFeatures');
+    if (!typesGrid || !priGrid || !featChips) return;
+
+    typesGrid.innerHTML = ADVISOR_DATA.steps.type.options.map((opt) => `
+      <button type="button" class="adv-opt-card ${opt.id === advState.type ? 'active' : ''}" data-adv-type="${opt.id}">
+        <span class="opt-icon">${opt.icon}</span>
+        <span>${esc(opt[L()])}</span>
+      </button>
+    `).join('');
+
+    priGrid.innerHTML = ADVISOR_DATA.steps.priority.options.map((opt) => `
+      <button type="button" class="adv-opt-card ${opt.id === advState.priority ? 'active' : ''}" data-adv-pri="${opt.id}">
+        <span class="opt-icon">${opt.icon}</span>
+        <span>${esc(opt[L()])}</span>
+      </button>
+    `).join('');
+
+    featChips.innerHTML = ADVISOR_DATA.steps.features.options.map((opt) => `
+      <button type="button" class="adv-chip ${advState.features.includes(opt.id) ? 'active' : ''}" data-adv-feat="${opt.id}">
+        <span>${opt.icon}</span>
+        <span>${esc(opt[L()])}</span>
+      </button>
+    `).join('');
+  }
+
+  function generateBlueprint() {
+    const isMobile = advState.type === 'mobile' || advState.type === 'system';
+    const isWeb = advState.type === 'store' || advState.type === 'saas' || advState.type === 'system';
+    const isOffline = advState.priority === 'offline';
+
+    let frontend = '', stateArch = '', backend = '', devOps = '', rationale = '', similar = '';
+
+    if (isMobile && !isWeb) {
+      frontend = 'Flutter 3.24+ (Dart) with Impeller Graphics Engine';
+      stateArch = 'Clean Architecture (Presentation / Domain / Data) + BLoC State Management';
+      backend = isOffline ? 'Hive / Isar Local Storage + Supabase PostgreSQL (RLS)' : 'Supabase Realtime + Edge Functions';
+      devOps = 'Fastlane + GitHub Actions CI/CD to App Store & Google Play';
+      rationale = L() === 'ar'
+        ? 'اختيار Flutter مع محرك Impeller يمنحك سرعة 60 FPS حقيقية بكود موحد للمنصتين ويوفر أكثر من 40% من تكلفة الصيانة مستقبلاً. استخدام Clean Architecture يفصل البيانات عن الواجهة لسهولة التوسع المستقبلي.'
+        : 'Flutter with the Impeller engine delivers genuine 60 FPS native speed with a single codebase, slashing maintenance overhead by 40%. Clean Architecture decouples UI from business logic.';
+      similar = 'QuickIn & Rafiq Muslim (Live on App Store & Google Play)';
+    } else if (isWeb && !isMobile) {
+      frontend = 'Next.js 16 (React 19) + Tailwind CSS + Framer Motion';
+      stateArch = 'Server Components (RSC) + Zustand / TanStack Query';
+      backend = 'Supabase PostgreSQL + Prisma / Django REST API';
+      devOps = 'Vercel Edge Deployment + Automated Lighthouse CI';
+      rationale = L() === 'ar'
+        ? 'Next.js يضمن سرعة تحميل فائقة وتصدر محركات البحث (SEO) مع دعم كامل للغة العربية RTL والدفع الإلكتروني السلس.'
+        : 'Next.js ensures ultra-fast page speeds, top SEO rankings, full Arabic RTL support, and seamless e-commerce conversions.';
+      similar = 'Manara SaaS Platform & Incense Luxury Store';
+    } else {
+      frontend = 'Flutter (Mobile iOS/Android) + Next.js 16 (Admin & Web Portal)';
+      stateArch = 'Clean Architecture + Repository Pattern across all platforms';
+      backend = 'Unified Supabase PostgreSQL with Realtime Sync & Row-Level Security';
+      devOps = 'Multi-target CI/CD: Fastlane for mobile + Vercel for web studio';
+      rationale = L() === 'ar'
+        ? 'النظام المتكامل يتشارك قاعدة بيانات واحدة لحظية (Realtime)، مما يتيح للإدارة متابعة الطلبات والعملاء فوراً مع وصول الإشعارات لتطبيقات الموبايل بدون أي تأخير.'
+        : 'Unified realtime database synchronizes mobile apps with the admin studio instantly, providing zero-latency orders and live updates.';
+      similar = 'Manara Education SaaS & Multi-role Delivery Suite';
+    }
+
+    const bpBox = $('#advBlueprint');
+    if (!bpBox) return;
+
+    bpBox.innerHTML = `
+      <div class="bp-head">
+        <h3><span class="ai-spark">✨</span> ${t('advCardTitle')}</h3>
+        <span class="bp-badge-ready">PROD-READY ARCHITECTURE</span>
+      </div>
+      <div class="bp-layers">
+        <div class="bp-layer">
+          <small>${t('advFrontend')}</small>
+          <strong>${esc(frontend)}</strong>
+          <span>${isMobile ? 'iOS & Android Native 60 FPS' : 'SSR & Global Edge CDN'}</span>
+        </div>
+        <div class="bp-layer">
+          <small>${t('advState')}</small>
+          <strong>${esc(stateArch)}</strong>
+          <span>SOLID Principles & Repository Pattern</span>
+        </div>
+        <div class="bp-layer">
+          <small>${t('advBackend')}</small>
+          <strong>${esc(backend)}</strong>
+          <span>Row-Level Security & Encrypted Tokens</span>
+        </div>
+        <div class="bp-layer">
+          <small>${t('advDevOps')}</small>
+          <strong>${esc(devOps)}</strong>
+          <span>Automated Store Builds & Testing</span>
+        </div>
+      </div>
+      <div class="bp-rationale">
+        <strong>${t('advWhy')}</strong>
+        <p>${esc(rationale)}</p>
+      </div>
+      <div class="bp-footer">
+        <div class="bp-proof">
+          <span>${t('advSimilar')}</span>
+          <b>${esc(similar)}</b>
+        </div>
+        <button type="button" class="btn btn-wa btn-sm" id="advBookBtn">
+          <svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg>
+          <span>${t('advBookWhatsapp')}</span>
+        </button>
+      </div>
+    `;
+    bpBox.hidden = false;
+    bpBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    $('#advBookBtn')?.addEventListener('click', () => {
+      const text = `${t('waIntro')}\n${L() === 'ar' ? 'أريد مناقشة هذا المعمار التقني المقترح لمشروعي:' : 'I want to discuss this architecture blueprint for my project:'}\n- Frontend: ${frontend}\n- Architecture: ${stateArch}\n- Backend: ${backend}`;
+      wa(text);
+      notifyLead('advisor', `${frontend} / ${stateArch}`);
+    });
+  }
+
+  function initAdvisor() {
+    if (!$('#advTypes')) return;
+    renderAdvisorInputs();
+
+    $('#advTypes').addEventListener('click', (e) => {
+      const card = e.target.closest('[data-adv-type]');
+      if (!card) return;
+      advState.type = card.dataset.advType;
+      renderAdvisorInputs();
+    });
+
+    $('#advPriorities').addEventListener('click', (e) => {
+      const card = e.target.closest('[data-adv-pri]');
+      if (!card) return;
+      advState.priority = card.dataset.advPri;
+      renderAdvisorInputs();
+    });
+
+    $('#advFeatures').addEventListener('click', (e) => {
+      const chip = e.target.closest('[data-adv-feat]');
+      if (!chip) return;
+      const feat = chip.dataset.advFeat;
+      if (advState.features.includes(feat)) {
+        advState.features = advState.features.filter((f) => f !== feat);
+      } else {
+        advState.features.push(feat);
+      }
+      renderAdvisorInputs();
+    });
+
+    $('#advGenerate')?.addEventListener('click', () => {
+      generateBlueprint();
+    });
+  }
+
+  /* =========================================================
+     Smart Interactive FAQ
+     ========================================================= */
+  function renderFaq() {
+    const acc = $('#faqAccordion');
+    if (!acc) return;
+    acc.innerHTML = FAQ_DATA.map((item, idx) => `
+      <div class="faq-item ${idx === 0 ? 'active' : ''}" data-faq-index="${idx}">
+        <button type="button" class="faq-q" aria-expanded="${idx === 0}">
+          <span>${esc(item.q[L()])}</span>
+          <svg class="i faq-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">
+          <p>${esc(item.a[L()])}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function initFaq() {
+    const acc = $('#faqAccordion');
+    if (!acc) return;
+    renderFaq();
+
+    acc.addEventListener('click', (e) => {
+      const q = e.target.closest('.faq-q');
+      if (!q) return;
+      const item = q.closest('.faq-item');
+      const wasActive = item.classList.contains('active');
+      $$('.faq-item', acc).forEach((el) => el.classList.remove('active'));
+      if (!wasActive) item.classList.add('active');
+    });
+
+    const form = $('#faqAskForm');
+    const reply = $('#faqAskReply');
+    if (form && reply) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const input = $('#faqAskInput');
+        const q = input.value.trim();
+        if (!q) return;
+
+        reply.hidden = false;
+        reply.innerHTML = `<div class="typing"><i></i><i></i><i></i></div>`;
+
+        try {
+          const res = await callApi('/api/ai', { mode: 'chat', lang: L(), messages: [{ role: 'user', content: q }] }, 15000);
+          if (res && res.reply) {
+            reply.innerHTML = `<p>${esc(res.reply)}</p><button type="button" class="btn btn-wa btn-sm" style="align-self:flex-start; margin-top:8px" id="faqWaReplyBtn"><svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg> <span>${t('ctaWhats')}</span></button>`;
+            $('#faqWaReplyBtn')?.addEventListener('click', () => wa(`${t('waIntro')}\n${q}`));
+            return;
+          }
+        } catch (_) {}
+
+        setTimeout(() => {
+          let ans = L() === 'ar'
+            ? 'سؤال ممتاز! م. إبراهيم يضمن تنفيذ كل متطلبات مشروعك وفق أعلى معايير الجودة مع تسليم السورس كود كاملاً ودعم فني مستمر بعد الإطلاق. يمكنك التواصل معه مباشرة عبر واتساب لمناقشة التفاصيل.'
+            : 'Great question! Eng. Ebrahim ensures top-tier development standards with 100% source code ownership and dedicated warranty support. Contact him on WhatsApp for specific details.';
+
+          const lq = q.toLowerCase();
+          if (lq.includes('دفع') || lq.includes('فلوس') || lq.includes('ميزانية') || lq.includes('pay') || lq.includes('price')) {
+            ans = L() === 'ar'
+              ? 'نظام الدفع يتم على دفعات مجدولة (Milestones) تبدأ بدفعة مقدمة بسيطة وتوزع باقي الدفعات مع تسليم مراحل حقيقية ومعاينتها بنفسك على موبايلك.'
+              : 'Payments are milestone-based, starting with an initial deposit and remaining payments tied directly to verifiable project milestones.';
+          } else if (lq.includes('وقت') || lq.includes('مدة') || lq.includes('أسبوع') || lq.includes('time') || lq.includes('week')) {
+            ans = L() === 'ar'
+              ? 'مدة التنفيذ تتراوح بين أسبوعين للمواقع والمتاجر، وحتى 4 إلى 8 أسابيع لتطبيقات الموبايل المتكاملة، مع التزام تام بالموعد النهائي.'
+              : 'Timelines range from 2 weeks for websites to 4–8 weeks for comprehensive mobile apps, with strict delivery deadlines.';
+          }
+
+          reply.innerHTML = `
+            <p>${esc(ans)}</p>
+            <button type="button" class="btn btn-wa btn-sm" style="align-self:flex-start; margin-top:8px" id="faqWaReplyBtn">
+              <svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg>
+              <span>${t('ctaWhats')}</span>
+            </button>
+          `;
+          $('#faqWaReplyBtn')?.addEventListener('click', () => wa(`${t('waIntro')}\n${q}`));
+        }, 500);
+      });
+    }
+  }
+
   /* ---------- Language changes ---------- */
   PF.onLang(() => {
     renderRecent(); renderCurrency();
     renderEstOptions(); renderExamples(); renderPricing();
+    renderSimulator(); renderAdvisorInputs(); renderFaq();
     if (est.last && !$('#estResult').hidden && est.last.offline) renderEstimate(offlineEstimate($('#estIdea').value));
     const fresh = chat.history.length <= 1; if (fresh) chatReset(); else chatRender();
   });
@@ -544,6 +908,9 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
   renderExamples();
   initChat();
   initPricing();
+  initSimulator();
+  initAdvisor();
+  initFaq();
   loadRatings();
   loadRecent();
 })();

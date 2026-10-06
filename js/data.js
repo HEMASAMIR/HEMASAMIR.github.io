@@ -69,7 +69,7 @@ const I18N = {
     langSwitch: 'ع',
     brandName: 'Eng. Ebrahim Samir',
     brandRole: 'Mobile & Web Developer',
-    navWork: 'Work', navServices: 'Services', navProcess: 'Process', navAbout: 'About', navContact: 'Contact', navHire: 'Start a project',
+    navWork: 'Work', navSimulator: 'Playground', navServices: 'Services', navAdvisor: 'Tech Advisor', navProcess: 'Process', navAbout: 'About', faqTitleShort: 'FAQ', navContact: 'Contact', navHire: 'Start a project',
     heroAvail: 'Available for new projects', heroAvailShort: 'Available',
     heroTitle1: 'I turn your idea into', heroTitle2: 'apps & websites that sell',
     heroIBuild: 'I build',

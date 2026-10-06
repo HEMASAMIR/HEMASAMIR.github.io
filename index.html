@@ -96,10 +96,12 @@
 
       <nav class="nav" id="nav">
         <a href="#work" data-i18n="navWork">أعمالي</a>
+        <a href="#simulator" class="nav-sim"><span data-i18n="navSimulator">المحاكي</span><em>Live</em></a>
         <a href="#services" data-i18n="navServices">الخدمات</a>
         <a href="#estimate" class="nav-ai"><span data-i18n="navEstimate">احسب التكلفة</span><em>AI</em></a>
+        <a href="#advisor" class="nav-adv"><span data-i18n="navAdvisor">مستشار التقنيات</span><em>AI</em></a>
         <a href="#pricing" data-i18n="navPricing">الأسعار</a>
-        <a href="blog/index.html" data-i18n="navBlog">المدونة</a>
+        <a href="#faq" data-i18n="faqTitleShort">الأسئلة</a>
         <a href="#about" data-i18n="navAbout">عنّي</a>
         <a href="#contact" class="nav-cta-mobile" data-i18n="navContact">تواصل معي</a>
       </nav>
@@ -299,6 +301,133 @@
       </div>
     </section>
 
+    <!-- ============ Interactive Mobile Simulator ============ -->
+    <section class="section simulator-section" id="simulator">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow eyebrow-sim"><span class="dot-live"></span><span data-i18n="simEyebrow">المحاكي التفاعلي</span></span>
+          <h2 data-i18n="simTitle">جرّب التطبيقات بنفسك على جهاز حي</h2>
+          <p data-i18n="simSub">تفاعل مع الشاشات، اختبر سلاسة الـ 60 FPS، وجرّب واجهات Clean Architecture مبنية بـ Flutter بأعلى معايير آبل وجوجل.</p>
+        </div>
+
+        <div class="sim-wrapper reveal">
+          <!-- App Switcher Chips -->
+          <div class="sim-apps" id="simApps" role="tablist"></div>
+
+          <div class="sim-stage">
+            <!-- 3D Interactive Phone Container -->
+            <div class="sim-phone-wrap" id="simPhoneWrap">
+              <div class="sim-phone" id="simPhone">
+                <!-- Outer Titanium Frame -->
+                <div class="phone-frame">
+                  <!-- Dynamic Island -->
+                  <div class="phone-dynamic-island">
+                    <div class="di-camera"></div>
+                    <div class="di-sensor"></div>
+                    <div class="di-pill">
+                      <span class="di-dot"></span>
+                      <span class="di-text" id="simDiText">QuickIn · Stays</span>
+                    </div>
+                  </div>
+
+                  <!-- Status Bar -->
+                  <div class="phone-status-bar">
+                    <span class="ps-time">9:41</span>
+                    <div class="ps-icons">
+                      <span class="ps-signal">5G</span>
+                      <svg class="i ps-wifi" viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M12 20h.01"/></svg>
+                      <span class="ps-battery"><i></i></span>
+                    </div>
+                  </div>
+
+                  <!-- Phone Screen Stage -->
+                  <div class="phone-screen" id="simScreen">
+                    <!-- FPS Counter Badge inside screen -->
+                    <div class="sim-fps-chip">
+                      <span class="fps-dot"></span>
+                      <span id="simFps">60.0 FPS</span>
+                      <small>Impeller</small>
+                    </div>
+
+                    <!-- Screen Viewport with Transition -->
+                    <div class="sim-viewport" id="simViewport">
+                      <img id="simScreenImg" src="assets/img/quickin-1.jpg" alt="Screen" class="sim-img" />
+                      <div class="sim-screen-overlay">
+                        <span class="sim-badge" id="simScreenBadge">Supabase Realtime</span>
+                      </div>
+                    </div>
+
+                    <!-- In-Phone Interactive Bottom Bar -->
+                    <div class="sim-bottom-bar" id="simBottomBar"></div>
+                  </div>
+
+                  <!-- Home Indicator Bar -->
+                  <div class="phone-home-indicator"></div>
+                </div>
+
+                <!-- Glass Sheen Glare Reflection -->
+                <div class="phone-glare"></div>
+              </div>
+            </div>
+
+            <!-- Side Specs & Highlights Card -->
+            <div class="sim-meta">
+              <div class="sim-app-card" id="simAppCard">
+                <div class="sim-card-head">
+                  <img id="simCardIcon" src="assets/img/quickin-icon.jpg" alt="" class="sim-app-icon" />
+                  <div>
+                    <h3 id="simCardTitle">QuickIn</h3>
+                    <div class="sim-card-tags">
+                      <span class="sim-store-rating" id="simCardRating">4.9 ★</span>
+                      <span class="sim-store-pill" id="simCardTag">App Store & Google Play</span>
+                    </div>
+                  </div>
+                </div>
+                <p class="sim-card-desc" id="simCardDesc">منصة حجز إقامات وشاليهات في مصر على طريقة Airbnb: بحث، حجز، دفع إلكتروني، وتوثيق هوية.</p>
+
+                <!-- Architectural highlights -->
+                <div class="sim-specs">
+                  <div class="sim-spec-item">
+                    <span class="spec-ico">⚡</span>
+                    <div>
+                      <strong>Clean Architecture & BLoC</strong>
+                      <small>فصل تام للـ Business Logic لضمان أداء مستقر وسرعة صيانة</small>
+                    </div>
+                  </div>
+                  <div class="sim-spec-item">
+                    <span class="spec-ico">🚀</span>
+                    <div>
+                      <strong>60 FPS Native Performance</strong>
+                      <small>كود موحد لـ iOS وأندرويد بمحرك Impeller وسلاسة فائقة</small>
+                    </div>
+                  </div>
+                  <div class="sim-spec-item">
+                    <span class="spec-ico">🔒</span>
+                    <div>
+                      <strong>Offline-First & Secure Storage</strong>
+                      <small>تخزين آمن للبيانات والتوثيق والعمل حتى مع ضعف الشبكة</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action links -->
+                <div class="sim-actions">
+                  <a href="https://apps.apple.com/us/app/quickin-app/id6778979967" id="simStoreLink" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                    <svg class="i fill" viewBox="0 0 24 24"><path d="M15.53 3.83c.84-1.01 1.4-2.43 1.25-3.83-1.21.05-2.66.8-3.53 1.82-.78.9-1.46 2.34-1.27 3.71 1.34.1 2.71-.69 3.55-1.7M12.15 6.9c-.95 0-2.41-1.08-3.96-1.04-2.04.03-3.91 1.18-4.96 3.01-2.12 3.68-.55 9.1 1.52 12.09 1.01 1.45 2.2 3.09 3.79 3.04 1.52-.07 2.09-.99 3.93-.99 1.83 0 2.35.99 3.96.95 1.64-.03 2.68-1.48 3.68-2.95 1.15-1.69 1.63-3.33 1.66-3.42-.04-.01-3.18-1.22-3.22-4.86-.03-3.04 2.48-4.49 2.6-4.56-1.43-2.09-3.62-2.32-4.39-2.38-2-.15-3.68 1.09-4.61 1.09z"/></svg>
+                    <span id="simStoreBtnText">App Store</span>
+                  </a>
+                  <a href="#estimate" class="btn btn-ghost btn-sm">
+                    <span data-i18n="simCtaBtn">احسب تكلفة فكرتك</span>
+                    <svg class="i flip" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ AI cost estimator ============ -->
     <section class="section estimate-section" id="estimate">
       <div class="container">
@@ -339,6 +468,48 @@
           <p data-i18n="srvSub">من التصميم للبرمجة للنشر والدعم بعد الإطلاق.</p>
         </div>
         <div class="grid-services" id="services-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ AI Architecture Advisor ============ -->
+    <section class="section advisor-section" id="advisor">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow eyebrow-ai"><span class="ai-spark">✨</span><span data-i18n="advEyebrow">جديد · مستشار المعمارية الذكي</span></span>
+          <h2 data-i18n="advTitle">اكتشف أفضل معمارية تقنية لمشروعك</h2>
+          <p data-i18n="advSub">اختر طبيعة مشروعك وأولوياتك، وسيقوم الذكاء الاصطناعي بتحديد الـ Stack والمعمارية الأنسب لضمان أقصى سرعة وأقل تكلفة صيانة.</p>
+        </div>
+
+        <div class="advisor-box reveal">
+          <!-- Step 1: Type -->
+          <div class="adv-step">
+            <span class="adv-step-badge" data-i18n="advStep1">1. نوع المشروع</span>
+            <div class="adv-grid-types" id="advTypes"></div>
+          </div>
+
+          <!-- Step 2: Priority -->
+          <div class="adv-step">
+            <span class="adv-step-badge" data-i18n="advStep2">2. أولويتك الكبرى</span>
+            <div class="adv-grid-priorities" id="advPriorities"></div>
+          </div>
+
+          <!-- Step 3: Features -->
+          <div class="adv-step">
+            <span class="adv-step-badge" data-i18n="advStep3">3. مميزات خاصة</span>
+            <div class="adv-chips" id="advFeatures"></div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="center">
+            <button type="button" class="btn btn-primary btn-lg adv-generate-btn" id="advGenerate">
+              <span class="ai-spark">✨</span>
+              <span data-i18n="advGenBtn">توليد المعمارية والمواصفات</span>
+            </button>
+          </div>
+
+          <!-- Output Architecture Blueprint Card -->
+          <div class="adv-blueprint" id="advBlueprint" hidden aria-live="polite"></div>
+        </div>
       </div>
     </section>
 
@@ -437,6 +608,37 @@
             <span class="cv-label"><svg class="i" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg><span data-i18n="cvDownload">تحميل الـ CV</span></span>
             <a class="btn btn-primary btn-sm" href="assets/cv/Ebrahim-Samir-CV-AR.pdf" download><span data-i18n="cvAr">عربي</span> PDF</a>
             <a class="btn btn-ghost btn-sm" href="assets/cv/Ebrahim-Samir-CV-EN.pdf" download><span data-i18n="cvEn">English</span> PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Smart Interactive FAQ ============ -->
+    <section class="section faq-section" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="faqEyebrow">وضوح تام قبل البدء</span>
+          <h2 data-i18n="faqTitle">الأسئلة الشائعة وحقوقك كاملة</h2>
+          <p data-i18n="faqSub">كل ما تحتاج معرفته عن ملكية السورس كود، حسابات المتاجر، نظام الدفعات، والضمان بعد التسليم.</p>
+        </div>
+
+        <div class="faq-container reveal">
+          <div class="faq-accordion" id="faqAccordion"></div>
+
+          <!-- Instant Custom Question Box -->
+          <div class="faq-ask-box">
+            <div class="faq-ask-header">
+              <span class="ai-spark">✨</span>
+              <strong>عندك سؤال آخر في بالك؟</strong>
+              <small>المساعد الذكي هيجاوبك فورًا بخصوص أي تفاصيل تقنية أو تعاقدية</small>
+            </div>
+            <form class="faq-ask-form" id="faqAskForm">
+              <input type="text" id="faqAskInput" maxlength="300" placeholder="مثلاً: كم يستغرق رفع التطبيق على App Store؟" data-i18n-ph="faqAskPh" required />
+              <button type="submit" class="btn btn-primary btn-sm" id="faqAskBtn">
+                <span data-i18n="faqAskBtn">اسأل الذكاء الاصطناعي</span>
+              </button>
+            </form>
+            <div class="faq-ask-reply" id="faqAskReply" hidden aria-live="polite"></div>
           </div>
         </div>
       </div>
