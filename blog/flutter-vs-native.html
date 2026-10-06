@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="../" />
+  <title>Flutter ولا Native؟ إزاي تختار التقنية المناسبة لتطبيقك | م. إبراهيم سمير</title>
+  <meta name="description" content="مقارنة عملية بين Flutter والتطوير Native (Swift و Kotlin) لصاحب المشروع: التكلفة، سرعة التنفيذ، الأداء، والصيانة — ومتى يكون كل اختيار هو الأنسب." />
+  <link rel="canonical" href="https://hemasamir.github.io/blog/flutter-vs-native.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://hemasamir.github.io/assets/readme/hero-ar.jpg" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); else if (matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Flutter ولا Native؟ إزاي تختار التقنية المناسبة لتطبيقك","datePublished":"2026-10-06","author":{"@type":"Person","name":"Ebrahim Samir","url":"https://hemasamir.github.io/"},"inLanguage":"ar"}</script>
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <header class="header scrolled"><div class="container header-inner">
+    <a href="index.html" class="brand"><span class="brand-mark">ES</span><span class="brand-text"><strong>م. إبراهيم سمير</strong><small>المدونة</small></span></a>
+    <a href="index.html#estimate" class="btn btn-primary btn-sm">✨ احسب التكلفة</a>
+  </div></header>
+  <main class="container"><article class="article">
+    <a class="back" href="blog/index.html">← كل المقالات</a>
+    <h1>Flutter ولا Native؟ إزاي تختار التقنية المناسبة لتطبيقك</h1>
+    <p class="meta">م. إبراهيم سمير · أكتوبر 2026 · 5 دقايق قراءة</p>
+
+    <p>لو بتفكر تعمل تطبيق، غالبًا سمعت السؤال ده: "هتعمله Flutter ولا Native؟". المقال ده مكتوب لصاحب المشروع، مش للمبرمج — يعني من غير تعقيد، وبالتركيز على اللي يهمك: <b>الفلوس، والوقت، والجودة</b>.</p>
+
+    <h2>الفرق في جملة واحدة</h2>
+    <p><b>Native</b> يعني تبني تطبيقين منفصلين: واحد لـ iPhone بلغة Swift، وواحد لـ Android بلغة Kotlin. <b>Flutter</b> يعني تبني تطبيق واحد بكود واحد، يشتغل على الاتنين.</p>
+
+    <h2>المقارنة السريعة</h2>
+    <table>
+      <tr><th></th><th>Flutter</th><th>Native</th></tr>
+      <tr><td>التكلفة</td><td>أقل بشكل واضح (كود واحد)</td><td>أعلى (تطبيقين)</td></tr>
+      <tr><td>سرعة الإطلاق</td><td>أسرع</td><td>أبطأ</td></tr>
+      <tr><td>الأداء</td><td>ممتاز لأغلب التطبيقات (60 FPS)</td><td>الأعلى في الحالات الخاصة جدًا</td></tr>
+      <tr><td>الشكل على الجهازين</td><td>نفس التصميم بالظبط</td><td>ممكن يختلف</td></tr>
+      <tr><td>الصيانة والتحديثات</td><td>تعديل واحد يوصل للاتنين</td><td>كل تعديل مرتين</td></tr>
+    </table>
+
+    <h2>إمتى Flutter يبقى الاختيار الصح؟</h2>
+    <ul>
+      <li>متاجر إلكترونية وتطبيقات طلبات وتوصيل.</li>
+      <li>تطبيقات حجوزات وخدمات ومواعيد.</li>
+      <li>منصات تعليمية وكورسات.</li>
+      <li>تطبيقات الشركات ولوحات المتابعة.</li>
+      <li>أي مشروع عايز يطلق بسرعة بميزانية معقولة على الجهازين.</li>
+    </ul>
+    <p>ودي تقريبًا معظم التطبيقات اللي أصحاب المشاريع بيحتاجوها. شركات عالمية كبيرة بتستخدم Flutter في منتجات بيستخدمها ملايين.</p>
+
+    <h2>إمتى Native يبقى أنسب؟</h2>
+    <ul>
+      <li>ألعاب ثقيلة أو رسوميات ثلاثية الأبعاد معقدة.</li>
+      <li>تطبيقات بتعتمد بشكل عميق جدًا على خصائص نظام معيّن (زي بعض تطبيقات الكاميرا المتقدمة أو الساعات الذكية).</li>
+      <li>شركة عندها فريقين جاهزين لكل نظام وميزانية كبيرة.</li>
+    </ul>
+    <div class="callout">💡 حتى في الحالات دي، Flutter بيقدر يتكلم مع خصائص الجهاز مباشرة لما نحتاج، فالحالات اللي Native فيها "ضروري" فعلًا قليلة.</div>
+
+    <h2>تجربتي العملية</h2>
+    <p>أغلب التطبيقات اللي نشرتها على App Store و Google Play — زي تطبيق حجز الإقامات QuickIn وتطبيق رفيق المسلم وتطبيق مترو مصر — مبنية بـ Flutter. التطبيق الواحد بيوصل للجهازين بنفس الجودة، والتحديثات بتنزل للاتنين في نفس اليوم.</p>
+
+    <h2>الخلاصة</h2>
+    <p>لو مشروعك تطبيق تجاري أو خدمي (وده الأغلب)، <b>Flutter هيوفرلك فلوس ووقت</b> من غير ما تتنازل عن الجودة. ولو عندك حالة خاصة جدًا، نتكلم ونختار الأنسب.</p>
+
+    <div class="cta-box">
+      <h3>مش متأكد إيه الأنسب لفكرتك؟</h3>
+      <p>اكتب فكرتك في حاسبة التكلفة، وهتقترحلك التقنيات والمدة والتكلفة — أو كلّمني مباشرة.</p>
+      <a class="btn btn-primary btn-lg" href="index.html#estimate">✨ احسب تكلفة مشروعك</a>
+      <a class="btn btn-wa btn-lg" href="https://wa.me/201055673184" target="_blank" rel="noopener">كلّمني واتساب</a>
+    </div>
+  </article></main>
+  <footer class="pg-foot"><div class="container">© <span id="y"></span> م. إبراهيم سمير · <a href="index.html">الرئيسية</a> · <a href="blog/index.html">المدونة</a></div></footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

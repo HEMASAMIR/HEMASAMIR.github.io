@@ -99,6 +99,7 @@
         <a href="#services" data-i18n="navServices">الخدمات</a>
         <a href="#estimate" class="nav-ai"><span data-i18n="navEstimate">احسب التكلفة</span><em>AI</em></a>
         <a href="#pricing" data-i18n="navPricing">الأسعار</a>
+        <a href="blog/index.html" data-i18n="navBlog">المدونة</a>
         <a href="#about" data-i18n="navAbout">عنّي</a>
         <a href="#contact" class="nav-cta-mobile" data-i18n="navContact">تواصل معي</a>
       </nav>
@@ -360,6 +361,7 @@
           <span class="eyebrow" data-i18n="prEyebrow">الباقات</span>
           <h2 data-i18n="prTitle">أسعار واضحة تناسب كل مشروع</h2>
           <p data-i18n="prSub">كل باقة قابلة للتعديل حسب احتياجك.</p>
+          <label class="cur-pick"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9.5c-.6-1-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.2 0 3 6 1.6 6 4.6 0 1.3-1.3 2.2-3 2.2-1.4 0-2.6-.6-3.2-1.6M12 6v2M12 16v2"/></svg><span data-i18n="curLabel">العملة</span><select id="curSelect"></select></label>
         </div>
         <div class="pricing-grid" id="pricingGrid"></div>
         <div class="pricing-extra reveal">
@@ -396,6 +398,7 @@
             <div class="gh-stat"><b id="ghYears">4</b><span data-i18n="ghYears">سنين على GitHub</span></div>
             <div class="gh-stat langs" id="ghLangs"><div class="lang-bar"><i style="--w:76%;--c:#00b4ab"></i><i style="--w:7%;--c:#3178c6"></i><i style="--w:7%;--c:#f1e05a"></i><i style="--w:7%;--c:#e34c26"></i><i style="--w:3%;--c:#3572a5"></i></div><span class="lang-legend"><em style="--c:#00b4ab">Flutter / Dart 76%</em><em style="--c:#3178c6">TypeScript 7%</em><em style="--c:#f1e05a">JavaScript 7%</em><em style="--c:#e34c26">HTML 7%</em><em style="--c:#3572a5">Python 3%</em></span></div>
           </div>
+          <div class="gh-now" hidden><div class="gh-now-head"><span class="dot-live"></span><b data-i18n="ghNowTitle">شغال على إيه دلوقتي</b><small data-i18n="ghNowSub">آخر تحديثات على مشاريعي — مباشرة من GitHub</small></div><div class="gh-now-list" id="ghNow"></div></div>
           <a class="gh-chart" href="https://github.com/HEMASAMIR" target="_blank" rel="noopener" aria-label="GitHub contributions">
             <img src="https://ghchart.rshah.org/0d9488/HEMASAMIR" alt="GitHub contribution chart" loading="lazy" />
           </a>
@@ -546,6 +549,7 @@
       </div>
 
       <!-- giant wordmark -->
+      <p class="footer-countries"><b data-i18n="ftCountries">خدماتي في</b> <a href="services/saudi-arabia.html">🇸🇦 <span data-i18n="cSA">السعودية</span></a><a href="services/uae.html">🇦🇪 <span data-i18n="cAE">الإمارات</span></a><a href="services/kuwait.html">🇰🇼 <span data-i18n="cKW">الكويت</span></a><a href="services/qatar.html">🇶🇦 <span data-i18n="cQA">قطر</span></a><a href="services/egypt.html">🇪🇬 <span data-i18n="cEG">مصر</span></a><a href="services/germany.html">🇩🇪 <span data-i18n="cDE">ألمانيا</span></a><a href="blog/index.html">✍️ <span data-i18n="navBlog">المدونة</span></a></p>
       <div class="footer-word" aria-hidden="true"><span class="fw fw-en"><small class="fw-pre">— Engineer —</small><span class="fw-name">EBRAHIM&nbsp;SAMIR</span></span><span class="fw fw-ar"><small class="fw-pre">— المهندس —</small><span class="fw-name">إبراهيم سمير</span></span></div>
 
       <div class="footer-bottom">
@@ -605,5 +609,6 @@
   <script src="js/extras-data.js"></script>
   <script src="js/main.js"></script>
   <script src="js/extras.js"></script>
+  <script>if (/vercel.app$/.test(location.hostname)) { window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); }; var s = document.createElement("script"); s.defer = true; s.src = "/_vercel/insights/script.js"; document.head.appendChild(s); }</script>
 </body>
 </html>

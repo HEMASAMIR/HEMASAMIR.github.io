@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>عرض سعر — م. إبراهيم سمير</title>
+<meta name="robots" content="noindex" />
+<meta property="og:title" content="Project proposal — Eng. Ebrahim Samir" />
+<meta property="og:image" content="https://hemasamir.github.io/assets/readme/hero-ar.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg: #f4f6fb; --card: #fff; --text: #0b1324; --muted: #5d6779; --line: #e3e8ef; --soft: #f3f6fa; --pri: #0d9488; --grad: linear-gradient(120deg, #0d9488, #2563eb 55%, #7c3aed); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #070b14; --card: #0f1626; --text: #e9eef7; --muted: #8f9bb0; --line: #1d2840; --soft: #141d30; --pri: #2dd4bf; } }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Cairo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 28px 16px 60px; }
+  html[lang="en"] body { font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif; }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  .doc { background: var(--card); border: 1px solid var(--line); border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px -30px rgba(15,23,42,.35); }
+  .band { height: 6px; background: var(--grad); }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 26px 32px; border-bottom: 1px solid var(--line); }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+  .mark { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; color: #fff; font-weight: 800; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--grad); }
+  .brand b { display: block; font-size: 16px; } .brand small { color: var(--muted); font-weight: 600; }
+  .meta { text-align: end; font-size: 13px; color: var(--muted); font-weight: 700; }
+  .meta b { display: block; color: var(--text); font-size: 14px; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .body { padding: 30px 32px; display: flex; flex-direction: column; gap: 24px; }
+  .kicker { display: inline-flex; font-size: 12.5px; font-weight: 800; color: #fff; padding: 4px 12px; border-radius: 999px; background: var(--grad); }
+  h1 { font-size: clamp(24px, 4vw, 34px); font-weight: 900; line-height: 1.25; margin-top: 10px; }
+  .lead { color: var(--muted); font-size: 16.5px; margin-top: 6px; }
+  .idea { background: var(--soft); border-radius: 16px; padding: 14px 18px; font-weight: 600; border-inline-start: 4px solid var(--pri); }
+  .idea small { display: block; color: var(--muted); font-weight: 800; font-size: 12px; margin-bottom: 2px; }
+  .kpis { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 12px; }
+  .kpi { border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; }
+  .kpi span { display: block; color: var(--muted); font-weight: 700; font-size: 13px; }
+  .kpi b { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 900; }
+  .kpi small { display: block; font-weight: 800; color: var(--muted); }
+  .kpi.cost { background: linear-gradient(135deg, rgba(13,148,136,.12), rgba(124,58,237,.14)); border-color: transparent; }
+  .kpi.cost b { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  h2 { font-size: 17px; font-weight: 900; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  h2::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--grad); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  ul.feats { list-style: none; display: grid; gap: 8px; }
+  ul.feats li { display: flex; gap: 10px; align-items: center; font-weight: 600; }
+  ul.feats li i { font-style: normal; font-size: 11px; font-weight: 900; padding: 2px 9px; border-radius: 999px; background: rgba(13,148,136,.14); color: var(--pri); flex-shrink: 0; }
+  ul.feats li.nice { color: var(--muted); } ul.feats li.nice i { background: var(--soft); color: var(--muted); }
+  .phase { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--line); font-weight: 700; }
+  .phase .n { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: var(--soft); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 900; color: var(--pri); }
+  .phase em { font-style: normal; color: var(--muted); font-size: 13px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags span { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12.5px; font-weight: 700; padding: 5px 11px; border-radius: 8px; background: var(--soft); border: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { padding: 11px 12px; text-align: start; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+  th { color: var(--muted); font-size: 12.5px; font-weight: 800; }
+  td:last-child, th:last-child { text-align: end; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; }
+  .incl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 18px; list-style: none; }
+  .incl li { font-weight: 600; font-size: 14.5px; display: flex; gap: 8px; }
+  .incl li::before { content: '✓'; color: var(--pri); font-weight: 900; }
+  .note { color: var(--muted); font-size: 13.5px; background: var(--soft); border-radius: 14px; padding: 12px 16px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 22px 32px 30px; border-top: 1px solid var(--line); background: var(--soft); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 14px 22px; border-radius: 14px; font: inherit; font-weight: 800; font-size: 15px; border: 1px solid var(--line); background: var(--card); color: var(--text); cursor: pointer; text-decoration: none; transition: transform .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.accept { background: #22c55e; border-color: #22c55e; color: #fff; box-shadow: 0 12px 26px -12px rgba(34,197,94,.8); flex: 1; min-width: 220px; }
+  .btn svg { width: 19px; height: 19px; }
+  .foot { text-align: center; color: var(--muted); font-size: 13px; margin-top: 18px; font-weight: 600; }
+  .foot a { color: var(--pri); font-weight: 800; }
+  .empty { text-align: center; padding: 60px 24px; }
+  .empty h1 { margin-bottom: 8px; }
+  @media (max-width: 680px) { .top, .body, .actions { padding-inline: 18px; } .kpis { grid-template-columns: 1fr 1fr; } .kpi.cost { grid-column: 1 / -1; } .grid2, .incl { grid-template-columns: 1fr; } .btn { width: 100%; } }
+  @media print { body { background: #fff; padding: 0; } .doc { box-shadow: none; border: 0; } .actions, .foot { display: none; } @page { size: A4; margin: 12mm; } }
+</style>
+</head>
+<body>
+<div class="wrap"><div class="doc" id="doc"></div><p class="foot" id="foot"></p></div>
+<script>
+(function () {
+  const RATES = { USD: [1, '$', '$'], SAR: [3.75, 'ر.س', 'SAR'], AED: [3.67, 'د.إ', 'AED'], KWD: [0.307, 'د.ك', 'KWD'], QAR: [3.64, 'ر.ق', 'QAR'], OMR: [0.385, 'ر.ع', 'OMR'], BHD: [0.376, 'د.ب', 'BHD'], EUR: [0.86, '€', '€'], EGP: [48.5, 'ج.م', 'EGP'], IQD: [1310, 'د.ع', 'IQD'], JOD: [0.709, 'د.أ', 'JOD'] };
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  let data = null;
+  try {
+    const b64 = location.hash.slice(1).replace(/-/g, '+').replace(/_/g, '/');
+    data = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))));
+  } catch (e) { data = null; }
+  const ar = !data || data.l !== 'en';
+  document.documentElement.lang = ar ? 'ar' : 'en';
+  document.documentElement.dir = ar ? 'rtl' : 'ltr';
+  const T = ar ? {
+    title: 'عرض سعر مبدئي', for: 'خطة مشروع مقترحة', idea: 'فكرة العميل', cost: 'التكلفة التقديرية', time: 'المدة المتوقعة', weeks: 'أسابيع', screens: 'شاشة / صفحة',
+    features: 'نطاق العمل', must: 'أساسي', nice: 'مرحلة لاحقة', phases: 'مراحل التنفيذ', tech: 'التقنيات', pay: 'جدول الدفعات', payRows: [['عند بدء المشروع', 40], ['بعد تسليم التصميم والنسخة التجريبية', 30], ['عند التسليم والإطلاق', 30]],
+    incl: 'العرض يشمل', inclList: ['تصميم واجهات خاص بمشروعك', 'كود نظيف بـ Clean Architecture', 'نسخ تجريبية تجربها أول بأول', 'رفع على المتاجر / السيرفر', 'تسليم الكود كامل', 'دعم فني مجاني بعد الإطلاق'],
+    notes: 'ملاحظات', valid: 'العرض صالح لمدة 14 يوم من تاريخ إصداره. الأسعار تقديرية وبتتأكد بعد مكالمة قصيرة نفهم فيها التفاصيل.',
+    accept: 'موافق — يلا نبدأ', discuss: 'عندي أسئلة', print: 'طباعة / PDF', back: 'شوف أعمالي',
+    waAccept: 'أهلاً م. إبراهيم 👋 اطلعت على عرض السعر وموافق نبدأ في المشروع:', waAsk: 'أهلاً م. إبراهيم 👋 عندي استفسار عن عرض السعر:', role: 'مطوّر تطبيقات ومواقع', name: 'المهندس إبراهيم سمير', no: 'رقم العرض',
+    emptyT: 'اللينك ده مش مكتمل', emptyS: 'ممكن تعمل عرض سعر جديد لفكرتك في ثواني من حاسبة التكلفة.', emptyB: 'احسب تكلفة مشروعك', foot: 'اتعمل بحاسبة التكلفة الذكية على', approx: 'تقريبًا', percent: 'النسبة',
+  } : {
+    title: 'Initial proposal', for: 'Proposed project plan', idea: 'Client idea', cost: 'Estimated cost', time: 'Estimated timeline', weeks: 'weeks', screens: 'screens / pages',
+    features: 'Scope of work', must: 'MVP', nice: 'Later phase', phases: 'Delivery phases', tech: 'Tech stack', pay: 'Payment schedule', payRows: [['On project start', 40], ['After design & beta build', 30], ['On delivery & launch', 30]],
+    incl: 'This proposal includes', inclList: ['Custom UI design for your product', 'Clean Architecture codebase', 'Test builds along the way', 'Store / server publishing', 'Full source-code handover', 'Free support after launch'],
+    notes: 'Notes', valid: 'This proposal is valid for 14 days from its issue date. Prices are estimates and are confirmed after a short call about the details.',
+    accept: 'Accept — let’s start', discuss: 'I have questions', print: 'Print / PDF', back: 'See my work',
+    waAccept: 'Hi Eng. Ebrahim 👋 I reviewed the proposal and I would like to start:', waAsk: 'Hi Eng. Ebrahim 👋 I have a question about the proposal:', role: 'Mobile & Web Developer', name: 'Eng. Ebrahim Samir', no: 'Proposal no.',
+    emptyT: 'This link is incomplete', emptyS: 'Create a new proposal for your idea in seconds with the cost estimator.', emptyB: 'Estimate your project', foot: 'Created with the smart cost estimator on', approx: 'approx.', percent: 'Share',
+  };
+  const home = 'https://hemasamir.github.io/';
+  const doc = document.getElementById('doc');
+  document.getElementById('foot').innerHTML = `${T.foot} <a href="${home}">hemasamir.github.io</a>`;
+  if (!data || !data.e || !data.e.price_usd) {
+    doc.innerHTML = `<div class="band"></div><div class="empty"><h1>${T.emptyT}</h1><p class="lead">${T.emptyS}</p><p style="margin-top:20px"><a class="btn accept" href="${home}#estimate">${T.emptyB}</a></p></div>`;
+    return;
+  }
+  const e = data.e, cur = RATES[data.c] ? data.c : 'USD';
+  const usd = (n) => '$' + Number(n).toLocaleString('en-US');
+  const loc = (n) => { const [r, sa, se] = RATES[cur]; const v = Math.round(n * r); return cur === 'USD' ? '' : `${v.toLocaleString(ar ? 'ar-EG' : 'en-US')} ${ar ? sa : se}`; };
+  const issued = new Date(data.d || Date.now());
+  const no = 'ES-' + issued.getFullYear() + '-' + String(data.d || Date.now()).slice(-5);
+  const date = issued.toLocaleDateString(ar ? 'ar-EG' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+  document.title = `${T.title} — ${e.title}`;
+  const mid = Math.round((e.price_usd.min + e.price_usd.max) / 2);
+  const wa = (intro) => `https://wa.me/201055673184?text=${encodeURIComponent(`${intro}\n\n📌 ${e.title}\n🔖 ${no}\n💰 ${usd(e.price_usd.min)} – ${usd(e.price_usd.max)}\n🔗 ${location.href}`)}`;
+  doc.innerHTML = `
+    <div class="band"></div>
+    <div class="top">
+      <a class="brand" href="${home}"><span class="mark">ES</span><span><b>${T.name}</b><small>${T.role}</small></span></a>
+      <div class="meta">${T.no}<b>${no}</b>${date}</div>
+    </div>
+    <div class="body">
+      <div><span class="kicker">${T.title}</span><h1>${esc(e.title)}</h1><p class="lead">${esc(e.summary)}</p></div>
+      ${data.i ? `<div class="idea"><small>${T.idea}</small>${esc(data.i)}</div>` : ''}
+      <div class="kpis">
+        <div class="kpi cost"><span>${T.cost}</span><b><bdi dir="ltr">${usd(e.price_usd.min)} – ${usd(e.price_usd.max)}</bdi></b>${cur !== 'USD' ? `<small><bdi dir="ltr">≈ ${loc(e.price_usd.min)} – ${loc(e.price_usd.max)}</bdi></small>` : ''}</div>
+        <div class="kpi"><span>${T.time}</span><b><bdi dir="ltr">${e.timeline_weeks.min}–${e.timeline_weeks.max}</bdi></b><small>${T.weeks}</small></div>
+        <div class="kpi"><span>${esc((e.platforms || []).join(' · '))}</span><b>${e.screens}</b><small>${T.screens}</small></div>
+      </div>
+      <div class="grid2">
+        <div><h2>${T.features}</h2><ul class="feats">${e.features.map((f) => `<li class="${f.priority === 'must' ? '' : 'nice'}"><i>${f.priority === 'must' ? T.must : T.nice}</i>${esc(f.name)}</li>`).join('')}</ul></div>
+        <div>
+          <h2>${T.phases}</h2>${e.phases.map((p, i) => `<div class="phase"><span class="n">${i + 1}</span><span>${esc(p.name)}</span><em>${p.weeks} ${T.weeks}</em></div>`).join('')}
+          <h2 style="margin-top:22px">${T.tech}</h2><div class="tags">${e.tech.map((x) => `<span>${esc(x)}</span>`).join('')}</div>
+        </div>
+      </div>
+      <div><h2>${T.pay}</h2><table><tr><th></th><th>${T.percent}</th><th>≈ ${usd(mid)}</th></tr>${T.payRows.map(([n, p]) => `<tr><td>${n}</td><td>${p}%</td><td>${usd(Math.round((mid * p) / 100 / 10) * 10)}</td></tr>`).join('')}</table></div>
+      <div><h2>${T.incl}</h2><ul class="incl">${T.inclList.map((x) => `<li>${x}</li>`).join('')}</ul></div>
+      <p class="note">${e.notes ? `<b>${T.notes}:</b> ${esc(e.notes)}<br>` : ''}${T.valid}</p>
+    </div>
+    <div class="actions">
+      <a class="btn accept" href="${wa(T.waAccept)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>${T.accept}</a>
+      <a class="btn" href="${wa(T.waAsk)}" target="_blank" rel="noopener">💬 ${T.discuss}</a>
+      <button class="btn" onclick="window.print()">🖨️ ${T.print}</button>
+      <a class="btn" href="${home}">${T.back}</a>
+    </div>`;
+})();
+</script>
+</body>
+</html>

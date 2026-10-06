@@ -13,6 +13,28 @@
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const fmt = (n) => Number(n).toLocaleString(L() === 'ar' ? 'ar-EG' : 'en-US');
   const usd = (n) => `$${Number(n).toLocaleString('en-US')}`;
+
+  /* ---------- Visitor currency (guessed from time zone, changeable) ---------- */
+  const store = { get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} } };
+  let cur = (() => {
+    const saved = store.get('currency');
+    if (saved && CURRENCIES[saved]) return saved;
+    const q = new URLSearchParams(location.search).get('cur');
+    if (q && CURRENCIES[q.toUpperCase()]) return q.toUpperCase();
+    const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+    if (TZ_CURRENCY[tz]) return TZ_CURRENCY[tz];
+    if (tz.startsWith('Europe/')) return 'EUR';
+    return 'USD';
+  })();
+  const localAmt = (n) => {
+    const c = CURRENCIES[cur];
+    const v = Math.round((n * c.rate) / c.round) * c.round;
+    const num = v.toLocaleString(L() === 'ar' ? 'ar-EG' : 'en-US');
+    return c.sym ? `${c.sym}${num}` : `${num} ${c[L()]}`;
+  };
+  // "$1,200" or "$1,200 (≈ 4,500 ر.س)"
+  const money = (n) => (cur === 'USD' ? usd(n) : `${usd(n)} (≈ ${localAmt(n)})`);
+  const localLine = (a, b) => (cur === 'USD' ? '' : `<small class="cur-line"><bdi dir="ltr">≈ ${localAmt(a)}${b != null ? ` – ${localAmt(b)}` : ''}</bdi></small>`);
   const wa = (text) => window.open(`https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
   const projectById = (id) => PROJECTS.find((p) => p.id === id);
 
@@ -166,8 +188,8 @@
         <p>${esc(e.summary)}</p>
       </div>
       <div class="est-kpis">
-        <div class="est-kpi cost"><span>${t('estCost')}</span><b>${usd(e.price_usd.min)} – ${usd(e.price_usd.max)}</b></div>
-        <div class="est-kpi"><span>${t('estTimeline')}</span><b>${fmt(e.timeline_weeks.min)}–${fmt(e.timeline_weeks.max)} <small>${t('estWeeks')}</small></b></div>
+        <div class="est-kpi cost"><span>${t('estCost')}</span><b><bdi dir="ltr">${usd(e.price_usd.min)} – ${usd(e.price_usd.max)}</bdi></b>${localLine(e.price_usd.min, e.price_usd.max)}</div>
+        <div class="est-kpi"><span>${t('estTimeline')}</span><b><bdi dir="ltr">${fmt(e.timeline_weeks.min)}–${fmt(e.timeline_weeks.max)}</bdi> <small>${t('estWeeks')}</small></b></div>
         <div class="est-kpi"><span>${esc(e.platforms.join(' · '))}</span><b>${fmt(e.screens)} <small>${t('estScreens')}</small></b></div>
       </div>
       <div class="est-cols">
@@ -187,6 +209,7 @@
       <div class="est-actions">
         <button type="button" class="btn btn-wa btn-lg" id="estWa"><svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg><span>${t('estSend')}</span></button>
         <button type="button" class="btn btn-ghost btn-lg" id="estPdf"><svg class="i" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg><span>${t('estPdf')}</span></button>
+        <button type="button" class="btn btn-ghost btn-lg" id="estLink"><svg class="i" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>${t('quoteLink')}</span></button>
         <button type="button" class="btn btn-ghost" id="estAgain">↺ ${t('estAgain')}</button>
       </div>
       <p class="est-disclaimer">${t('estDisclaimer')}</p>`;
@@ -201,13 +224,21 @@
       t('estWaIntro'), '',
       `📌 ${e.title}`,
       `💡 ${idea.slice(0, 400)}`, '',
-      `💰 ${t('estCost')}: ${usd(e.price_usd.min)} – ${usd(e.price_usd.max)}`,
+      `💰 ${t('estCost')}: ${money(e.price_usd.min)} – ${money(e.price_usd.max)}`,
       `⏱ ${t('estTimeline')}: ${e.timeline_weeks.min}–${e.timeline_weeks.max} ${t('estWeeks')}`,
       `📱 ${e.platforms.join(' · ')} — ${e.screens} ${t('estScreens')}`, '',
       `✅ ${t('estFeatures')}:`, ...e.features.map((f) => `• ${f.name}${f.priority === 'must' ? '' : ` (${t('estNice')})`}`), '',
       `🛠 ${e.tech.join(', ')}`,
     ];
     return lines.join('\n');
+  }
+
+  // Shareable proposal page: the whole plan travels in the URL hash (nothing stored on a server).
+  function quoteUrl(e) {
+    const data = { v: 1, l: L(), c: cur, d: Date.now(), i: $('#estIdea').value.trim().slice(0, 600), e };
+    const json = JSON.stringify(data);
+    const b64 = btoa(String.fromCharCode(...new TextEncoder().encode(json))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    return new URL('quote.html', location.href.replace(/[?#].*$/, '')).href + '#' + b64;
   }
 
   function printPlan(e) {
@@ -232,8 +263,8 @@ table{width:100%;border-collapse:collapse}td{padding:7px 10px;border-bottom:1px 
 <div class="meta">${ar ? 'خطة مشروع مبدئية' : 'Initial project plan'}<br>${date}</div></div>
 <h1>${esc(e.title)}</h1><p>${esc(e.summary)}</p>
 ${idea ? `<h2>${ar ? 'فكرة العميل' : 'Client idea'}</h2><div class="idea">${idea}</div>` : ''}
-<div class="kpis"><div class="kpi cost"><span>${t('estCost')}</span><b>${usd(e.price_usd.min)} – ${usd(e.price_usd.max)}</b></div>
-<div class="kpi"><span>${t('estTimeline')}</span><b>${e.timeline_weeks.min}–${e.timeline_weeks.max} ${t('estWeeks')}</b></div>
+<div class="kpis"><div class="kpi cost"><span>${t('estCost')}</span><b><bdi dir="ltr">${usd(e.price_usd.min)} – ${usd(e.price_usd.max)}</bdi></b>${cur === 'USD' ? '' : `<span><bdi dir="ltr">≈ ${localAmt(e.price_usd.min)} – ${localAmt(e.price_usd.max)}</bdi></span>`}</div>
+<div class="kpi"><span>${t('estTimeline')}</span><b><bdi dir="ltr">${e.timeline_weeks.min}–${e.timeline_weeks.max}</bdi> ${t('estWeeks')}</b></div>
 <div class="kpi"><span>${esc(e.platforms.join(' · '))}</span><b>${e.screens} ${t('estScreens')}</b></div></div>
 <h2>${t('estFeatures')}</h2><ul>${e.features.map((f) => `<li class="${f.priority}">${esc(f.name)}${f.priority === 'must' ? '' : ` — ${t('estNice')}`}</li>`).join('')}</ul>
 <h2>${t('estPhases')}</h2><table>${e.phases.map((p, i) => `<tr><td>${i + 1}. ${esc(p.name)}</td><td>${p.weeks} ${t('estWeeks')}</td></tr>`).join('')}</table>
@@ -284,6 +315,13 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
     $('#estResult').addEventListener('click', (e) => {
       if (e.target.closest('#estWa')) wa(planText(est.last));
       if (e.target.closest('#estPdf')) printPlan(est.last);
+      const lb = e.target.closest('#estLink');
+      if (lb) {
+        const url = quoteUrl(est.last);
+        const done = () => { lb.querySelector('span').textContent = t('quoteCopied'); setTimeout(() => (lb.querySelector('span').textContent = t('quoteLink')), 3500); };
+        (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(done).catch(() => window.prompt(t('quoteLink'), url));
+        window.open(url, '_blank', 'noopener');
+      }
       if (e.target.closest('#estAgain')) { $('#estResult').hidden = true; $('#estIdea').focus(); $('#estimate').scrollIntoView({ behavior: 'smooth' }); }
     });
     // example prompts
@@ -309,8 +347,8 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
     const has = (re) => re.test(s);
     let reply, projects = [], handoff = false;
     if (has(/(سعر|اسعار|كام|تكلف|بكام|price|cost|budget|ميزاني)/)) {
-      reply = ar ? `الأسعار بتبدأ من ${usd(PRICING[0].from)} للمواقع، و${usd(PRICING[1].from)} لتطبيقات الموبايل والمتاجر، و${usd(PRICING[2].from)} للأنظمة المتكاملة. جرّب حاسبة التكلفة بالذكاء الاصطناعي في الصفحة وهتطلعلك خطة بالسعر لفكرتك بالظبط.`
-        : `Prices start at ${usd(PRICING[0].from)} for websites, ${usd(PRICING[1].from)} for mobile apps and stores, and ${usd(PRICING[2].from)} for complete systems. Try the AI cost estimator on this page for an exact plan for your idea.`;
+      reply = ar ? `الأسعار بتبدأ من ${money(PRICING[0].from)} للمواقع، و${money(PRICING[1].from)} لتطبيقات الموبايل والمتاجر، و${money(PRICING[2].from)} للأنظمة المتكاملة. جرّب حاسبة التكلفة بالذكاء الاصطناعي في الصفحة وهتطلعلك خطة بالسعر لفكرتك بالظبط.`
+        : `Prices start at ${money(PRICING[0].from)} for websites, ${money(PRICING[1].from)} for mobile apps and stores, and ${money(PRICING[2].from)} for complete systems. Try the AI cost estimator on this page for an exact plan for your idea.`;
       handoff = true;
     } else if (has(/(وقت|مده|اسبوع|شهر|امتي|how long|time|week|deadline)/)) {
       reply = ar ? 'الموقع بياخد من أسبوع لأسبوعين، تطبيق الموبايل أو المتجر من 4 لـ 8 أسابيع، والنظام المتكامل من 8 لـ 16 أسبوع — وبتستلم نسخ تجريبية تجربها بنفسك كل فترة.'
@@ -421,7 +459,7 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
         ${p.popular ? `<span class="price-pop">★ ${t('prPopular')}</span>` : ''}
         <h3>${esc(p[L()].name)}</h3>
         <p class="price-tag">${esc(p[L()].tag)}</p>
-        <div class="price-amount"><small>${t('prFrom')}</small><b>${usd(p.from)}</b><span>${p.weeks} ${t('prWeeks')}</span></div>
+        <div class="price-amount"><small>${t('prFrom')}</small><b>${usd(p.from)}</b>${localLine(p.from)}<span>${p.weeks} ${t('prWeeks')}</span></div>
         <ul>${p[L()].features.map((f) => `<li><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${esc(f)}</li>`).join('')}</ul>
         <button type="button" class="btn ${p.popular ? 'btn-primary' : 'btn-ghost'} btn-block" data-plan="${p.id}">${t('prStart')}</button>
       </div>`).join('');
@@ -438,13 +476,23 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
       return `<option>${d.toLocaleTimeString(loc, { hour: 'numeric', minute: '2-digit' })} ${L() === 'ar' ? '(بتوقيت القاهرة)' : '(Cairo time)'}</option>`;
     }).join('');
   }
+  function renderCurrency() {
+    const sel = $('#curSelect'); if (!sel) return;
+    sel.innerHTML = Object.entries(CURRENCIES).map(([k, c]) => `<option value="${k}" ${k === cur ? 'selected' : ''}>${k} — ${c[L()]}</option>`).join('');
+  }
   function initPricing() {
     if (!$('#pricingGrid')) return;
+    renderCurrency();
+    $('#curSelect').addEventListener('change', (e) => {
+      cur = e.target.value; store.set('currency', cur);
+      renderPricing();
+      if (est.last && !$('#estResult').hidden) renderEstimate(est.last);
+    });
     renderPricing();
     $('#pricingGrid').addEventListener('click', (e) => {
       const b = e.target.closest('[data-plan]'); if (!b) return;
       const p = PRICING.find((x) => x.id === b.dataset.plan);
-      wa(`${t('prWa')} "${p[L()].name}" (${t('prFrom')} ${usd(p.from)})`);
+      wa(`${t('prWa')} "${p[L()].name}" (${t('prFrom')} ${money(p.from)})`);
       notifyLead('pricing', `${p.en.name} — from ${usd(p.from)}`);
     });
     $('#bookForm').addEventListener('submit', (e) => {
@@ -454,8 +502,37 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
     });
   }
 
+  /* =========================================================
+     "What I'm working on" — latest pushed public repos (real, live)
+     ========================================================= */
+  let recent = null;
+  function renderRecent() {
+    const box = $('#ghNow'); if (!box || !recent) return;
+    const ago = (d) => {
+      const m = Math.max(0, (Date.now() - new Date(d)) / 60000), f = t('ghAgo');
+      const n = m < 2 ? 0 : m < 60 ? [1, Math.round(m)] : m < 1440 ? [2, Math.round(m / 60)] : m < 43200 ? [3, Math.round(m / 1440)] : [4, Math.round(m / 43200)];
+      return n === 0 ? f[0] : f[n[0]].replace('{n}', fmt(n[1]));
+    };
+    const pid = (name) => { const p = PROJECTS.find((x) => x.links && x.links.github && x.links.github.toLowerCase().endsWith('/' + name.toLowerCase())); return p; };
+    box.innerHTML = recent.map((r) => {
+      const p = pid(r.name);
+      const title = p ? p.title[L()] : r.name.replace(/[-_]/g, ' ');
+      const inner = `<span class="now-dot"></span><span class="now-main"><b>${esc(title)}</b><small>${esc(r.language || 'Code')} · ${ago(r.pushed_at)}</small></span>`;
+      return p ? `<button type="button" class="now-item" data-open="${p.id}">${inner}</button>` : `<a class="now-item" href="${r.html_url}" target="_blank" rel="noopener">${inner}</a>`;
+    }).join('');
+    box.closest('.gh-now').hidden = false;
+  }
+  function loadRecent() {
+    fetch('https://api.github.com/users/HEMASAMIR/repos?sort=pushed&per_page=12').then((r) => (r.ok ? r.json() : null)).then((list) => {
+      if (!Array.isArray(list)) return;
+      recent = list.filter((r) => !r.fork && r.name !== 'HEMASAMIR.github.io' && r.name !== 'HEMASAMIR' && !/privacy/i.test(r.name)).slice(0, 4);
+      renderRecent();
+    }).catch(() => {});
+  }
+
   /* ---------- Language changes ---------- */
   PF.onLang(() => {
+    renderRecent(); renderCurrency();
     renderEstOptions(); renderExamples(); renderPricing();
     if (est.last && !$('#estResult').hidden && est.last.offline) renderEstimate(offlineEstimate($('#estIdea').value));
     const fresh = chat.history.length <= 1; if (fresh) chatReset(); else chatRender();
@@ -468,4 +545,5 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
   initChat();
   initPricing();
   loadRatings();
+  loadRecent();
 })();

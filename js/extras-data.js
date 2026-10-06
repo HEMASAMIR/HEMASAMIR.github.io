@@ -13,6 +13,26 @@ const SITE_CONFIG = {
   appStore: { rafiq: '6759332192', quickin: '6778979967', metro: '6782100362' },
 };
 
+/* Local currencies — approximate rates per 1 USD (update from time to time).
+   The visitor's currency is guessed from their time zone; they can change it from the pricing section. */
+const CURRENCIES = {
+  USD: { rate: 1, ar: 'دولار', en: 'USD', sym: '$', round: 10 },
+  SAR: { rate: 3.75, ar: 'ر.س', en: 'SAR', round: 50 },
+  AED: { rate: 3.67, ar: 'د.إ', en: 'AED', round: 50 },
+  KWD: { rate: 0.307, ar: 'د.ك', en: 'KWD', round: 5 },
+  QAR: { rate: 3.64, ar: 'ر.ق', en: 'QAR', round: 50 },
+  OMR: { rate: 0.385, ar: 'ر.ع', en: 'OMR', round: 5 },
+  BHD: { rate: 0.376, ar: 'د.ب', en: 'BHD', round: 5 },
+  EUR: { rate: 0.86, ar: 'يورو', en: 'EUR', sym: '€', round: 10 },
+  EGP: { rate: 48.5, ar: 'ج.م', en: 'EGP', round: 500 },
+  IQD: { rate: 1310, ar: 'د.ع', en: 'IQD', round: 10000 },
+  JOD: { rate: 0.709, ar: 'د.أ', en: 'JOD', round: 10 },
+};
+const TZ_CURRENCY = {
+  'Asia/Riyadh': 'SAR', 'Asia/Dubai': 'AED', 'Asia/Kuwait': 'KWD', 'Asia/Qatar': 'QAR', 'Asia/Muscat': 'OMR',
+  'Asia/Bahrain': 'BHD', 'Africa/Cairo': 'EGP', 'Asia/Baghdad': 'IQD', 'Asia/Amman': 'JOD',
+};
+
 /* Package prices (USD, "starting from"). Edit freely — the estimator's offline mode uses the same numbers. */
 const PRICING = [
   {
@@ -110,6 +130,10 @@ Object.assign(I18N.ar, {
   cvDownload: 'تحميل الـ CV', cvAr: 'عربي', cvEn: 'English',
   // ratings
   ratingOf: 'تقييم',
+  curLabel: 'العملة', curApprox: 'تقريبًا',
+  quoteLink: 'انسخ لينك عرض السعر', quoteCopied: 'اتنسخ اللينك ✓ ابعته لأي حد',
+  ghNowTitle: 'شغال على إيه دلوقتي', ghNowSub: 'آخر تحديثات على مشاريعي — مباشرة من GitHub', ghAgo: ['دلوقتي', 'من {n} دقيقة', 'من {n} ساعة', 'من {n} يوم', 'من {n} شهر'],
+  navBlog: 'المدونة', ftCountries: 'خدماتي في', cSA: 'السعودية', cAE: 'الإمارات', cKW: 'الكويت', cQA: 'قطر', cEG: 'مصر', cDE: 'ألمانيا',
 });
 
 Object.assign(I18N.en, {
@@ -139,4 +163,159 @@ Object.assign(I18N.en, {
   bookWa: 'Hi Eng. Ebrahim 👋 I would like to book a free call', bookAt: 'on', bookHour: 'at', prWa: 'Hi Eng. Ebrahim 👋 I am interested in the package',
   cvDownload: 'Download CV', cvAr: 'عربي', cvEn: 'English',
   ratingOf: 'rating',
+  curLabel: 'Currency', curApprox: 'approx.',
+  quoteLink: 'Copy proposal link', quoteCopied: 'Link copied ✓ share it with anyone',
+  ghNowTitle: 'What I am working on', ghNowSub: 'Latest updates to my projects — live from GitHub', ghAgo: ['just now', '{n} min ago', '{n} h ago', '{n} days ago', '{n} months ago'],
+  navBlog: 'Blog', ftCountries: 'Services in', cSA: 'Saudi Arabia', cAE: 'UAE', cKW: 'Kuwait', cQA: 'Qatar', cEG: 'Egypt', cDE: 'Germany',
 });
+
+/* =========================================================
+   Interactive Mobile Simulator Data
+   ========================================================= */
+const SIMULATOR_APPS = [
+  {
+    id: 'quickin',
+    name: { ar: 'QuickIn — حجز شاليهات', en: 'QuickIn — Stays & Chalets' },
+    tag: { ar: 'منشور على App Store & Google Play', en: 'Live on App Store & Google Play' },
+    icon: 'assets/img/quickin-icon.jpg',
+    rating: '4.9 ★',
+    desc: {
+      ar: 'منصة حجز إقامات على طريقة Airbnb مع خريطة ودفع إلكتروني وتوثيق هوية.',
+      en: 'Airbnb-style stays platform with map search, online payments and host wizard.'
+    },
+    storeUrl: 'https://apps.apple.com/us/app/quickin-app/id6778979967',
+    storeName: 'App Store',
+    accent: '#0d9488',
+    screens: [
+      { id: 'home', label: { ar: 'الرئيسية', en: 'Home' }, img: 'assets/img/quickin-1.jpg', badge: 'Supabase Realtime' },
+      { id: 'explore', label: { ar: 'البحث والفلترة', en: 'Explore' }, img: 'assets/img/quickin-2.jpg', badge: 'Map & GeoFilter' },
+      { id: 'details', label: { ar: 'تفاصيل الشاليه', en: 'Details' }, img: 'assets/img/quickin-3.jpg', badge: 'Online Payment' },
+      { id: 'wizard', label: { ar: 'إضافة وحدة', en: 'Host Wizard' }, img: 'assets/img/quickin-4.jpg', badge: 'Clean Architecture' },
+    ]
+  },
+  {
+    id: 'rafiq',
+    name: { ar: 'رفيق المسلم — إسلامي شامل', en: 'Rafiq Muslim — Islamic App' },
+    tag: { ar: 'تقييم 5.0 كامل على App Store', en: '5.0 Rating on App Store' },
+    icon: 'assets/img/rafiq-icon.jpg',
+    rating: '5.0 ★',
+    desc: {
+      ar: 'مواقيت صلاة بدقة، صوتيات قرآنية، أذكار وسبحة إلكترونية، واجهة بدون إعلانات.',
+      en: 'Accurate prayer times, offline Quran audio, azkar counter, clean ad-free UI.'
+    },
+    storeUrl: 'https://apps.apple.com/us/app/rafiq-muslim/id6759332192',
+    storeName: 'App Store (5.0)',
+    accent: '#10b981',
+    screens: [
+      { id: 'home', label: { ar: 'مواقيت الصلاة', en: 'Prayer Times' }, img: 'assets/img/rafiq-1.jpg', badge: 'Offline GPS' },
+      { id: 'quran', label: { ar: 'القرآن الكريم', en: 'Quran Audio' }, img: 'assets/img/rafiq-2.jpg', badge: 'Audio Stream' },
+      { id: 'azkar', label: { ar: 'الأذكار والسبحة', en: 'Azkar' }, img: 'assets/img/rafiq-3.jpg', badge: 'Hive Local DB' },
+      { id: 'qibla', label: { ar: 'اتجاه القبلة', en: 'Qibla Compass' }, img: 'assets/img/rafiq-4.jpg', badge: 'Sensors / Compass' },
+    ]
+  },
+  {
+    id: 'dwapp',
+    name: { ar: 'Deutsche Welt — تعليم الألماني', en: 'Deutsche Welt — German Academy' },
+    tag: { ar: 'تطبيق للطلاب في مصر والخليج وألمانيا', en: 'Serving Egypt, Gulf & Germany' },
+    icon: 'assets/img/dw-icon.png',
+    rating: '4.8 ★',
+    desc: {
+      ar: 'أكاديمية لغة ألمانية: كورسات مسجلة، كتب Schritt für Schritt، وتواصل مع الفروع.',
+      en: 'German academy mobile app: recorded video lessons, book library and branch locator.'
+    },
+    storeUrl: '',
+    storeName: 'Flutter App',
+    accent: '#dd0000',
+    screens: [
+      { id: 'home', label: { ar: 'المستويات والكورسات', en: 'Course Levels' }, img: 'assets/img/dwapp-1.jpg', badge: 'Dark Theme' },
+      { id: 'video', label: { ar: 'الدروس المسجلة', en: 'Video Player' }, img: 'assets/img/dwapp-2.jpg', badge: 'REST API' },
+      { id: 'books', label: { ar: 'مكتبة الكتب', en: 'Books Library' }, img: 'assets/img/dwapp-3.jpg', badge: 'PDF Viewer' },
+      { id: 'profile', label: { ar: 'متابعة التقدم', en: 'Progress' }, img: 'assets/img/dwapp-4.jpg', badge: 'BLoC State' },
+    ]
+  }
+];
+
+/* =========================================================
+   AI Architecture Advisor Data & Blueprints
+   ========================================================= */
+const ADVISOR_DATA = {
+  steps: {
+    type: {
+      ar: 'طبيعة المشروع', en: 'Project Type',
+      options: [
+        { id: 'mobile', icon: '📱', ar: 'تطبيق موبايل (iOS & Android)', en: 'Mobile App (iOS & Android)' },
+        { id: 'store', icon: '🛒', ar: 'متجر إلكتروني يبيع أونلاين', en: 'E-commerce Store' },
+        { id: 'saas', icon: '🏢', ar: 'منصة تعليمية / SaaS للشركات', en: 'Educational / SaaS Platform' },
+        { id: 'system', icon: '🧩', ar: 'نظام متكامل (تطبيق + ويب + لوحة)', en: 'Complete System (App + Web + Admin)' }
+      ]
+    },
+    priority: {
+      ar: 'الأولوية التشغيلية القصوى', en: 'Core Priority',
+      options: [
+        { id: 'speed', icon: '⚡', ar: 'أقصى أداء وسلاسة واجهات (60 FPS)', en: 'Maximum 60 FPS Fluidity' },
+        { id: 'offline', icon: '🛡️', ar: 'أوفلاين وأمان بيانات وسرية تامة', en: 'Offline-First & Data Security' },
+        { id: 'fast_market', icon: '🚀', ar: 'إطلاق صاروخي للمتاجر بأقل تكلفة صيانة', en: 'Fast Time-to-Market & Lower TCO' },
+        { id: 'scale', icon: '📈', ar: 'توسع هائل لملايين المستخدمين والتحديث اللحظي', en: 'Massive Realtime Scale & Sync' }
+      ]
+    },
+    features: {
+      ar: 'المتطلبات الخاصة (اختر ما يناسبك)', en: 'Special Requirements',
+      options: [
+        { id: 'payments', icon: '💳', ar: 'دفع إلكتروني (Apple Pay / فيزا / تمارا / فوري)', en: 'Online Payments & Wallets' },
+        { id: 'realtime', icon: '💬', ar: 'شات فوري وإشعارات Push لحظية', en: 'Realtime Chat & Push Notifications' },
+        { id: 'ai', icon: '🤖', ar: 'ذكاء اصطناعي وتوصيات ذكية للمستخدم', en: 'AI Features & Recommendations' },
+        { id: 'maps', icon: '📍', ar: 'خرائط وتتبع مناديب وسائقين مباشر', en: 'Live GPS Maps & Tracking' },
+        { id: 'dashboard', icon: '📊', ar: 'لوحة تحكم إدارية وتقارير Excel وأرباح', en: 'Role-Based Dashboard & Reports' }
+      ]
+    }
+  }
+};
+
+/* =========================================================
+   Smart Interactive FAQ Data
+   ========================================================= */
+const FAQ_DATA = [
+  {
+    q: { ar: 'هل السورس كود بيكون ملكي بالكامل بنسبة 100% بعد التسليم؟', en: 'Will I 100% own the source code after delivery?' },
+    a: {
+      ar: 'نعم بالتأكيد! السورس كود يُسلّم لك كاملاً بجميع ملفاته، بدون أي تشفير أو قيود أو حقوق ملكية خفية. الكود بيكون منظم بـ Clean Architecture ومكتوب فيه توثيق كامل (Documentation) يتيح لأي فريق برمجي استكماله مستقبلاً.',
+      en: 'Absolutely! Full source code ownership is transferred to you with zero restrictions, obfuscation or hidden lock-in. The code is strictly structured with Clean Architecture and thoroughly documented for seamless handoff.'
+    }
+  },
+  {
+    q: { ar: 'مين اللي بيملك حسابات المطورين على App Store و Google Play؟', en: 'Who owns the App Store and Google Play developer accounts?' },
+    a: {
+      ar: 'الحسابات بتكون باسم شركتك أو اسمك الشخصي بنسبة 100%. أنا بساعدك خطوة بخطوة في إنشاء حساب Apple Developer وحساب Google Play Console وتوثيق هويتهم، ثم أقوم برفع التطبيق وإعداد الـ Metadata وحل أي متطلبات مع مراجعي آبل وجوجل حتى القبول التام.',
+      en: 'The accounts are 100% under your name or company. I guide you through registration and identity verification, then handle build signing, store listing metadata, and the review process with Apple and Google until full approval.'
+    }
+  },
+  {
+    q: { ar: 'كيف يتم تقسيم الدفعات المالية للمشروع؟', en: 'How are milestone payments structured?' },
+    a: {
+      ar: 'التعامل بنظام المراحل الموثقة (Milestones) العادل للطرفين: دفعة مقدمة لبدء التحليل وتصميم الواجهات، ودفعات مربوطة بتسليم مراحل حقيقية تشوفها وتجربها بنفسك كنسخة تجريبية على موبايلك، ودفعة نهائية عند النشر والتسليم التام.',
+      en: 'We work on a milestone-based structure that protects both sides: an initial deposit for UI/UX and architectural setup, milestone payments linked to testable working builds on your phone, and a final payment upon store release and handover.'
+    }
+  },
+  {
+    q: { ar: 'هل أحصل على دعم فني وصيانة مجانية بعد إطلاق التطبيق؟', en: 'Do I get free technical support and warranty after launch?' },
+    a: {
+      ar: 'نعم، كل مشروع يشمل فترة دعم فني وصيانة مجانية (من شهر إلى 6 شهور حسب الباقة). الدعم يغطي مراقبة استقرار السيرفرات، حل أي باجز غير متوقعة، والتأكد من توافق التطبيق مع أحدث إصدارات iOS و Android.',
+      en: 'Yes! Every project includes complimentary technical support and warranty (1 to 6 months depending on package). We cover bug fixes, server stability monitoring, and compatibility with the newest iOS & Android releases.'
+    }
+  },
+  {
+    q: { ar: 'ليه اختار Flutter بدل ما أعمل تطبيقين Native منفصلين (Swift + Kotlin)؟', en: 'Why Flutter instead of two separate Native apps (Swift + Kotlin)?' },
+    a: {
+      ar: 'Flutter بفضل محرك Impeller بيدي أداء Native حقيقي 60 FPS و120 FPS بدون أي فرق يُذكر عن النيتف. الميزة الضخمة إنك بتكتب كود موحد، فبتوفر أكثر من 40% من تكلفة ووقت التطوير، وكل ميزة أو تحديث بتنزل لآيفون وأندرويد في نفس اللحظة.',
+      en: 'With Flutter’s Impeller engine, you get smooth 60–120 FPS native performance with zero compromise. Maintaining a single codebase cuts your development and maintenance costs by over 40% and keeps iOS and Android features always in sync.'
+    }
+  },
+  {
+    q: { ar: 'لو عندي تطبيق أو موقع قائم فيه بطء أو أخطاء، تقدر تطوره أو تعيد هيكلته؟', en: 'Can you refactor or optimize an existing slow or buggy codebase?' },
+    a: {
+      ar: 'بالتأكيد. بنعمل فحص شامل للكود (Code Audit & Profiling) لكشف تسريبات الذاكرة (Memory Leaks) والمشاكل الهيكلية، وبنقدّم تقرير واضح بالحلول سواء بتحسين الكود الحالي أو إعادة كتابته بـ Clean Architecture و BLoC.',
+      en: 'Yes. We conduct a thorough Code Audit and performance profiling to detect bottlenecks, memory leaks, and architectural flaws, then provide a clear strategy to refactor or restructure the system cleanly.'
+    }
+  }
+];
+
