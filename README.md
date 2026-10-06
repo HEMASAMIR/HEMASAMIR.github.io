@@ -132,7 +132,7 @@
 | 📱 | رفيق المسلم | موبايل · منشور | Flutter |
 | 📱 | [مترو مصر](https://github.com/HEMASAMIR/metro_masr) | موبايل · منشور | Flutter · Gemini AI · Hive |
 | 🤖 | [Blue Square OCR](https://github.com/HEMASAMIR/ENG-SALEH) | نظام صناعي | Python · OCR · Redis |
-| 🌐 | RAYA Store | ملابس رجالي وأطفالي وجملة | Next.js · Framer Motion |
+| 🌐 | [RAYA Store](https://brand-clothes-mu.vercel.app) | ملابس رجالي وأطفالي وجملة · لايف | Next.js · Framer Motion |
 | 🌐 | [ZONA Store](https://github.com/HEMASAMIR/suria_website) | متجر + لوحة أرباح | Next.js · TypeScript |
 | 📱🌐 | [Incense](https://github.com/HEMASAMIR/insins) | تطبيق + متجر · لايف | Flutter |
 | 📱 | [الأديب](https://github.com/HEMASAMIR/Aladeeb) | تعليمي | Flutter · BLoC |

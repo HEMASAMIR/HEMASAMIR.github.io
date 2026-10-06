@@ -110,7 +110,7 @@ const PROJECTS = [
     links: { github: GH + 'ENG-SALEH' },
   },
   {
-    id: 'raya', cat: ['web'], featured: true, device: 'browser', accent: '#0e2c4e',
+    id: 'raya', cat: ['web'], featured: true, live: true, device: 'browser', accent: '#0e2c4e',
     cover: IMG + 'raya-hero-light.webp', coverDark: IMG + 'raya-hero-dark.webp',
     shots: ['hero-light', 'collection', 'categories', 'products', 'product', 'wholesale', 'shop', 'collection-dark', 'track', 'admin-products', 'admin-shipping', 'mobile'].map((s) => IMG + `raya-${s}.webp`),
     title: { ar: 'RAYA — متجر ملابس رجالي وأطفالي وجملة', en: 'RAYA — Menswear, Kidswear & Wholesale Store' },
@@ -124,7 +124,7 @@ const PROJECTS = [
       en: ['3D collection carousel you can drag', 'Wholesale section with factory prices & coupons', 'Shipping to all 27 governorates + cash on delivery', '"Inspect before you pay" and order tracking timeline', 'Admin: profit, orders, products, shipping, coupons', 'Light / dark mode, fully responsive'],
     },
     tags: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind v4', 'Framer Motion'],
-    links: {},
+    links: { site: 'https://brand-clothes-mu.vercel.app' },
   },
   {
     id: 'zona', cat: ['web'], featured: true, device: 'art', accent: '#0d9488', concept: true,
