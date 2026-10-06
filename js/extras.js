@@ -459,9 +459,9 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
         ${p.popular ? `<span class="price-pop">★ ${t('prPopular')}</span>` : ''}
         <h3>${esc(p[L()].name)}</h3>
         <p class="price-tag">${esc(p[L()].tag)}</p>
-        <div class="price-amount"><small>${t('prFrom')}</small><b class="price-quote">${t('prQuote')}</b><span>⏱ ${p.weeks} ${t('prWeeks')}</span></div>
+        <div class="price-amount"><small>${t('prFrom')}</small><button type="button" class="price-quote" data-plan="${p.id}"><svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg><span>${t('prQuote')}</span></button><span>⏱ <bdi dir="ltr">${p.weeks}</bdi> ${t('prWeeks')}</span></div>
         <ul>${p[L()].features.map((f) => `<li><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${esc(f)}</li>`).join('')}</ul>
-        <button type="button" class="btn ${p.popular ? 'btn-primary' : 'btn-ghost'} btn-block" data-plan="${p.id}">${t('prStart')}</button>
+        <button type="button" class="btn btn-wa btn-block" data-plan="${p.id}"><svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg><span>${t('prStart')}</span></button>
       </div>`).join('');
     // booking selects
     const days = $('#bookDay'), times = $('#bookTime');
@@ -492,7 +492,8 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
     $('#pricingGrid').addEventListener('click', (e) => {
       const b = e.target.closest('[data-plan]'); if (!b) return;
       const p = PRICING.find((x) => x.id === b.dataset.plan);
-      wa(`${t('prWa')} "${p[L()].name}"`);
+      const lines = [`${t('prWa')} "${p[L()].name}"`, '', ...p[L()].features.map((f) => '✅ ' + f), '', t('prWaAsk')];
+      wa(lines.join('\n'));
       notifyLead('pricing', p.en.name);
     });
     $('#bookForm').addEventListener('submit', (e) => {
