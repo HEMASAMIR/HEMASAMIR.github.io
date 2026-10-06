@@ -39,7 +39,7 @@
     </div></section>
     <section class="section"><div class="container">
       <div class="section-head in"><h2>${T.prices}</h2><p>${T.approx}</p></div>
-      <div class="lp-prices">${PRICING.map((p) => `<div class="lp-price ${p.popular ? 'pop' : ''}"><h3>${esc(p[L.lang].name)}</h3><span>⏱ ${p.weeks} ${ar ? 'أسابيع' : 'weeks'}</span><ul>${p[L.lang].features.slice(0, 4).map((f) => `<li>✓ ${esc(f)}</li>`).join('')}</ul></div>`).join('')}</div>
+      <div class="lp-prices">${PRICING.map((p) => `<div class="lp-price ${p.popular ? 'pop' : ''}"><h3>${esc(p[L.lang].name)}</h3><ul>${p[L.lang].features.slice(0, 4).map((f) => `<li>✓ ${esc(f)}</li>`).join('')}</ul></div>`).join('')}</div>
     </div></section>
     <section class="section section-alt"><div class="container lp-faq-wrap">
       <div class="section-head in"><h2>${T.faq}</h2></div>

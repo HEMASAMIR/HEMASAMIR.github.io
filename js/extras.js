@@ -459,7 +459,6 @@ ${e.notes ? `<h2>${t('estNotes')}</h2><p>${esc(e.notes)}</p>` : ''}
         ${p.popular ? `<span class="price-pop">★ ${t('prPopular')}</span>` : ''}
         <h3>${esc(p[L()].name)}</h3>
         <p class="price-tag">${esc(p[L()].tag)}</p>
-        <div class="price-amount"><span>⏱ <bdi dir="ltr">${p.weeks}</bdi> ${t('prWeeks')}</span></div>
         <ul>${p[L()].features.map((f) => `<li><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>${esc(f)}</li>`).join('')}</ul>
         <button type="button" class="btn btn-wa btn-block" data-plan="${p.id}"><svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg><span>${t('prStart')}</span></button>
       </div>`).join('');
