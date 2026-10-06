@@ -603,3 +603,13 @@
 [data-theme="dark"] .price-amount .price-quote { color: #4ade80; }
 [data-theme="dark"] .price-amount .price-quote:hover { color: #fff; }
 .price-amount span { font-size: 15px; }
+
+/* crowded header: keep every link on one line */
+.nav a { white-space: nowrap; }
+.brand-text strong, .brand-text small { white-space: nowrap; }
+@media (max-width: 1500px) and (min-width: 861px) {
+  .nav { gap: 0; }
+  .nav a { padding: 8px 8px; font-size: 14px; }
+  .brand-text small { display: none; }
+  .header-actions .hide-sm { display: none; }
+}

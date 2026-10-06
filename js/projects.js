@@ -110,6 +110,23 @@ const PROJECTS = [
     links: { github: GH + 'ENG-SALEH' },
   },
   {
+    id: 'raya', cat: ['web'], featured: true, device: 'browser', accent: '#0e2c4e',
+    cover: IMG + 'raya-hero-light.webp', coverDark: IMG + 'raya-hero-dark.webp',
+    shots: ['hero-light', 'collection', 'categories', 'products', 'product', 'wholesale', 'shop', 'collection-dark', 'track', 'admin-products', 'admin-shipping', 'mobile'].map((s) => IMG + `raya-${s}.webp`),
+    title: { ar: 'RAYA — متجر ملابس رجالي وأطفالي وجملة', en: 'RAYA — Menswear, Kidswear & Wholesale Store' },
+    kicker: { ar: 'براند ملابس مصري · متجر + لوحة تحكم', en: 'Egyptian fashion brand · Store + admin' },
+    desc: {
+      ar: 'متجر أونلاين لبراند ملابس مصري فيه 3 أقسام: رجالي وأطفالي وجملة. واجهة عربية بأنيميشن ثلاثي الأبعاد — كوليكشن بيلف زي الشماعة، كروت بتميل مع الماوس — ودفع عند الاستلام مع "افحص قبل ما تدفع"، ولوحة تحكم كاملة بتحسب الأرباح.',
+      en: 'An online store for an Egyptian clothing brand with three sections — menswear, kidswear and wholesale. Arabic UI with tasteful 3D motion (a rotating collection carousel, tilt cards), cash on delivery with "inspect before you pay", and a full admin dashboard with profit tracking.',
+    },
+    features: {
+      ar: ['كوليكشن 3D بيلف بالماوس أو بالصباع', 'قسم جملة بأسعار المصنع وكوبونات', 'شحن لكل محافظة من الـ 27 + الدفع عند الاستلام', '"افحص قبل ما تدفع" وتتبع الطلب بـ Timeline', 'لوحة تحكم: أرباح، طلبات، منتجات، شحن، كوبونات', 'وضع فاتح وداكن وواجهة متجاوبة'],
+      en: ['3D collection carousel you can drag', 'Wholesale section with factory prices & coupons', 'Shipping to all 27 governorates + cash on delivery', '"Inspect before you pay" and order tracking timeline', 'Admin: profit, orders, products, shipping, coupons', 'Light / dark mode, fully responsive'],
+    },
+    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind v4', 'Framer Motion'],
+    links: {},
+  },
+  {
     id: 'zona', cat: ['web'], featured: true, device: 'art', accent: '#0d9488', concept: true,
     cover: art('zona'),
     shots: [art('zona'), ...['zona-track', 'zona-reviews', 'zona-features', 'zona-account', 'zona-register', 'zona-admin-social'].map(s => IMG + s + '.webp')],

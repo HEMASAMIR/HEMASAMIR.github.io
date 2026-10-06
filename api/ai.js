@@ -15,6 +15,7 @@ const PROJECTS = {
   rafiq: 'Rafiq Muslim — Islamic app: prayer times, Quran audio, azkar; 5.0 on App Store (Flutter)',
   metro: 'Metro Masr — offline Cairo metro app with AI assistant, voice, AR (Flutter, Gemini)',
   ocr: 'Blue Square — industrial computer-vision OCR inspection of pharma cartons, ~14 ms decisions (Python)',
+  raya: 'RAYA — Egyptian clothing store: menswear, kidswear and wholesale, 3D UI, admin with profits (Next.js)',
   zona: 'ZONA — fashion e-commerce store + profit dashboard admin studio (Next.js)',
   incense: 'Incense — luxury Saudi perfume brand: app + live store (Flutter)',
   aladeeb: 'Al-Adeeb — Qudurat exam prep e-learning app with video lessons (Flutter)',

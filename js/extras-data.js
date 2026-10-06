@@ -77,7 +77,7 @@ const EST_OPTIONS = {
 /* Synonyms for the smart project search (query word → project ids). */
 const SEARCH_SYNONYMS = {
   'طلبات|talabat|توصيل|دليفري|delivery|مندوب|driver|اوردر|أوردر': ['delivery', 'graduation', 'goalzone'],
-  'متجر|ستور|store|shop|ecommerce|e-commerce|تسوق|بيع|منتجات': ['zona', 'fayrouza', 'incense', 'goalzone', 'ecommerce', 'vortexa'],
+  'متجر|ستور|store|shop|ecommerce|e-commerce|تسوق|بيع|منتجات': ['raya', 'zona', 'fayrouza', 'incense', 'goalzone', 'ecommerce', 'vortexa'],
   'عطور|برفان|perfume|incense|بخور': ['incense'],
   'تعليم|كورس|كورسات|دروس|مدرسة|سنتر|education|course|learning|lms|طلاب': ['dwapp', 'dw', 'manara', 'aladeeb', 'mogahed'],
   'الماني|ألماني|المانيا|ألمانيا|german|deutsch': ['dwapp', 'dw', 'mogahed', 'fayrouza'],
@@ -88,6 +88,7 @@ const SEARCH_SYNONYMS = {
   'ذكاء|ai|اصطناعي|ocr|كاميرا|vision|رؤية': ['ocr', 'metro'],
   'مصنع|صناعي|ادوية|أدوية|factory|industrial|pharma': ['ocr'],
   'لوحة|ادمن|أدمن|dashboard|admin|ارباح|أرباح|إدارة|ادارة': ['zona', 'manara', 'marketadmin', 'dw'],
+  'ملابس|هدوم|ازياء|أزياء|براند|جملة|جمله|رجالي|أطفال|اطفال|clothes|fashion|wholesale|menswear': ['raya', 'zona'],
   'سوشيال|social|فيسبوك|facebook|بوست': ['fbclone', 'socialapp'],
   'سيارة|عربية|صيانة|car|auto': ['checkauto'],
   'سوبرماركت|بقالة|grocery|supermarket': ['vortexa'],
