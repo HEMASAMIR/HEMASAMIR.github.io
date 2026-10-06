@@ -124,8 +124,8 @@
     more.hidden = all.length <= PAGE;
     more.querySelector('span').textContent = expanded ? t('showLess') : `${t('showMore')} (${all.length - PAGE})`;
     more.classList.toggle('open', expanded);
-    $('#grid').innerHTML = list.map((p) => `
-      <article class="card reveal in" data-open="${p.id}" tabindex="0" role="button" aria-label="${p.title[lang]}">
+    $('#grid').innerHTML = list.map((p, i) => `
+      <article class="card reveal in" style="animation-delay:${(i % PAGE) * 70}ms" data-open="${p.id}" tabindex="0" role="button" aria-label="${p.title[lang]}">
         ${cover(p, false)}
         <div class="card-body">
           <div class="badges">${badges(p)}</div>
@@ -149,7 +149,7 @@
         <span class="step-num">0${i + 1}</span>
         <h3>${s[lang][0]}</h3><p>${s[lang][1]}</p>
       </li>`).join('');
-    $('#why-list').innerHTML = WHY.map((w) => `<div class="why-item">${icon(w.icon)}<span>${w[lang]}</span></div>`).join('');
+    $("#why-list").innerHTML = WHY.map((w, i) => `<div class="why-item reveal" style="--d:${i * 70}ms">${icon(w.icon)}<span>${w[lang]}</span></div>`).join('');
     $('#stack').innerHTML = STACK.map((s) => `<span>${s}</span>`).join('');
     // cover wall: two rows scrolling in opposite directions
     const covers = PROJECTS.filter((p) => p.device === 'art' || p.device === 'browser');
@@ -370,8 +370,35 @@
       if (matchMedia('(hover: none)').matches && !reduce) setInterval(() => hv.classList.toggle('flipped'), 4000);
     }
 
+    // scroll progress bar
+    const bar = $('#progress');
+    if (bar) {
+      const upd = () => { const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? Math.min(1, scrollY / h) : 0})`; };
+      addEventListener('scroll', upd, { passive: true }); upd();
+    }
+
     // 3D tilt + glare that follows the cursor on project cards
     if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) {
+      // spotlight that follows the cursor on service / step / why cards
+      document.addEventListener('mousemove', (e) => {
+        const el = e.target.closest('.service, .step, .why-item');
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+
+      // magnetic primary buttons
+      document.addEventListener('mousemove', (e) => {
+        $$('.btn-primary, .btn-wa, .wa-float').forEach((b) => {
+          const r = b.getBoundingClientRect();
+          const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+          const near = Math.abs(dx) < r.width / 2 + 40 && Math.abs(dy) < r.height / 2 + 30;
+          b.classList.add('magnet');
+          b.style.transform = near ? `translate(${(dx * 0.18).toFixed(1)}px, ${(dy * 0.28).toFixed(1)}px)` : '';
+        });
+      }, { passive: true });
+
       let active = null;
       const reset = (el) => { el.classList.remove('tilting'); el.style.removeProperty('--rx'); el.style.removeProperty('--ry'); };
       document.addEventListener('mousemove', (e) => {

@@ -753,3 +753,81 @@ html[lang="ar"] .wall-item span { direction: rtl; }
   opacity: 0; transition: opacity .3s;
 }
 .card:hover::after, .feature-visual:hover::after { opacity: 1; }
+
+/* =========================================================
+   Motion layer
+   ========================================================= */
+@property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes rot { to { --ang: 360deg; } }
+@keyframes shine { to { background-position: 200% center; } }
+@keyframes rise { from { opacity: 0; transform: translateY(40px) rotateX(-35deg); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes bgshift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+
+/* scroll progress bar */
+.progress { position: fixed; top: 0; inset-inline: 0; height: 3px; z-index: 80; background: var(--grad); transform-origin: left; transform: scaleX(0); box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 70%, transparent); }
+[dir="rtl"] .progress { transform-origin: right; }
+
+/* shimmering gradient text */
+.grad-text, .stat b, .step-num { background-size: 200% auto !important; animation: shine 5s ease-in-out infinite alternate; }
+.grad-text { background-image: linear-gradient(120deg, var(--primary), var(--primary-2), #a855f7, var(--primary)); }
+
+/* hero headline: lines rise in with a 3D tilt */
+.hero-title { perspective: 800px; }
+.hero-title > span { display: block; animation: rise 1s cubic-bezier(.2,.8,.2,1) both; transform-origin: 50% 100%; }
+.hero-title > span:nth-child(2) { animation-delay: .18s; }
+
+/* spotlight + rotating glow border on interactive cards */
+.service, .step, .why-item, .stat, .about-card { --mx: 50%; --my: 50%; }
+.service::before { background: radial-gradient(420px circle at var(--mx) var(--my), color-mix(in srgb, var(--primary) 16%, transparent), transparent 45%) !important; }
+.why-item { overflow: hidden; }
+.step::before { border-radius: inherit; }
+.step::before, .why-item::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(360px circle at var(--mx) var(--my), color-mix(in srgb, var(--primary-2) 14%, transparent), transparent 45%);
+}
+.why-item { position: relative; transition: opacity .8s ease var(--d, 0ms), transform .45s cubic-bezier(.2,.7,.2,1), border-color .3s; }
+.step:hover::before, .why-item:hover::before { opacity: 1; }
+.service:hover, .step:hover, .why-item:hover, .about-card:hover {
+  border-color: transparent;
+  background: linear-gradient(var(--surface), var(--surface)) padding-box,
+              conic-gradient(from var(--ang), var(--border) 0 50%, var(--primary) 68%, var(--primary-2) 80%, var(--border) 96%) border-box;
+  animation: rot 3.2s linear infinite;
+}
+.step { transition: opacity .8s ease var(--d, 0ms), transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+.step:hover, .why-item:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.service-ico { transition: transform .45s cubic-bezier(.3,1.6,.5,1); }
+.service:hover .service-ico { transform: translateY(-4px) rotate(-8deg) scale(1.08); }
+.service:hover .service-ico .i { animation: bob 1.2s ease-in-out infinite; }
+.why-item .i { transition: transform .4s cubic-bezier(.3,1.6,.5,1); }
+.why-item:hover .i { transform: scale(1.25) rotate(-10deg); }
+
+/* process: connectors draw themselves in */
+.step:not(:last-child)::after { transform: scaleX(0); transform-origin: right; transition: transform .8s cubic-bezier(.2,.8,.2,1) .4s; opacity: .8 !important; }
+[dir="ltr"] .step:not(:last-child)::after { transform-origin: left; }
+.step.in:not(:last-child)::after { transform: scaleX(1); }
+.step-num { display: inline-block; transition: transform .4s cubic-bezier(.3,1.6,.5,1); }
+.step:hover .step-num { transform: scale(1.12); }
+
+/* stats lift */
+.stat { transition: background .3s; }
+.stat:hover { background: color-mix(in srgb, var(--primary) 5%, transparent); }
+
+/* about: rotating gradient ring around the avatar */
+.about-avatar { background: conic-gradient(from var(--ang), #14b8a6, #2563eb, #a855f7, #f59e0b, #14b8a6); animation: rot 6s linear infinite; }
+.about-avatar img { transition: transform .5s ease; }
+.about-card:hover .about-avatar img { transform: scale(1.04); }
+
+/* contact: slowly moving gradient background */
+.contact { background: linear-gradient(135deg, #0b1d33, #0f2e3d, #1e1b4b, #0b3b3a, #0b1d33) !important; background-size: 300% 300% !important; animation: bgshift 18s ease infinite; }
+.contact-form { transition: transform .4s ease, box-shadow .4s ease; }
+.contact-form:focus-within { transform: translateY(-4px); box-shadow: 0 40px 80px -24px rgba(0,0,0,.6), 0 0 0 2px color-mix(in srgb, var(--primary) 60%, transparent); }
+
+/* section headings: underline grows in */
+.section-head h2 { position: relative; padding-bottom: 14px; }
+.section-head h2::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 72px; height: 4px; border-radius: 4px; background: var(--grad); transform: translateX(-50%) scaleX(0); transition: transform .9s cubic-bezier(.2,.8,.2,1) .35s; }
+.section-head.in h2::after { transform: translateX(-50%) scaleX(1); }
+
+/* magnetic buttons (JS sets the translate) */
+.btn.magnet { transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease, background .2s ease; }
+.hero-title > .grad-text { animation: rise 1s cubic-bezier(.2,.8,.2,1) .18s both, shine 5s ease-in-out 1.2s infinite alternate; }

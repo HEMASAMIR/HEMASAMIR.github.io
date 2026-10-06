@@ -94,9 +94,9 @@ const PROJECTS = [
     links: { github: GH + 'ENG-SALEH' },
   },
   {
-    id: 'zona', cat: ['web'], featured: true, device: 'browser', accent: '#0d9488',
-    cover: IMG + 'zona-admin-dashboard.webp',
-    shots: ['zona-admin-dashboard', 'zona-track', 'zona-reviews', 'zona-features', 'zona-account', 'zona-register', 'zona-admin-customers', 'zona-admin-social'].map(s => IMG + s + '.webp'),
+    id: 'zona', cat: ['web'], featured: true, device: 'art', accent: '#0d9488', concept: true,
+    cover: art('zona'),
+    shots: [art('zona'), ...['zona-track', 'zona-reviews', 'zona-features', 'zona-account', 'zona-register', 'zona-admin-social'].map(s => IMG + s + '.webp')],
     title: { ar: 'ZONA — متجر أزياء + لوحة أرباح', en: 'ZONA — Fashion Store & Profit Studio' },
     kicker: { ar: 'متجر إلكتروني + لوحة تحكم', en: 'E-commerce + Admin Studio' },
     desc: {

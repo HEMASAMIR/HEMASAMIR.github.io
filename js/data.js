@@ -45,7 +45,7 @@ const I18N = {
     live: 'لايف', onStores: 'منشور على المتاجر', viewDetails: 'التفاصيل والصور', features: 'المميزات', tech: 'التقنيات',
     appStore: 'App Store', googlePlay: 'Google Play', liveSite: 'زيارة الموقع', code: 'الكود', screenshots: 'صورة',
     mobile: 'موبايل', web: 'ويب', system: 'أنظمة', practice: 'تدريب',
-    fSystem: 'أنظمة وذكاء اصطناعي', fPractice: 'تدريبات و UI', showMore: 'عرض المزيد', showLess: 'عرض أقل', concept: 'تصميم توضيحي للمشروع — الصور الحقيقية من داخل التطبيق قريبًا', projectsCount: 'مشروع',
+    fSystem: 'أنظمة وذكاء اصطناعي', fPractice: 'تدريبات وواجهات', showMore: 'عرض المزيد', showLess: 'عرض أقل', concept: 'تصميم توضيحي للمشروع — الصور الحقيقية من داخل التطبيق قريبًا', projectsCount: 'مشروع',
     wallEyebrow: 'من المعرض', wallTitle: 'مشروع بين موبايل وويب وأنظمة ذكية',
   },
   en: {
