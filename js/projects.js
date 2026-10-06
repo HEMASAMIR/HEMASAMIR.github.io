@@ -28,6 +28,22 @@ const PROJECTS = [
     links: { appstore: 'https://apps.apple.com/us/app/quickin-app/id6778979967', play: 'https://play.google.com/store/apps/details?id=com.quickin.app', github: GH + 'Freelancer_app' },
   },
   {
+    id: 'dwapp', cat: ['mobile'], featured: true, device: 'art', accent: '#dd0000',
+    cover: art('dwapp'), shots: [art('dwapp'), ...[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => IMG + `dwapp-${n}.jpg`)],
+    title: { ar: 'Deutsche Welt — تطبيق تعليم الألماني', en: 'Deutsche Welt — German Learning App' },
+    kicker: { ar: 'موجّه للسوق المصري والخليجي والألماني', en: 'Built for Egypt, the Gulf & Germany' },
+    desc: {
+      ar: 'تطبيق موبايل لأكاديمية لغة ألمانية يخدم الطلاب في مصر ودول الخليج وألمانيا: مستويات من A1 لـ B2، كورسات مسجّلة، مكتبة كتب، متابعة تقدّم الطالب، فروع الأكاديمية، وتواصل مباشر — بتصميم داكن أنيق.',
+      en: 'A mobile app for a German language academy serving learners in Egypt, the Gulf and Germany: A1→B2 levels, recorded courses, a book library, progress tracking, academy branches and direct contact — in an elegant dark design.',
+    },
+    features: {
+      ar: ['مستويات A1 → B2 مع متابعة تقدّم الطالب', 'كورسات مسجّلة لكل مستوى وأسعار واضحة', 'مكتبة كتب Schritt für Schritt لكل مستوى', 'عروض وخصومات وأكواد خصم داخل التطبيق', 'فروع الأكاديمية + أسئلة شائعة + تواصل مباشر', 'وضع داكن وواجهة عربية بالكامل'],
+      en: ['A1 → B2 levels with progress tracking', 'Recorded courses per level with clear pricing', 'Schritt für Schritt book library per level', 'In-app offers and discount codes', 'Branches, FAQ and direct contact', 'Dark mode with a full Arabic UI'],
+    },
+    tags: ['Flutter', 'Clean Architecture', 'BLoC', 'REST API', 'Dark Mode'],
+    links: {},
+  },
+  {
     id: 'manara', cat: ['web'], featured: true, device: 'browser', accent: '#0e2c4e',
     cover: IMG + 'manara-landing.jpg', coverDark: IMG + 'manara-home-dark.jpg',
     shots: ['manara-landing', 'manara-home-dark', 'manara-courses', 'manara-admin', 'manara-login-en-dark', 'manara-home-mobile'].map(s => IMG + s + '.jpg'),
@@ -161,17 +177,17 @@ const PROJECTS = [
     links: { site: 'https://webapplication-lovat.vercel.app', github: GH + 'Online_store' },
   },
   {
-    id: 'dw', cat: ['web'], device: 'logo', accent: '#0f2a4a',
-    cover: IMG + 'dw-logo.png', shots: [IMG + 'dw-logo.png'],
-    title: { ar: 'أكاديمية Deutsche Welt', en: 'Deutsche Welt Academy' },
-    kicker: { ar: 'منصة تعليم اللغة الألمانية', en: 'German learning platform' },
+    id: 'dw', cat: ['web'], featured: true, device: 'art', accent: '#0f766e',
+    cover: art('dwweb'), shots: [art('dwweb'), ...[1, 2, 3, 4, 5, 6, 7, 8, 9].map(n => IMG + `dwweb-${n}.jpg`)],
+    title: { ar: 'أكاديمية Deutsche Welt — الموقع', en: 'Deutsche Welt Academy — Website' },
+    kicker: { ar: 'منصة تعليم الألماني أونلاين', en: 'Online German learning platform' },
     desc: {
-      ar: 'منصة تعليمية كاملة من A1 لـ B2: فيديوهات محمية بـ DRM، قراءة الكتب داخل الموقع، تعليقات تحت كل درس، طلبات اشتراك، ولوحة تحكم شاملة — بـ 3 لغات.',
-      en: 'A complete A1→B2 learning platform: DRM-protected video lessons, in-browser book reader, comments on every lesson, subscription requests and a full admin dashboard — in 3 languages.',
+      ar: 'منصة كاملة لأكاديمية لغة ألمانية: كورسات أونلاين من A1 لـ B2 بفيديوهات محمية، متجر كتب بيتفعّل على حساب الطالب، صفحة للمدرّب، قصص نجاح وآراء طلاب حقيقية، فروع الأكاديمية، ولوحة تحكم شاملة — بـ 3 لغات.',
+      en: 'A complete platform for a German language academy: online A1→B2 courses with protected videos, a book store activated per student, an instructor page, real student success stories, branches, and a full admin dashboard — in 3 languages.',
     },
     features: {
-      ar: ['مشغّل فيديو محمي (Bunny Stream DRM)', 'دخول بالإيميل أو Google + استرجاع بكود OTP', 'لوحة إدارة للطلاب والكورسات والمدفوعات', 'عربي / English / Deutsch'],
-      en: ['Protected video player (Bunny Stream DRM)', 'Email / Google sign-in + OTP recovery', 'Admin for students, courses and payments', 'Arabic / English / German'],
+      ar: ['كورسات A1 → B2 بمشغّل فيديو محمي (DRM)', 'متجر كتب PDF يتفعّل على حساب الطالب', 'قصص نجاح و+55 رأي طالب موثّق بالواتساب', 'صفحة المدرّب + 4 فروع + تواصل مباشر بالواتساب', 'دخول بالإيميل أو Google + كود OTP', 'عربي / English / Deutsch'],
+      en: ['A1 → B2 courses with a DRM-protected player', 'PDF book store unlocked per student', 'Success stories & 55+ WhatsApp-verified reviews', 'Instructor page, 4 branches & instant WhatsApp contact', 'Email / Google sign-in with OTP recovery', 'Arabic / English / German'],
     },
     tags: ['Next.js 16', 'Django REST', 'JWT', 'Bunny Stream', 'Tailwind 4'],
     links: { github: GH + 'DW-WEBSITE' },

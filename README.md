@@ -136,6 +136,7 @@
 | 📱🌐 | [Incense](https://github.com/HEMASAMIR/insins) | تطبيق + متجر · لايف | Flutter |
 | 📱 | [الأديب](https://github.com/HEMASAMIR/Aladeeb) | تعليمي | Flutter · BLoC |
 | 🌐 | [Fayrouza Store](https://github.com/HEMASAMIR/Online_store) | متجر · لايف | Next.js |
+| 📱 | Deutsche Welt App | تعليم ألماني · مصر والخليج وألمانيا | Flutter |
 | 🌐 | [Deutsche Welt Academy](https://github.com/HEMASAMIR/DW-WEBSITE) | منصة تعليمية | Next.js · Django |
 | 📱 | [Goal Zone](https://github.com/HEMASAMIR/Goal-zone) | متجر | Flutter · Cubit |
 | 📱 | [Delivery Platform](https://github.com/HEMASAMIR/Delivary-Applocation-) | توصيل | Flutter · Socket.IO · Maps |
