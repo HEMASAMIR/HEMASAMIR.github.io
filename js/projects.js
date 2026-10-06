@@ -1,0 +1,503 @@
+/* =========================================================
+   Projects — every repo on github.com/HEMASAMIR worth showing.
+   device: art (full-bleed designed cover) | browser | phone | poster | tablet | logo | portrait
+   concept: true → cover is designed art (not a real screenshot); a note is shown in the modal.
+   cat: mobile | web | system | practice
+   To add a project: copy one object and edit it.
+   ========================================================= */
+
+const GH = 'https://github.com/HEMASAMIR/';
+const art = (id) => IMG + 'cover-' + id + '.jpg';
+
+const PROJECTS = [
+  /* ================= Featured ================= */
+  {
+    id: 'quickin', cat: ['mobile'], featured: true, live: true, device: 'poster', accent: '#7f1d1d',
+    shots: [1, 2, 3, 4, 5, 6].map(n => IMG + `quickin-${n}.jpg`),
+    title: { ar: 'QuickIn — حجز شاليهات وإقامات', en: 'QuickIn — Stays Booking App' },
+    kicker: { ar: 'منشور على App Store و Google Play', en: 'Live on App Store & Google Play' },
+    desc: {
+      ar: 'منصة حجز إقامات وشاليهات في مصر على طريقة Airbnb: الضيف يبحث ويحجز ويدفع، والمضيف يضيف وحدته بخطوات بسيطة، مع لوحة إدارة وتوثيق هوية.',
+      en: 'An Airbnb-style stays platform for Egypt: guests search, book and pay; hosts list their units through a step-by-step wizard — with an admin panel and identity verification.',
+    },
+    features: {
+      ar: ['بحث وفلترة + عرض قائمة أو خريطة', 'معالج إضافة وحدة للمضيف خطوة بخطوة', 'حجوزات ورحلات ومفضلة وقوائم أمنيات', 'دفع إلكتروني وتوثيق هوية', 'دخول بجوجل + Supabase + CI/CD'],
+      en: ['Search & filters with list or map view', 'Step-by-step listing wizard for hosts', 'Bookings, trips, favourites & wishlists', 'Online payment and identity verification', 'Google sign-in, Supabase and CI/CD'],
+    },
+    tags: ['Flutter', 'Supabase', 'BLoC', 'Clean Architecture', 'CI/CD'],
+    links: { appstore: 'https://apps.apple.com/us/app/quickin-app/id6778979967', play: 'https://play.google.com/store/apps/details?id=com.quickin.app', github: GH + 'Freelancer_app' },
+  },
+  {
+    id: 'manara', cat: ['web'], featured: true, device: 'browser', accent: '#0e2c4e',
+    cover: IMG + 'manara-landing.jpg', coverDark: IMG + 'manara-home-dark.jpg',
+    shots: ['manara-landing', 'manara-home-dark', 'manara-courses', 'manara-admin', 'manara-login-en-dark', 'manara-home-mobile'].map(s => IMG + s + '.jpg'),
+    title: { ar: 'منارة — منصة إدارة تعليمية', en: 'Manara — Education Management' },
+    kicker: { ar: 'نظام SaaS للسناتر والمدارس', en: 'SaaS for tutoring centers & schools' },
+    desc: {
+      ar: 'منصة كاملة للسناتر والمدارس فيها 5 بوابات: الإدارة، المدرس، المساعد، الطالب، وولي الأمر — على نفس قاعدة بيانات تطبيق الموبايل، وبتتحدث لحظياً.',
+      en: 'A full platform for tutoring centers and schools with 5 portals — admin, teacher, assistant, student and parent — sharing one realtime database with the mobile app.',
+    },
+    features: {
+      ar: ['حضور بالـ QR بيتغير كل 5 ثواني ضد الغش', 'كويزات تفاعلية وامتحانات ودرجات', 'مالية واشتراكات وتقارير Excel', 'إشعارات ورسائل لحظية (Realtime)', 'عربي / English ووضع ليلي'],
+      en: ['QR attendance that rotates every 5 seconds', 'Interactive quizzes, exams and grades', 'Payments, subscriptions and Excel reports', 'Realtime notifications and messaging', 'Arabic / English with dark mode'],
+    },
+    tags: ['Next.js 16', 'React 19', 'Supabase', 'Row Level Security', 'Realtime'],
+    links: { github: GH + 'MANASA_WEB' },
+  },
+  {
+    id: 'rafiq', cat: ['mobile'], featured: true, live: true, device: 'tablet', accent: '#064e3b',
+    icon: IMG + 'rafiq-icon.jpg',
+    shots: [1, 2, 3, 4, 5, 6, 7, 8, 10].map(n => IMG + `rafiq-${n}.jpg`),
+    title: { ar: 'رفيق المسلم', en: 'Rafiq Muslim' },
+    kicker: { ar: 'تقييم ★ 5.0 على App Store', en: 'Rated ★ 5.0 on the App Store' },
+    desc: {
+      ar: 'تطبيق إسلامي متكامل: مواقيت الصلاة بعدّاد تنازلي، القرآن الكريم بالصوت، الأذكار والتسابيح، وتحدي ختمة القرآن — منشور على App Store و Google Play.',
+      en: 'An all-in-one Islamic companion: prayer times with live countdown, Quran with audio recitation, azkar & tasbeeh, and a 30-day Quran challenge — live on both stores.',
+    },
+    features: {
+      ar: ['مواقيت الصلاة وتنبيهات الأذان', 'القرآن الكريم بأصوات القرّاء', 'الأذكار والتسبيح الإلكتروني', 'تحدي الختمة في 30 يوم', 'تصميم عربي أنيق يدعم الآيباد'],
+      en: ['Prayer times & adhan notifications', 'Quran audio with multiple reciters', 'Azkar and digital tasbeeh', '30-day Quran completion challenge', 'Elegant Arabic UI with iPad support'],
+    },
+    tags: ['Flutter', 'Clean Architecture', 'Audio', 'Local Notifications', 'Offline'],
+    links: { appstore: 'https://apps.apple.com/jm/app/rafiq-muslim-%D8%B1%D9%81%D9%8A%D9%82-%D8%A7%D9%84%D9%85-%D8%B3%D9%84%D9%85/id6759332192', play: 'https://play.google.com/store/apps/details?id=com.rafiq.muslim' },
+  },
+  {
+    id: 'metro', cat: ['mobile'], featured: true, live: true, device: 'art', accent: '#b91c1c', concept: true,
+    cover: art('metro'), shots: [art('metro'), IMG + 'metro-photo.jpg', IMG + 'metro-map.png', IMG + 'metro-icon.jpg'],
+    title: { ar: 'مترو مصر بدون إنترنت', en: 'Metro Masr — Offline' },
+    kicker: { ar: 'منشور على App Store', en: 'Live on the App Store' },
+    desc: {
+      ar: 'أكتر من مجرد خريطة مترو: يخطط رحلتك بدون إنترنت، فيه مساعد ذكاء اصطناعي، توقّع للزحمة، أوامر صوتية، دليل سياحي، ومجتمع للركاب.',
+      en: 'Much more than a metro map: offline trip planning, an AI assistant, crowd prediction, voice commands, a tourism guide and a riders community.',
+    },
+    features: {
+      ar: ['تخطيط المسار بدون إنترنت', 'مساعد ذكي بالذكاء الاصطناعي (Gemini)', 'توقّع الزحمة وجدولة الرحلات', 'أوامر صوتية وقراءة بالصوت', 'واقع معزز بالكاميرا ودليل سياحي', 'مجتمع وشات ونظام نقاط ومكافآت'],
+      en: ['Offline route planning', 'AI assistant powered by Gemini', 'Crowd prediction & trip scheduler', 'Voice commands & text-to-speech', 'Camera AR and tourism guide', 'Community chat and gamification'],
+    },
+    tags: ['Flutter', 'Gemini AI', 'Hive', 'Speech', 'AR', 'Maps'],
+    links: { appstore: 'https://apps.apple.com/us/app/%D9%85%D8%AA%D8%B1%D9%88-%D9%85%D8%B5%D8%B1-%D8%A8%D8%AF%D9%88%D9%86-%D8%A7%D9%86%D8%AA%D8%B1%D9%86%D8%AA/id6782100362', github: GH + 'metro_masr' },
+  },
+  {
+    id: 'ocr', cat: ['system'], featured: true, device: 'art', accent: '#0ea5e9', concept: true,
+    cover: art('ocr'), shots: [art('ocr')],
+    title: { ar: 'Blue Square — نظام فحص آلي بالكاميرا', en: 'Blue Square — AUTO OCR Inspection' },
+    kicker: { ar: 'رؤية حاسوبية لخطوط إنتاج الأدوية', en: 'Computer vision for pharma production lines' },
+    desc: {
+      ar: 'نظام صناعي بيفحص طباعة LOT / MFG / EXP والـ Pharmacode على علب الأدوية لحظياً على خط الإنتاج، ويرفض العلبة المعيبة بإشارة للـ PLC — من غير ما حد يحدد مكان الطباعة يدويًا.',
+      en: 'An industrial system that inspects LOT / MFG / EXP print and the Pharmacode on medicine cartons in real time on the production line, rejecting defective cartons via the PLC — no manual ROI setup.',
+    },
+    features: {
+      ar: ['قرار PASS / FAIL في حوالي 14 ملي ثانية', 'رفض 14 من 14 علبة معيبة في الاختبار — صفر تسريب', 'قراءة Pharmacode بدقة 75 / 75', 'تعليم تلقائي لعيّنة ذهبية عند كل تشغيل', 'سجل نتائج وصور العلب المرفوضة + صلاحيات مستخدمين'],
+      en: ['PASS / FAIL decision in ~14 ms', '14 / 14 defective cartons rejected in testing — zero escapes', 'Pharmacode decoded 75 / 75', 'Automatic golden-sample teaching on every start', 'Result log, rejected-carton images and user roles'],
+    },
+    tags: ['Python', 'OCR', 'Computer Vision', 'Redis', 'SQLite', 'PLC'],
+    links: { github: GH + 'ENG-SALEH' },
+  },
+  {
+    id: 'zona', cat: ['web'], featured: true, device: 'browser', accent: '#0d9488',
+    cover: IMG + 'zona-admin-dashboard.webp',
+    shots: ['zona-admin-dashboard', 'zona-track', 'zona-reviews', 'zona-features', 'zona-account', 'zona-register', 'zona-admin-customers', 'zona-admin-social'].map(s => IMG + s + '.webp'),
+    title: { ar: 'ZONA — متجر أزياء + لوحة أرباح', en: 'ZONA — Fashion Store & Profit Studio' },
+    kicker: { ar: 'متجر إلكتروني + لوحة تحكم', en: 'E-commerce + Admin Studio' },
+    desc: {
+      ar: 'متجر أزياء أونلاين كامل بواجهة عربية، وضع فاتح وداكن، وأنيميشن في كل سكشن — مع حسابات للعملاء وتتبع للطلبات، ولوحة تحكم بتحسب صافي الربح وبتدير كل حاجة.',
+      en: 'A complete Arabic fashion store with light/dark mode and motion in every section — customer accounts, order tracking, and an Admin Studio that runs everything and calculates net profit.',
+    },
+    features: {
+      ar: ['سلة ودفع: كاش / InstaPay / فودافون كاش + كوبونات', 'سعر شحن لكل محافظة من الـ 27', 'تتبع الطلب برقم الطلب مع Timeline متحرك', 'لوحة أرباح: صافي الربح، الأكثر مبيعًا، المخزون القليل', 'إدارة المنتجات والعملاء والسوشيال ميديا'],
+      en: ['Cart & checkout: Cash / InstaPay / Vodafone Cash + coupons', 'Shipping fees for all 27 governorates', 'Order tracking with an animated timeline', 'Profit dashboard: net profit, best sellers, low stock', 'Manage products, customers and social links'],
+    },
+    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind v4', 'Framer Motion'],
+    links: { github: GH + 'suria_website' },
+  },
+
+  /* ================= Client & product work ================= */
+  {
+    id: 'incense', cat: ['mobile', 'web'], live: true, device: 'browser', accent: '#3b2a1a',
+    cover: IMG + 'incense-site.jpg', shots: [IMG + 'incense-site.jpg', IMG + 'incense-logo.jpg'],
+    title: { ar: 'إنسنس — عطور وبخور فاخرة', en: 'Incense — Luxury Perfumes' },
+    kicker: { ar: 'علامة سعودية · تطبيق + متجر', en: 'Saudi brand · App + store' },
+    desc: {
+      ar: 'تجربة تسوق فاخرة لعلامة عطور سعودية: تطبيق Flutter بتصميم ذهبي راقي، أنيميشن أثناء التمرير، سلة ودفع وشحن، وصفحات سياسات متكاملة لزيادة ثقة العملاء.',
+      en: 'A luxury shopping experience for a Saudi fragrance brand: a Flutter app with a refined gold identity, scroll animations, checkout & shipping, and built-in store policies.',
+    },
+    features: {
+      ar: ['محرك أنيميشن مخصص أثناء التمرير', 'سلة ودفع وشحن', 'عربي / إنجليزي', 'سياسات الخصوصية والشحن والاسترجاع'],
+      en: ['Custom scroll-reveal animation engine', 'Cart, checkout and shipping', 'Arabic / English', 'Privacy, shipping and return policies'],
+    },
+    tags: ['Flutter', 'BLoC', 'go_router', 'easy_localization', 'Dio'],
+    links: { site: 'https://incense-sa.com', github: GH + 'insins' },
+  },
+  {
+    id: 'aladeeb', cat: ['mobile'], device: 'art', accent: '#0b1f3a', concept: true,
+    cover: art('aladeeb'), shots: [art('aladeeb'), IMG + 'aladeeb-logo.jpg'],
+    title: { ar: 'الأديب — تحضير القدرات', en: 'Al-Adeeb — Qudurat Prep' },
+    kicker: { ar: 'منصة تعليمية للقسم اللفظي', en: 'E-learning for the verbal section' },
+    desc: {
+      ar: 'تطبيق تعليمي لتحضير اختبار القدرات (اللفظي): تصفح الكورسات، مشاهدة الدروس بالفيديو ويوتيوب، الاشتراكات، النتائج، ونبذة عن المدرّب.',
+      en: 'An e-learning app for the Qudurat (verbal) exam: browse courses, watch video & YouTube lessons, subscriptions, results and an instructor profile.',
+    },
+    features: {
+      ar: ['كورسات وتفاصيل كل كورس', 'مشغّل فيديو + يوتيوب داخل التطبيق', 'اشتراكات ونتائج', 'متابعة حالة الإنترنت'],
+      en: ['Courses with detail pages', 'In-app video & YouTube player', 'Subscriptions and results', 'Connectivity awareness'],
+    },
+    tags: ['Flutter', 'BLoC', 'Dio', 'get_it', 'Video Player'],
+    links: { github: GH + 'Aladeeb' },
+  },
+  {
+    id: 'fayrouza', cat: ['web'], live: true, device: 'browser', accent: '#0f766e',
+    cover: IMG + 'store-site.jpg', shots: [IMG + 'store-site.jpg'],
+    title: { ar: 'فيروزة — متجر منتجات ألمانية', en: 'Fayrouza Online Store' },
+    kicker: { ar: 'متجر إلكتروني لايف', en: 'Live e-commerce store' },
+    desc: {
+      ar: 'متجر أونلاين لمنتجات الصحة والجمال الألمانية الأصلية: أقسام، بحث، ترتيب، خصومات، سلة، ودفع عند الاستلام مع شحن لكل المحافظات.',
+      en: 'An online store for authentic German health & beauty products: categories, search, sorting, discounts, cart, and cash-on-delivery with nationwide shipping.',
+    },
+    features: {
+      ar: ['أقسام وفلترة وترتيب', 'بحث فوري في المنتجات', 'خصومات وأسعار قبل وبعد', 'دفع عند الاستلام'],
+      en: ['Categories, filters and sorting', 'Instant product search', 'Discount badges and pricing', 'Cash on delivery'],
+    },
+    tags: ['Next.js', 'React', 'JavaScript', 'Vercel'],
+    links: { site: 'https://webapplication-lovat.vercel.app', github: GH + 'Online_store' },
+  },
+  {
+    id: 'dw', cat: ['web'], device: 'logo', accent: '#0f2a4a',
+    cover: IMG + 'dw-logo.png', shots: [IMG + 'dw-logo.png'],
+    title: { ar: 'أكاديمية Deutsche Welt', en: 'Deutsche Welt Academy' },
+    kicker: { ar: 'منصة تعليم اللغة الألمانية', en: 'German learning platform' },
+    desc: {
+      ar: 'منصة تعليمية كاملة من A1 لـ B2: فيديوهات محمية بـ DRM، قراءة الكتب داخل الموقع، تعليقات تحت كل درس، طلبات اشتراك، ولوحة تحكم شاملة — بـ 3 لغات.',
+      en: 'A complete A1→B2 learning platform: DRM-protected video lessons, in-browser book reader, comments on every lesson, subscription requests and a full admin dashboard — in 3 languages.',
+    },
+    features: {
+      ar: ['مشغّل فيديو محمي (Bunny Stream DRM)', 'دخول بالإيميل أو Google + استرجاع بكود OTP', 'لوحة إدارة للطلاب والكورسات والمدفوعات', 'عربي / English / Deutsch'],
+      en: ['Protected video player (Bunny Stream DRM)', 'Email / Google sign-in + OTP recovery', 'Admin for students, courses and payments', 'Arabic / English / German'],
+    },
+    tags: ['Next.js 16', 'Django REST', 'JWT', 'Bunny Stream', 'Tailwind 4'],
+    links: { github: GH + 'DW-WEBSITE' },
+  },
+  {
+    id: 'goalzone', cat: ['mobile'], device: 'phone', accent: '#4f46e5',
+    shots: [3, 9, 10, 11, 12, 1, 2, 5, 6].map(n => IMG + `goalz-${n}.jpg`),
+    title: { ar: 'Goal Zone — تطبيق متجر', en: 'Goal Zone — Shopping App' },
+    kicker: { ar: 'تطبيق تجارة إلكترونية', en: 'E-commerce mobile app' },
+    desc: {
+      ar: 'تطبيق متجر متكامل: تسجيل دخول، أقسام ومنتجات، عروض وخصومات، مفضلة، بحث، تقييمات وتعليقات، بروفايل، وبوابة دفع إلكتروني.',
+      en: 'A full-featured store app: authentication, categories & products, offers, favourites, search, ratings & comments, profile and integrated online payment.',
+    },
+    features: {
+      ar: ['تسجيل دخول واستعادة كلمة المرور', 'تصنيفات وعروض وبحث', 'تقييم المنتجات والتعليقات', 'دفع إلكتروني متكامل'],
+      en: ['Sign-in and password recovery', 'Categories, offers and search', 'Product ratings and comments', 'Integrated online payment'],
+    },
+    tags: ['Flutter', 'Cubit', 'Supabase', 'Payments'],
+    links: { github: GH + 'Goal-zone' },
+  },
+  {
+    id: 'delivery', cat: ['mobile'], device: 'art', accent: '#f97316', concept: true,
+    cover: art('delivery'), shots: [art('delivery'), IMG + 'delivery-logo.jpg'],
+    title: { ar: 'منصة توصيل متعددة الأدوار', en: 'Multi-role Delivery Platform' },
+    kicker: { ar: 'عميل · مندوب · مزوّد خدمة', en: 'Customer · Driver · Provider' },
+    desc: {
+      ar: 'تطبيق توصيل بثلاث واجهات: العميل بيطلب ويتابع المندوب على الخريطة لحظياً، والمندوب يستقبل الطلبات، والمزوّد يدير طلباته — مع إشعارات فورية.',
+      en: 'A delivery app with three roles: customers order and track the driver live on the map, drivers receive jobs, and providers manage their orders — with instant push notifications.',
+    },
+    features: {
+      ar: ['تتبع لحظي بـ Socket.IO و Google Maps', 'إشعارات Firebase Cloud Messaging', 'تقييم المندوب والخدمة', 'Supabase كباك إند'],
+      en: ['Live tracking with Socket.IO & Google Maps', 'Firebase Cloud Messaging notifications', 'Driver and service ratings', 'Supabase backend'],
+    },
+    tags: ['Flutter', 'Socket.IO', 'Google Maps', 'FCM', 'Supabase'],
+    links: { github: GH + 'Delivary-Applocation-' },
+  },
+  {
+    id: 'checkauto', cat: ['mobile'], device: 'art', accent: '#2563eb', concept: true,
+    cover: art('checkauto'), shots: [art('checkauto'), IMG + 'checkauto-logo.png'],
+    title: { ar: 'Check Auto — صيانة السيارات', en: 'Check Auto — Car Maintenance' },
+    kicker: { ar: 'متابعة صيانة عربيتك', en: 'Your car’s maintenance companion' },
+    desc: {
+      ar: 'تطبيق لمتابعة صيانة العربية: سجل الصيانة، تنبيهات قبل ميعاد تغيير الزيت والفحص، أقرب مراكز صيانة على الخريطة، وشات — ويشتغل أوفلاين.',
+      en: 'Track your car’s maintenance: service history, reminders before oil changes and inspections, nearby workshops on the map and chat — works offline.',
+    },
+    features: {
+      ar: ['سجل صيانة لكل عربية', 'تنبيهات في الخلفية (WorkManager)', 'خريطة مراكز الصيانة', 'تخزين محلي SQLite + Supabase'],
+      en: ['Service history per car', 'Background reminders (WorkManager)', 'Map of nearby workshops', 'Local SQLite + Supabase sync'],
+    },
+    tags: ['Flutter', 'Supabase', 'flutter_map', 'SQLite', 'BLoC'],
+    links: { github: GH + 'check_car' },
+  },
+  {
+    id: 'graduation', cat: ['mobile'], device: 'art', accent: '#16a34a', concept: true,
+    cover: art('graduation'), shots: [art('graduation'), IMG + 'grad-signup.png', IMG + 'grad-signin.png', IMG + 'grad-confirm1.png'],
+    title: { ar: 'منظومة توصيل الطعام', en: 'Food Delivery Suite' },
+    kicker: { ar: '3 تطبيقات مترابطة', en: '3 connected apps' },
+    desc: {
+      ar: 'مشروع تخرج متكامل من 3 تطبيقات: تطبيق للعملاء، تطبيق للمطاعم/البائعين، وتطبيق للمندوبين — كلهم متصلين بـ Firebase مع تحديد الموقع.',
+      en: 'A complete graduation project made of 3 apps — customers, sellers/restaurants and riders — all connected through Firebase with geolocation.',
+    },
+    features: {
+      ar: ['تطبيق للعميل وتطبيق للبائع وتطبيق للمندوب', 'Firebase Auth و Firestore و Storage', 'تحديد الموقع والعنوان تلقائيًا', 'تأكيد الاستلام والتسليم'],
+      en: ['Customer, seller and rider apps', 'Firebase Auth, Firestore and Storage', 'Automatic geolocation & address', 'Pickup and delivery confirmation'],
+    },
+    tags: ['Flutter', 'Firebase', 'Cubit', 'Geolocator'],
+    links: { github: GH + 'Graduation_application' },
+  },
+  {
+    id: 'vortexa', cat: ['mobile'], device: 'art', accent: '#16a34a', concept: true,
+    cover: art('vortexa'), shots: [art('vortexa')],
+    title: { ar: 'Vortexa — تطبيق سوبرماركت', en: 'Vortexa Supermarket' },
+    kicker: { ar: 'تطبيق تسوق متقدم', en: 'Advanced shopping app' },
+    desc: {
+      ar: 'تطبيق سوبرماركت متكامل: رحلة شراء كاملة من التصفح للدفع، قوائم ذكية، مخزن البيت، عجلة مكافآت، وصفات، وشاشات تحليلات للإدارة.',
+      en: 'A complete supermarket app: full shopping flow from browsing to checkout, smart lists, a home pantry, rewards wheel, recipes and admin analytics.',
+    },
+    features: {
+      ar: ['سلة ودفع وتتبع طلبات', 'عجلة الحظ والمكافآت', 'وصفات وقوائم ذكية', 'تحليلات للإدارة'],
+      en: ['Cart, checkout and order tracking', 'Wheel-of-fortune rewards', 'Recipes and smart lists', 'Admin analytics'],
+    },
+    tags: ['Flutter', 'BLoC + Provider', 'Dio', 'get_it', 'Lottie'],
+    links: { github: GH + 'supermarket' },
+  },
+  {
+    id: 'wasfy', cat: ['mobile'], device: 'art', accent: '#7c3aed', concept: true,
+    cover: art('wasfy'), shots: [art('wasfy')],
+    title: { ar: 'متتبع الأسعار', en: 'Price Tracker' },
+    kicker: { ar: 'تنبيه لما السعر ينزل', en: 'Get alerted when prices drop' },
+    desc: {
+      ar: 'حدد المنتجات اللي عايزها والسعر المستهدف، والتطبيق بيراقب الأسعار في الخلفية من المتاجر ويبعتلك إشعار أول ما السعر ينزل — مع رسم بياني لتاريخ السعر.',
+      en: 'Pick products and a target price — the app monitors store prices in the background and notifies you the moment they drop, with a price-history chart.',
+    },
+    features: {
+      ar: ['مراقبة الأسعار في الخلفية', 'رسم بياني لتاريخ السعر', 'تقارير دورية واستيراد/تصدير', 'مشاركة المنتج'],
+      en: ['Background price monitoring', 'Price-history chart', 'Periodic reports & import/export', 'Share products'],
+    },
+    tags: ['Flutter', 'WorkManager', 'Notifications', 'Provider'],
+    links: { github: GH + 'noun' },
+  },
+  {
+    id: 'docdoc', cat: ['mobile'], device: 'art', accent: '#247cff', concept: true,
+    cover: art('docdoc'), shots: [art('docdoc'), IMG + 'docdoc-splash.png'],
+    title: { ar: 'Docdoc — حجز مواعيد الأطباء', en: 'Docdoc — Doctor Appointments' },
+    kicker: { ar: 'تطبيق طبي', en: 'Healthcare app' },
+    desc: {
+      ar: 'تطبيق لحجز مواعيد الأطباء: شاشات تعريفية، تسجيل دخول آمن، تخصصات وأطباء مقترحين — مبني بمعمارية نظيفة و Retrofit.',
+      en: 'A doctor-appointment app: onboarding, secure login, specialities and recommended doctors — built with clean architecture and Retrofit.',
+    },
+    features: {
+      ar: ['Onboarding وتسجيل دخول', 'تخزين آمن للتوكن', 'تخصصات وأطباء', 'Retrofit + Freezed'],
+      en: ['Onboarding and login', 'Secure token storage', 'Specialities and doctors', 'Retrofit + Freezed'],
+    },
+    tags: ['Flutter', 'Bloc', 'Retrofit', 'go_router', 'ScreenUtil'],
+    links: { github: GH + 'shefaa_app' },
+  },
+  {
+    id: 'ecommerce', cat: ['mobile'], device: 'art', accent: '#4f46e5', concept: true,
+    cover: art('ecommerce'), shots: [art('ecommerce')],
+    title: { ar: 'تطبيق متجر متكامل', en: 'ShopEase — E-commerce App' },
+    kicker: { ar: 'تجارة إلكترونية', en: 'E-commerce' },
+    desc: {
+      ar: 'تطبيق تسوق كامل: الرئيسية والمنتجات، المفضلة، السلة، العناوين، الحساب، وتسجيل دخول بتخزين آمن — مع أنيميشن سلس و Shimmer.',
+      en: 'A full shopping app: home & products, favourites, cart, addresses, account and secure auth — with smooth staggered animations and shimmer loading.',
+    },
+    features: {
+      ar: ['سلة ومفضلة وعناوين', 'تخزين آمن للبيانات', 'تنقل بـ go_router', 'أنيميشن متتابع'],
+      en: ['Cart, favourites and addresses', 'Secure storage', 'go_router navigation', 'Staggered animations'],
+    },
+    tags: ['Flutter', 'BLoC', 'go_router', 'Dio', 'Secure Storage'],
+    links: { github: GH + 'ecommerce_app' },
+  },
+  {
+    id: 'fbclone', cat: ['mobile'], device: 'phone', accent: '#1d4ed8',
+    shots: [1, 2, 3, 4, 5, 6].map(n => IMG + `fb-${n}.jpg`),
+    title: { ar: 'تطبيق تواصل اجتماعي', en: 'Social App — Facebook Clone' },
+    kicker: { ar: 'Facebook Clone', en: 'Facebook clone' },
+    desc: {
+      ar: 'تطبيق سوشيال ميديا كامل: ستوريز، بوستات، لايك وكومنت، متابعة، بحث، مفضلة وبروفايل — مع Shimmer وأنيميشن سلس.',
+      en: 'A complete social app: stories, posts, likes & comments, follow system, search, favourites and profiles — with shimmer loading and smooth animations.',
+    },
+    features: {
+      ar: ['ستوريز وبوستات بالصور', 'نظام متابعة ولايكات وتعليقات', 'Firebase + Cloudinary', 'Clean Architecture + MVVM'],
+      en: ['Stories and image posts', 'Follow, likes and comments', 'Firebase + Cloudinary', 'Clean Architecture + MVVM'],
+    },
+    tags: ['Flutter', 'Firebase', 'BLoC', 'Cloudinary', 'Dartz'],
+    links: { github: GH + 'face_book_clone' },
+  },
+  {
+    id: 'mogahed', cat: ['web'], device: 'portrait', accent: '#111827',
+    cover: IMG + 'mogahed.jpg', shots: [IMG + 'mogahed.jpg'],
+    title: { ar: 'منصة Herr Mogahed', en: 'Herr Mogahed Platform' },
+    kicker: { ar: 'موقع لمدرّس لغة ألمانية', en: 'German teacher platform' },
+    desc: {
+      ar: 'منصة تعليمية حديثة لمدرّس لغة ألمانية: عرض المستويات، نبذة عن المدرّس، وأنيميشن راقي — مع دعم أكثر من لغة.',
+      en: 'A modern e-learning site for a German teacher: course levels, teacher profile and elegant motion — with multi-language support.',
+    },
+    features: {
+      ar: ['Next.js App Router + SSR', 'أنيميشن بـ Framer Motion', 'دعم تعدد اللغات', 'تصميم متجاوب بالكامل'],
+      en: ['Next.js App Router + SSR', 'Framer Motion animations', 'Multi-language support', 'Fully responsive design'],
+    },
+    tags: ['Next.js 16', 'React 19', 'Zustand', 'Framer Motion'],
+    links: { github: GH + 'herr_abdallah_mogahed' },
+  },
+  {
+    id: 'bookly', cat: ['mobile'], device: 'art', accent: '#8b5cf6', concept: true,
+    cover: art('bookly'), shots: [art('bookly')],
+    title: { ar: 'Bookly — تطبيق كتب', en: 'Bookly — Books App' },
+    kicker: { ar: 'Google Books API', en: 'Google Books API' },
+    desc: {
+      ar: 'تطبيق لاكتشاف الكتب من Google Books: أحدث وأفضل الكتب، تفاصيل الكتاب، كتب مشابهة، ومعاينة — بمعمارية نظيفة و Either للأخطاء.',
+      en: 'Discover books from Google Books: newest and best sellers, book details, similar books and preview — clean architecture with Either-based error handling.',
+    },
+    features: {
+      ar: ['قوائم كتب من API حقيقي', 'تفاصيل وكتب مشابهة', 'كاش للصور', 'go_router + get_it'],
+      en: ['Real API book lists', 'Details and similar books', 'Cached images', 'go_router + get_it'],
+    },
+    tags: ['Flutter', 'Bloc', 'Dio', 'Dartz', 'go_router'],
+    links: { github: GH + 'BooklyApp' },
+  },
+  {
+    id: 'marketadmin', cat: ['mobile'], device: 'art', accent: '#0f766e', concept: true,
+    cover: art('marketadmin'), shots: [art('marketadmin')],
+    title: { ar: 'تطبيق إدارة المتجر', en: 'Market Admin App' },
+    kicker: { ar: 'لوحة تحكم لصاحب المتجر', en: 'Admin app for store owners' },
+    desc: {
+      ar: 'تطبيق لصاحب المتجر يدير منه المنتجات (إضافة وتعديل وحذف)، الأسعار والخصومات، وحسابات الأدمن — متصل بـ REST API.',
+      en: 'An app for store owners to manage products (add, edit, delete), prices & discounts, and admin accounts — connected to a REST API.',
+    },
+    features: { ar: ['إضافة وتعديل المنتجات', 'إدارة حسابات الأدمن', 'تسجيل دخول', 'Dio + Bloc'], en: ['Add and edit products', 'Manage admin accounts', 'Authentication', 'Dio + Bloc'] },
+    tags: ['Flutter', 'Bloc', 'Dio', 'REST API'],
+    links: { github: GH + 'Market_admin' },
+  },
+  {
+    id: 'fireecco', cat: ['mobile'], device: 'art', accent: '#f97316', concept: true,
+    cover: art('fireecco'), shots: [art('fireecco')],
+    title: { ar: 'متجر Firebase ثنائي اللغة', en: 'Fire Shop — Firebase Store' },
+    kicker: { ar: 'عربي / إنجليزي', en: 'Arabic / English' },
+    desc: {
+      ar: 'تطبيق متجر مبني على Firebase بتسجيل دخول وتخزين صور، ودعم كامل للعربي والإنجليزي، وسلايدر عروض، وتصميم متجاوب.',
+      en: 'A Firebase-powered store with auth and image storage, full Arabic/English localization, an offers carousel and responsive sizing.',
+    },
+    features: { ar: ['Firebase Auth و Firestore', 'تعدد اللغات', 'سلايدر عروض', 'تصميم متجاوب'], en: ['Firebase Auth & Firestore', 'Localization', 'Offers carousel', 'Responsive sizing'] },
+    tags: ['Flutter', 'Firebase', 'BLoC', 'easy_localization'],
+    links: { github: GH + 'fire_ecco_nabil' },
+  },
+  {
+    id: 'socialapp', cat: ['mobile'], device: 'art', accent: '#db2777', concept: true,
+    cover: art('social'), shots: [art('social')],
+    title: { ar: 'Socially — تطبيق تواصل', en: 'Socially — Social Media App' },
+    kicker: { ar: 'Firebase + Provider', en: 'Firebase + Provider' },
+    desc: {
+      ar: 'تطبيق تواصل اجتماعي: نشر بوستات وصور، متابعة الأصدقاء، بروفايل بالإحصائيات — بـ Firebase و Provider.',
+      en: 'A social media app: share posts & photos, follow friends and a profile with stats — built with Firebase and Provider.',
+    },
+    features: { ar: ['بوستات بالصور', 'متابعة وإعجابات', 'بروفايل', 'Firebase Storage'], en: ['Photo posts', 'Follows and likes', 'Profiles', 'Firebase Storage'] },
+    tags: ['Flutter', 'Firebase', 'Provider'],
+    links: { github: GH + 'social_clone' },
+  },
+  {
+    id: 'masrofy', cat: ['mobile'], device: 'art', accent: '#059669', concept: true,
+    cover: art('masrofy'), shots: [art('masrofy')],
+    title: { ar: 'مصروفي — إدارة المصاريف', en: 'Masrofy — Expense Tracker' },
+    kicker: { ar: 'رفيقك المالي الذكي', en: 'Your smart money companion' },
+    desc: {
+      ar: 'تطبيق لإدارة المصروفات الشخصية: تسجيل المصاريف، متابعة الميزانية، ورسوم بيانية — مع شاشات Splash و Onboarding بأنيميشن Lottie.',
+      en: 'A personal expense manager: log expenses, follow your budget and charts — with Lottie-animated splash and onboarding screens.',
+    },
+    features: { ar: ['تسجيل المصاريف', 'متابعة الميزانية', 'تخزين أوفلاين', 'أنيميشن Lottie'], en: ['Expense logging', 'Budget tracking', 'Offline storage', 'Lottie animations'] },
+    tags: ['Flutter', 'Hive', 'Cubit', 'Lottie'],
+    links: { github: GH + 'masrofy' },
+  },
+  {
+    id: 'notes', cat: ['mobile'], device: 'art', accent: '#f59e0b', concept: true,
+    cover: art('notes'), shots: [art('notes')],
+    title: { ar: 'تطبيق الملاحظات', en: 'Notes App' },
+    kicker: { ar: 'Hive + Cubit', en: 'Hive + Cubit' },
+    desc: { ar: 'تطبيق ملاحظات سريع يشتغل أوفلاين: إضافة وتعديل وحذف، ألوان لكل ملاحظة، وتاريخ — بقاعدة بيانات Hive.', en: 'A fast offline notes app: add, edit and delete notes with colors and dates — on a Hive local database.' },
+    features: { ar: ['إضافة وتعديل وحذف', 'ألوان للملاحظات', 'أوفلاين بالكامل'], en: ['Create, edit, delete', 'Color-coded notes', 'Fully offline'] },
+    tags: ['Flutter', 'Hive', 'Cubit'],
+    links: { github: GH + 'note_app' },
+  },
+  {
+    id: 'weather', cat: ['mobile'], device: 'art', accent: '#0284c7', concept: true,
+    cover: art('weather'), shots: [art('weather')],
+    title: { ar: 'Live Forecast — الطقس', en: 'Live Forecast — Weather' },
+    kicker: { ar: 'طقس لحظي من API', en: 'Live weather API' },
+    desc: { ar: 'تطبيق طقس بيجيب درجة الحرارة والحالة والتوقعات من API حقيقي بـ Dio، بواجهة متجاوبة.', en: 'A weather app that fetches temperature, conditions and forecasts from a live API with Dio, in a responsive UI.' },
+    features: { ar: ['بحث بالمدينة', 'توقعات الأيام', 'واجهة متجاوبة'], en: ['Search by city', 'Daily forecast', 'Responsive UI'] },
+    tags: ['Flutter', 'Dio', 'REST API'],
+    links: { github: GH + 'liveForecast' },
+  },
+  {
+    id: 'maps', cat: ['mobile'], device: 'art', accent: '#16a34a', concept: true,
+    cover: art('maps'), shots: [art('maps')],
+    title: { ar: 'Google Maps — تتبع لحظي', en: 'Live Maps & Tracking' },
+    kicker: { ar: 'خرائط وتتبع ومسارات', en: 'Maps, tracking & routes' },
+    desc: { ar: 'تكامل كامل مع Google Maps: تتبع موقع المستخدم لحظيًا، ماركرز مخصصة، رسم المسارات، وبحث الأماكن.', en: 'Full Google Maps integration: live user-location tracking, custom markers, route polylines and place search.' },
+    features: { ar: ['تتبع لحظي', 'ماركرز مخصصة', 'رسم المسارات', 'Places API'], en: ['Live tracking', 'Custom markers', 'Route polylines', 'Places API'] },
+    tags: ['Flutter', 'Google Maps', 'Geolocator'],
+    links: { github: GH + 'google_maps_public' },
+  },
+  {
+    id: 'sports', cat: ['mobile'], device: 'art', accent: '#65a30d', concept: true,
+    cover: art('sports'), shots: [art('sports')],
+    title: { ar: 'Sh3bann — تطبيق رياضي', en: 'Sh3bann Sports' },
+    kicker: { ar: 'Supabase Auth', en: 'Supabase Auth' },
+    desc: { ar: 'تطبيق رياضي بنظام تسجيل دخول وإنشاء حساب على Supabase بمعمارية نظيفة ومعالجة أخطاء احترافية.', en: 'A sports app with sign-in and sign-up on Supabase, clean architecture and robust error handling.' },
+    features: { ar: ['تسجيل دخول وإنشاء حساب', 'Supabase', 'BLoC Observer'], en: ['Sign-in & sign-up', 'Supabase', 'BLoC observer'] },
+    tags: ['Flutter', 'Supabase', 'BLoC', 'Dio'],
+    links: { github: GH + 'sports_application' },
+  },
+
+  /* ================= Practice & UI ================= */
+  {
+    id: 'quran', cat: ['mobile', 'practice'], device: 'art', accent: '#166534', concept: true,
+    cover: art('quran'), shots: [art('quran')],
+    title: { ar: 'تطبيق القرآن الكريم', en: 'Quran App' },
+    kicker: { ar: 'فهرس السور والقراءة', en: 'Surah index & reading' },
+    desc: { ar: 'تطبيق لقراءة القرآن الكريم بفهرس للسور وتصميم مريح للعين.', en: 'A Quran reading app with a surah index and an eye-friendly design.' },
+    features: { ar: ['فهرس السور', 'واجهة عربية RTL'], en: ['Surah index', 'Arabic RTL UI'] },
+    tags: ['Flutter', 'Dart'], links: { github: GH + 'quran' },
+  },
+  {
+    id: 'bmi', cat: ['practice'], device: 'art', accent: '#eb1555', concept: true,
+    cover: art('bmi'), shots: [art('bmi')],
+    title: { ar: 'حاسبة كتلة الجسم BMI', en: 'BMI Calculator' },
+    kicker: { ar: 'تدريب UI', en: 'UI practice' },
+    desc: { ar: 'حاسبة BMI بالنوع والطول والوزن والسن مع شاشة نتيجة.', en: 'A BMI calculator using gender, height, weight and age, with a result screen.' },
+    features: { ar: ['واجهة مخصصة', 'شاشة نتيجة'], en: ['Custom UI', 'Result screen'] },
+    tags: ['Flutter', 'Dart'], links: { github: GH + 'Bmi_Calculator' },
+  },
+  {
+    id: 'points', cat: ['practice'], device: 'art', accent: '#ea580c', concept: true,
+    cover: art('points'), shots: [art('points')],
+    title: { ar: 'عدّاد نقاط السلة', en: 'Points Counter' },
+    kicker: { ar: 'تدريب State', en: 'State practice' },
+    desc: { ar: 'عداد نقاط لفريقين في كرة السلة بضغطة واحدة.', en: 'A one-tap basketball score keeper for two teams.' },
+    features: { ar: ['+1 / +2 / +3', 'إعادة ضبط'], en: ['+1 / +2 / +3', 'Reset'] },
+    tags: ['Flutter', 'Dart'], links: { github: GH + 'points_counter' },
+  },
+  {
+    id: 'authui', cat: ['practice'], device: 'art', accent: '#4338ca', concept: true,
+    cover: art('authui'), shots: [art('authui'), IMG + 'auth-welcome.png'],
+    title: { ar: 'شاشات تسجيل الدخول', en: 'Auth UI Kit' },
+    kicker: { ar: 'تدريب UI', en: 'UI practice' },
+    desc: { ar: 'شاشات ترحيب وتسجيل دخول وإنشاء حساب بتصميم نظيف.', en: 'Clean welcome, sign-in and sign-up screens.' },
+    features: { ar: ['Welcome / Login / Sign up'], en: ['Welcome / Login / Sign up'] },
+    tags: ['Flutter', 'UI'], links: { github: GH + 'signin-signup-flutter-ui' },
+  },
+  {
+    id: 'intro', cat: ['practice'], device: 'art', accent: '#a855f7', concept: true,
+    cover: art('intro'), shots: [art('intro'), IMG + 'intro-learn.png', IMG + 'intro-reading.png', IMG + 'intro-ebook.png'],
+    title: { ar: 'شاشات تعريفية Onboarding', en: 'Onboarding Screens' },
+    kicker: { ar: 'تدريب UI', en: 'UI practice' },
+    desc: { ar: 'شاشات تعريفية بالرسومات ومؤشرات الصفحات.', en: 'Introduction screens with illustrations and page indicators.' },
+    features: { ar: ['Skip / Next / Done'], en: ['Skip / Next / Done'] },
+    tags: ['Flutter', 'introduction_screen'], links: { github: GH + 'flutter_introduction_screen' },
+  },
+  {
+    id: 'drawer', cat: ['practice'], device: 'art', accent: '#1e40af', concept: true,
+    cover: art('drawer'), shots: [art('drawer')],
+    title: { ar: 'قائمة جانبية Drawer', en: 'Navigation Drawer' },
+    kicker: { ar: 'تدريب UI', en: 'UI practice' },
+    desc: { ar: 'قائمة تنقل جانبية بهيدر للبروفايل وعناصر القائمة.', en: 'A side navigation drawer with a profile header and menu items.' },
+    features: { ar: ['هيدر بروفايل', 'عناصر قائمة'], en: ['Profile header', 'Menu items'] },
+    tags: ['Flutter', 'Material'], links: { github: GH + 'flutter_drawer' },
+  },
+];

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>م. إبراهيم سمير | Flutter & Web Developer</title>
+  <meta name="description" content="Eng. Ebrahim Samir — Flutter & Web developer. تطبيقات موبايل Android و iOS، مواقع ومتاجر إلكترونية ولوحات تحكم احترافية." />
+  <meta name="theme-color" content="#0b1220" />
+  <meta property="og:title" content="Eng. Ebrahim Samir — Mobile & Web Apps" />
+  <meta property="og:description" content="10+ live apps on App Store & Google Play. Flutter, Next.js, Clean Architecture." />
+  <meta property="og:image" content="https://hemasamir.github.io/assets/readme/hero-ar.jpg" />
+  <meta property="og:url" content="https://hemasamir.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2314b8a6'/%3E%3Cstop offset='1' stop-color='%236366f1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='800' font-size='26' fill='white' text-anchor='middle'%3EES%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    // Apply saved theme/lang before paint to avoid a flash
+    (function () {
+      var t = null, l = null;
+      try { t = localStorage.getItem('theme'); l = localStorage.getItem('lang'); } catch (e) {}
+      // ?lang=en / ?theme=dark override (handy for sharing an English link)
+      var q = new URLSearchParams(location.search);
+      if (q.get('lang') === 'en' || q.get('lang') === 'ar') l = q.get('lang');
+      if (q.get('theme') === 'dark' || q.get('theme') === 'light') t = q.get('theme');
+      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      if (l === 'en') { document.documentElement.lang = 'en'; document.documentElement.dir = 'ltr'; }
+    })();
+  </script>
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-blob b1" aria-hidden="true"></div>
+  <div class="bg-blob b2" aria-hidden="true"></div>
+
+  <!-- ============ Header ============ -->
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="Home">
+        <span class="brand-mark">ES</span>
+        <span class="brand-text">
+          <strong data-i18n="brandName">م. إبراهيم سمير</strong>
+          <small data-i18n="brandRole">مطوّر تطبيقات ومواقع</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#work" data-i18n="navWork">أعمالي</a>
+        <a href="#services" data-i18n="navServices">الخدمات</a>
+        <a href="#process" data-i18n="navProcess">طريقة العمل</a>
+        <a href="#about" data-i18n="navAbout">عنّي</a>
+        <a href="#contact" class="nav-cta-mobile" data-i18n="navContact">تواصل معي</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="langBtn" aria-label="Change language">
+          <span class="lang-label" data-i18n="langSwitch">EN</span>
+        </button>
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">
+          <svg class="i i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="i i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <a href="#contact" class="btn btn-primary btn-sm hide-sm" data-i18n="navHire">ابدأ مشروعك</a>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">
+          <svg class="i" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ Hero ============ -->
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="pill reveal"><span class="dot-live"></span><span data-i18n="heroAvail">متاح لمشاريع جديدة الآن</span></span>
+          <h1 class="hero-title reveal">
+            <span data-i18n="heroTitle1">أحوّل فكرتك إلى</span>
+            <span class="grad-text" data-i18n="heroTitle2">تطبيق وموقع يبيع</span>
+          </h1>
+          <p class="hero-typed reveal">
+            <span data-i18n="heroIBuild">أبني</span>
+            <span class="typed" id="typed"></span><span class="caret"></span>
+          </p>
+          <p class="hero-sub reveal" data-i18n="heroSub">مهندس برمجيات متخصص في Flutter و Next.js. أصمّم وأبرمج وأنشر تطبيقات موبايل ومواقع ولوحات تحكم بجودة عالمية — من أول فكرة لحد ما التطبيق يبقى على App Store و Google Play.</p>
+          <div class="hero-ctas reveal">
+            <a href="#work" class="btn btn-primary btn-lg">
+              <span data-i18n="ctaWork">شوف أعمالي</span>
+              <svg class="i flip" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://wa.me/201055673184" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">
+              <svg class="i fill" viewBox="0 0 24 24"><path id="wa-path" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.48-8.41z"/></svg>
+              <span data-i18n="ctaWhats">كلّمني واتساب</span>
+            </a>
+          </div>
+          <ul class="hero-trust reveal">
+            <li><svg class="i fill" viewBox="0 0 24 24"><path d="M15.53 3.83c.84-1.01 1.4-2.43 1.25-3.83-1.21.05-2.66.8-3.53 1.82-.78.9-1.46 2.34-1.27 3.71 1.34.1 2.71-.69 3.55-1.7M12.15 6.9c-.95 0-2.41-1.08-3.96-1.04-2.04.03-3.91 1.18-4.96 3.01-2.12 3.68-.55 9.1 1.52 12.09 1.01 1.45 2.2 3.09 3.79 3.04 1.52-.07 2.09-.99 3.93-.99 1.83 0 2.35.99 3.96.95 1.64-.03 2.68-1.48 3.68-2.95 1.15-1.69 1.63-3.33 1.66-3.42-.04-.01-3.18-1.22-3.22-4.86-.03-3.04 2.48-4.49 2.6-4.56-1.43-2.09-3.62-2.32-4.39-2.38-2-.15-3.68 1.09-4.61 1.09z"/></svg><span>App Store</span></li>
+            <li><svg class="i fill" viewBox="0 0 24 24"><path d="M22.02 13.3 18.1 15.52l-3.52-3.5 3.55-3.52 3.89 2.2a1.49 1.49 0 0 1 0 2.6zM1.34.92a1.49 1.49 0 0 0-.11.57v21.02c0 .22.04.42.12.6L12.5 12 1.34.92zm12.2 10.07 3.26-3.24L3.45.2a1.47 1.47 0 0 0-.95-.18l11.04 10.97zm0 2.07-11 10.93c.3.04.61-.02.9-.18l13.33-7.54-3.23-3.21z"/></svg><span>Google Play</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span data-i18n="trustClients">عملاء في 3 دول</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="browser hero-browser">
+            <div class="browser-bar"><i></i><i></i><i></i><span>incense-sa.com</span></div>
+            <div class="browser-body">
+              <img src="assets/img/incense-site.jpg" alt="" />
+            </div>
+          </div>
+          <div class="phone hero-phone">
+            <div class="phone-notch"></div>
+            <img src="assets/img/manara-home-mobile.jpg" alt="" style="object-position:center 18%" />
+          </div>
+          <div class="float-card fc-1">
+            <img src="assets/img/rafiq-icon.jpg" alt="" />
+            <div><strong data-i18n="fcRafiq">رفيق المسلم</strong><span class="stars">★★★★★ <b>5.0</b></span></div>
+          </div>
+          <div class="float-card fc-2">
+            <span class="fc-ico"><svg class="i" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+            <div><strong>60 FPS</strong><span data-i18n="fcSmooth">أداء سلس</span></div>
+          </div>
+          <div class="float-card fc-3">
+            <span class="fc-ico ok"><svg class="i" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div><strong data-i18n="fcPublished">تم النشر</strong><span>iOS · Android</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="stats reveal">
+          <div class="stat"><b data-count="4">0</b><em>+</em><span data-i18n="statYears">سنوات خبرة</span></div>
+          <div class="stat"><b data-count="10">0</b><em>+</em><span data-i18n="statApps">تطبيق منشور على المتاجر</span></div>
+          <div class="stat"><b data-count="35">0</b><em>+</em><span data-i18n="statProjects">مشروع على GitHub</span></div>
+          <div class="stat"><b data-count="3">0</b><span data-i18n="statCountries">دول: مصر · السعودية · الكويت</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Tech marquee ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" id="marquee"></div>
+    </div>
+
+    <!-- ============ Cover wall ============ -->
+    <section class="wall-section">
+      <div class="container wall-head reveal">
+        <span class="eyebrow" data-i18n="wallEyebrow">من المعرض</span>
+        <h2><span class="grad-text"><span id="projCount">35</span>+</span> <span data-i18n="wallTitle">مشروع بين موبايل وويب وأنظمة ذكية</span></h2>
+      </div>
+      <div class="wall">
+        <div class="wall-row" id="wallA"></div>
+        <div class="wall-row reverse" id="wallB"></div>
+      </div>
+    </section>
+
+    <!-- ============ Featured / case studies ============ -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="featEyebrow">أبرز الأعمال</span>
+          <h2 data-i18n="featTitle">مشاريع حقيقية شغّالة مع عملاء حقيقيين</h2>
+          <p data-i18n="featSub">كل مشروع هنا اتسلّم لعميل أو اتنشر على المتاجر. اضغط على أي مشروع تشوف صوره وتفاصيله.</p>
+        </div>
+        <div class="featured" id="featured"></div>
+      </div>
+    </section>
+
+    <!-- ============ All projects ============ -->
+    <section class="section section-alt" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="allEyebrow">معرض الأعمال</span>
+          <h2 data-i18n="allTitle">كل المشاريع</h2>
+          <p data-i18n="allSub">تطبيقات موبايل، مواقع، متاجر ولوحات تحكم — اختار القسم اللي يهمك.</p>
+        </div>
+        <div class="filters reveal" id="filters" role="tablist">
+          <button class="chip active" data-filter="all" data-i18n="fAll">الكل</button>
+          <button class="chip" data-filter="mobile" data-i18n="fMobile">تطبيقات موبايل</button>
+          <button class="chip" data-filter="web" data-i18n="fWeb">مواقع ومتاجر</button>
+          <button class="chip" data-filter="live" data-i18n="fLive">منشور ولايف</button>
+          <button class="chip" data-filter="system" data-i18n="fSystem">أنظمة وذكاء اصطناعي</button>
+          <button class="chip" data-filter="practice" data-i18n="fPractice">تدريبات و UI</button>
+        </div>
+        <div class="grid-projects" id="grid"></div>
+        <div class="center"><button class="btn btn-primary btn-lg" id="showMore"><span></span><svg class="i chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button></div>
+        <div class="center reveal">
+          <a class="btn btn-ghost" href="https://github.com/HEMASAMIR" target="_blank" rel="noopener">
+            <svg class="i fill" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></svg>
+            <span data-i18n="moreGithub">شوف كل الكود على GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Services ============ -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="srvEyebrow">الخدمات</span>
+          <h2 data-i18n="srvTitle">كل اللي مشروعك محتاجه في مكان واحد</h2>
+          <p data-i18n="srvSub">من التصميم للبرمجة للنشر والدعم بعد الإطلاق.</p>
+        </div>
+        <div class="grid-services" id="services-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ Process ============ -->
+    <section class="section section-alt" id="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="procEyebrow">طريقة العمل</span>
+          <h2 data-i18n="procTitle">4 خطوات من الفكرة للإطلاق</h2>
+          <p data-i18n="procSub">شفافية كاملة، وتحديثات مستمرة، وإنت متابع كل حاجة أول بأول.</p>
+        </div>
+        <ol class="process" id="process-list"></ol>
+      </div>
+    </section>
+
+    <!-- ============ About ============ -->
+    <section class="section" id="about">
+      <div class="container about">
+        <div class="about-card reveal">
+          <div class="about-avatar">
+            <img src="assets/img/avatar.jpg" alt="Eng. Ebrahim Samir" />
+            <span class="about-badge"><span class="dot-live"></span><span data-i18n="heroAvailShort">متاح</span></span>
+          </div>
+          <h3 data-i18n="brandName">م. إبراهيم سمير</h3>
+          <p class="muted" data-i18n="aboutRole">Software Engineer · Flutter & Web</p>
+          <ul class="about-meta">
+            <li><svg class="i" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span data-i18n="aboutEdu">بكالوريوس علوم الحاسب — جامعة المنوفية</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span data-i18n="aboutLoc">مصر — أعمل مع عملاء من كل مكان</span></li>
+            <li><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span data-i18n="aboutLang">عربي · English</span></li>
+          </ul>
+        </div>
+        <div class="about-copy reveal">
+          <span class="eyebrow" data-i18n="aboutEyebrow">عنّي</span>
+          <h2 data-i18n="aboutTitle">مش مجرد كود — منتج يكبّر شغلك</h2>
+          <p data-i18n="aboutP1">أنا إبراهيم، مهندس برمجيات بخبرة أكتر من 4 سنين في بناء تطبيقات موبايل ومواقع جاهزة للإنتاج. نشرت أكتر من 10 تطبيقات على App Store و Google Play لعملاء في مصر والسعودية والكويت.</p>
+          <p data-i18n="aboutP2">بشتغل بـ Clean Architecture و SOLID عشان الكود يفضل نضيف وسهل يتطور، وبجهّز CI/CD يخلّي كل تحديث يوصل لعملائك بسرعة ومن غير مشاكل.</p>
+          <div class="why" id="why-list"></div>
+          <div class="stack" id="stack"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Contact ============ -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact reveal">
+          <div class="contact-copy">
+            <span class="eyebrow light" data-i18n="ctEyebrow">يلا نبدأ</span>
+            <h2 data-i18n="ctTitle">عندك فكرة؟ خلّينا نحوّلها لمنتج حقيقي</h2>
+            <p data-i18n="ctSub">ابعتلي تفاصيل مشروعك وهرد عليك خلال ساعات بخطة واضحة وعرض سعر مناسب.</p>
+            <div class="contact-links">
+              <a href="https://wa.me/201055673184" target="_blank" rel="noopener" class="c-link">
+                <span class="c-ico wa"><svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg></span>
+                <span><small data-i18n="ctWhats">واتساب</small><b dir="ltr">+20 105 567 3184</b></span>
+              </a>
+              <a href="mailto:01055673184hs@gmail.com" class="c-link">
+                <span class="c-ico"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+                <span><small data-i18n="ctEmail">البريد الإلكتروني</small><b>01055673184hs@gmail.com</b></span>
+              </a>
+              <div class="socials">
+                <a href="https://www.linkedin.com/in/ibrahim-sameer-8b3987241" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="i fill" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+                <a href="https://github.com/HEMASAMIR" target="_blank" rel="noopener" aria-label="GitHub"><svg class="i fill" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></svg></a>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <label><span data-i18n="fName">اسمك</span>
+              <input name="name" required data-i18n-ph="fNamePh" placeholder="مثال: أحمد محمد" />
+            </label>
+            <label><span data-i18n="fType">نوع المشروع</span>
+              <select name="type" id="typeSelect"></select>
+            </label>
+            <label><span data-i18n="fBudget">الميزانية التقريبية</span>
+              <select name="budget" id="budgetSelect"></select>
+            </label>
+            <label><span data-i18n="fMsg">احكيلي عن فكرتك</span>
+              <textarea name="msg" rows="4" required data-i18n-ph="fMsgPh" placeholder="عايز تطبيق لمطعمي فيه منيو وطلبات أونلاين..."></textarea>
+            </label>
+            <button type="submit" class="btn btn-wa btn-lg btn-block">
+              <svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg>
+              <span data-i18n="fSend">ابعت على واتساب</span>
+            </button>
+            <p class="form-note" data-i18n="fNote">الرسالة هتتفتح جاهزة في واتساب — مجرد ضغطة إرسال.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#home" class="brand">
+        <span class="brand-mark">ES</span>
+        <span class="brand-text"><strong data-i18n="brandName">م. إبراهيم سمير</strong><small data-i18n="brandRole">مطوّر تطبيقات ومواقع</small></span>
+      </a>
+      <p class="muted">© <span id="year"></span> <span data-i18n="footerRights">كل الحقوق محفوظة.</span></p>
+      <a href="#home" class="icon-btn" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg></a>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/201055673184" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg class="i fill" viewBox="0 0 24 24"><use href="#wa-path"/></svg>
+  </a>
+
+  <!-- ============ Project modal ============ -->
+  <div class="modal" id="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button class="icon-btn modal-close" data-close aria-label="Close"><svg class="i" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <div class="modal-gallery">
+        <div class="gallery-stage" id="gStage"></div>
+        <button class="g-nav g-prev" id="gPrev" aria-label="Previous"><svg class="i" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button class="g-nav g-next" id="gNext" aria-label="Next"><svg class="i" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+        <div class="gallery-thumbs" id="gThumbs"></div>
+      </div>
+      <div class="modal-info" id="mInfo"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
