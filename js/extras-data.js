@@ -7,7 +7,7 @@ const SITE_CONFIG = {
   // Where the AI endpoints live. On Vercel (or a custom domain on Vercel) leave it empty — same origin.
   // On GitHub Pages put your Vercel URL here, e.g. 'https://ebrahim-samir.vercel.app'.
   apiBase: '',
-  vercelFallback: '', // set after the first Vercel deploy so hemasamir.github.io can use the AI too
+  vercelFallback: 'https://ebrahim-samir.vercel.app', // set after the first Vercel deploy so hemasamir.github.io can use the AI too
   whatsapp: '201055673184',
   // App Store ids for live ratings
   appStore: { rafiq: '6759332192', quickin: '6778979967', metro: '6782100362' },
