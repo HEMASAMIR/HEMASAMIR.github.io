@@ -122,7 +122,7 @@ Object.assign(I18N.ar, {
   searchPh: 'ابحث بفكرتك... مثلًا: زي طلبات، متجر عطور، تطبيق كورسات', searchNone: 'مفيش مشروع مطابق بالظبط — جرّب حاسبة التكلفة بالذكاء الاصطناعي وهتعرف تقدر تعمل فكرتك إزاي.',
   searchResults: 'نتيجة', searchClear: 'مسح',
   // pricing
-  prEyebrow: 'الباقات', prTitle: 'باقات تناسب كل مشروع', prSub: 'السعر بيتحدد حسب احتياجك بالظبط — ابعتلنا فكرتك وخد عرض سعر مجاني خلال 24 ساعة.',
+  prEyebrow: 'الباقات', prTitle: 'باقات تناسب كل مشروع', prSub: 'كل باقة بتتظبط حسب احتياجك بالظبط — ابعتلنا فكرتك على واتساب ونرد عليك خلال 24 ساعة.',
   prFrom: 'التكلفة', prQuote: 'عرض سعر مجاني',  prWeeks: 'أسابيع', prStart: 'اطلب عرض السعر على واتساب', prWaAsk: 'ممكن عرض سعر لمشروعي؟ 🙏', prPopular: 'الأكثر طلبًا', prCustom: 'مش لاقي الباقة المناسبة؟', prCustomSub: 'احسب تكلفة فكرتك بالظبط بالذكاء الاصطناعي.',
   bookTitle: 'احجز مكالمة مجانية 15 دقيقة', bookSub: 'نتكلم عن فكرتك وتاخد نصايح ببلاش — اختار اليوم والوقت.', bookDay: 'اليوم', bookTime: 'الوقت', bookGo: 'احجز على واتساب',
   bookWa: 'أهلاً م. إبراهيم 👋 عايز أحجز مكالمة مجانية', bookAt: 'يوم', bookHour: 'الساعة', prWa: 'أهلاً م. إبراهيم 👋 مهتم بباقة',
@@ -157,7 +157,7 @@ Object.assign(I18N.en, {
   chatHandoff: 'Continue with Ebrahim on WhatsApp', chatErr: 'Connection problem — try again or reach us on WhatsApp.', chatOpenProject: 'Open project',
   searchPh: 'Search by idea... e.g. delivery app, perfume store, courses app', searchNone: 'No exact match — try the AI cost estimator to see how your idea can be built.',
   searchResults: 'results', searchClear: 'Clear',
-  prEyebrow: 'Packages', prTitle: 'Packages for every project', prSub: 'Pricing depends on exactly what you need — send your idea and get a free quote within 24 hours.',
+  prEyebrow: 'Packages', prTitle: 'Packages for every project', prSub: 'Every package is tailored to your exact needs — send your idea on WhatsApp and we reply within 24 hours.',
   prFrom: 'Cost', prQuote: 'Free custom quote',  prWeeks: 'weeks', prStart: 'Get a quote on WhatsApp', prWaAsk: 'Could you send me a quote for my project? 🙏', prPopular: 'Most popular', prCustom: "Can't find the right package?", prCustomSub: 'Get an exact AI estimate for your idea.',
   bookTitle: 'Book a free 15-minute call', bookSub: 'Talk through your idea and get free advice — pick a day and time.', bookDay: 'Day', bookTime: 'Time', bookGo: 'Book on WhatsApp',
   bookWa: 'Hi Eng. Ebrahim 👋 I would like to book a free call', bookAt: 'on', bookHour: 'at', prWa: 'Hi Eng. Ebrahim 👋 I am interested in the package',
