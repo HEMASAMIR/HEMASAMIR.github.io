@@ -151,7 +151,7 @@
         <div class="stats reveal">
           <div class="stat"><b data-count="4">0</b><em>+</em><span data-i18n="statYears">سنوات خبرة</span></div>
           <div class="stat"><b data-count="10">0</b><em>+</em><span data-i18n="statApps">تطبيق منشور على المتاجر</span></div>
-          <div class="stat"><b data-count="35">0</b><em>+</em><span data-i18n="statProjects">مشروع على GitHub</span></div>
+          <div class="stat"><b data-count="48" id="repoCount">0</b><em>+</em><span data-i18n="statProjects">مشروع على GitHub</span></div>
           <div class="stat stat-countries"><b data-count="10">0</b><span data-i18n="statCountries">دول: مصر · السعودية · الكويت · الإمارات · قطر · عُمان · البحرين · ألمانيا · العراق · الأردن</span>
             <div class="flags" aria-label="Egypt, Saudi Arabia, Kuwait, Germany, Iraq, Jordan, UAE, Qatar, Oman, Bahrain">
               <i title="مصر"><svg viewBox="0 0 30 20"><path fill="#ce1126" d="M0 0h30v7H0z"/><path fill="#fff" d="M0 7h30v6H0z"/><path d="M0 13h30v7H0z"/><circle cx="15" cy="10" r="2" fill="#c09300"/></svg></i>
@@ -179,11 +179,29 @@
     <section class="wall-section">
       <div class="container wall-head reveal">
         <span class="eyebrow" data-i18n="wallEyebrow">من المعرض</span>
-        <h2><span class="grad-text"><span id="projCount">35</span>+</span> <span data-i18n="wallTitle">مشروع بين موبايل وويب وأنظمة ذكية</span></h2>
+        <h2><span class="grad-text"><span id="projCount">48</span>+</span> <span data-i18n="wallTitle">مشروع بين موبايل وويب وأنظمة ذكية</span></h2>
       </div>
       <div class="wall">
         <div class="wall-row" id="wallA"></div>
         <div class="wall-row reverse" id="wallB"></div>
+      </div>
+    </section>
+
+    <!-- ============ Brands strip ============ -->
+    <section class="brands">
+      <div class="container">
+        <p class="brands-title reveal" data-i18n="brandsTitle">براندات ومنتجات اشتغلت عليها</p>
+        <div class="brands-row reveal">
+          <a class="brand-tile" href="https://incense-sa.com" target="_blank" rel="noopener"><img src="assets/img/incense-logo.jpg" alt="" loading="lazy" /><span>Incense</span></a>
+          <button class="brand-tile" data-open="dw"><img src="assets/img/dw-icon.png" alt="" loading="lazy" class="contain" /><span>Deutsche Welt</span></button>
+          <button class="brand-tile" data-open="quickin"><img src="assets/img/quickin-icon.jpg" alt="" loading="lazy" /><span>QuickIn</span></button>
+          <button class="brand-tile" data-open="manara"><img src="assets/img/manara-icon.jpg" alt="" loading="lazy" /><span data-i18n="brManara">منارة</span></button>
+          <button class="brand-tile" data-open="aladeeb"><img src="assets/img/aladeeb-logo.jpg" alt="" loading="lazy" class="contain" /><span data-i18n="brAladeeb">الأديب</span></button>
+          <button class="brand-tile" data-open="rafiq"><img src="assets/img/rafiq-icon.jpg" alt="" loading="lazy" /><span data-i18n="fcRafiq">رفيق المسلم</span></button>
+          <button class="brand-tile" data-open="metro"><img src="assets/img/metro-icon.jpg" alt="" loading="lazy" /><span data-i18n="brMetro">مترو مصر</span></button>
+          <button class="brand-tile" data-open="checkauto"><img src="assets/img/checkauto-logo.png" alt="" loading="lazy" class="contain" /><span>Check Auto</span></button>
+          <button class="brand-tile" data-open="mogahed"><img src="assets/img/mogahed.jpg" alt="" loading="lazy" /><span>Herr Mogahed</span></button>
+        </div>
       </div>
     </section>
 
@@ -247,6 +265,32 @@
           <p data-i18n="procSub">شفافية كاملة، وتحديثات مستمرة، وإنت متابع كل حاجة أول بأول.</p>
         </div>
         <ol class="process" id="process-list"></ol>
+      </div>
+    </section>
+
+    <!-- ============ GitHub activity ============ -->
+    <section class="section" id="github">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow" data-i18n="ghEyebrow">شغّال كل يوم</span>
+          <h2 data-i18n="ghTitle">نشاطي على GitHub</h2>
+          <p data-i18n="ghSub">الأرقام دي بتتحدث لوحدها من GitHub — كود حقيقي، مشاريع حقيقية.</p>
+        </div>
+        <div class="gh reveal">
+          <div class="gh-stats">
+            <div class="gh-stat"><b id="ghRepos">48</b><span data-i18n="ghRepos">مشروع عام</span></div>
+            <div class="gh-stat"><b id="ghFollowers">16</b><span data-i18n="ghFollowers">متابع</span></div>
+            <div class="gh-stat"><b id="ghYears">4</b><span data-i18n="ghYears">سنين على GitHub</span></div>
+            <div class="gh-stat langs" id="ghLangs"><div class="lang-bar"><i style="--w:76%;--c:#00b4ab"></i><i style="--w:7%;--c:#3178c6"></i><i style="--w:7%;--c:#f1e05a"></i><i style="--w:7%;--c:#e34c26"></i><i style="--w:3%;--c:#3572a5"></i></div><span class="lang-legend"><em style="--c:#00b4ab">Flutter / Dart 76%</em><em style="--c:#3178c6">TypeScript 7%</em><em style="--c:#f1e05a">JavaScript 7%</em><em style="--c:#e34c26">HTML 7%</em><em style="--c:#3572a5">Python 3%</em></span></div>
+          </div>
+          <a class="gh-chart" href="https://github.com/HEMASAMIR" target="_blank" rel="noopener" aria-label="GitHub contributions">
+            <img src="https://ghchart.rshah.org/0d9488/HEMASAMIR" alt="GitHub contribution chart" loading="lazy" />
+          </a>
+          <div class="gh-foot">
+            <span class="gh-user"><img src="assets/img/avatar.jpg" alt="" /><span><b>@HEMASAMIR</b><small data-i18n="brandRole">مطوّر تطبيقات ومواقع</small></span></span>
+            <a class="btn btn-ghost" href="https://github.com/HEMASAMIR" target="_blank" rel="noopener"><svg class="i fill" viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></svg><span data-i18n="ghFollow">تابعني على GitHub</span></a>
+          </div>
+        </div>
       </div>
     </section>
 

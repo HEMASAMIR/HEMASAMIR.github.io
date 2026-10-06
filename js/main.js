@@ -93,12 +93,13 @@
   function renderFeatured() {
     const list = PROJECTS.filter((p) => p.featured);
     $('#featured').innerHTML = list.map((p, i) => `
-      <article class="feature reveal ${i % 2 ? 'alt' : ''}">
+      <article class="feature reveal ${i % 2 ? 'alt' : ''}" style="--accent:${p.accent}">
         <button class="feature-visual" data-open="${p.id}" aria-label="${p.title[lang]}">
           ${cover(p, true)}
           <span class="view-hint">${icon('images')} ${p.shots.length} ${t('screenshots')}</span>
         </button>
         <div class="feature-body">
+          <span class="feature-num">${String(i + 1).padStart(2, '0')}</span>
           <div class="badges">${badges(p)}</div>
           <span class="kicker">${p.kicker[lang]}</span>
           <h3>${p.title[lang]}</h3>
@@ -219,11 +220,11 @@
   function counters() {
     const els = $$('[data-count]');
     const run = (el) => {
-      const end = +el.dataset.count, dur = 1400, t0 = performance.now();
+      const dur = 1400, t0 = performance.now();
       const step = (now) => {
         const k = Math.min(1, (now - t0) / dur);
-        el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3)));
-        if (k < 1) requestAnimationFrame(step);
+        el.textContent = Math.round(+el.dataset.count * (1 - Math.pow(1 - k, 3))); // re-read: live GitHub count may arrive mid-animation
+        if (k < 1) requestAnimationFrame(step); else el.dataset.done = '1';
       };
       requestAnimationFrame(step);
     };
@@ -426,10 +427,37 @@
     }
   }
 
+  /* ---------- Live GitHub numbers ---------- */
+  function loadGitHub() {
+    const setNum = (id, v) => { const el = document.getElementById(id); if (el) { el.dataset.count = v; if (el.dataset.done || !el.hasAttribute('data-count')) el.textContent = v; } };
+    fetch('https://api.github.com/users/HEMASAMIR').then((r) => (r.ok ? r.json() : null)).then((u) => {
+      if (!u) return;
+      setNum('repoCount', u.public_repos);
+      ['ghRepos', 'projCount'].forEach((id) => { const el = document.getElementById(id); if (el) el.textContent = u.public_repos; });
+      $('#ghFollowers').textContent = u.followers;
+      $('#ghYears').textContent = Math.max(1, Math.floor((Date.now() - new Date(u.created_at)) / 31557600000));
+    }).catch(() => {});
+    fetch('https://api.github.com/users/HEMASAMIR/repos?per_page=100').then((r) => (r.ok ? r.json() : null)).then((repos) => {
+      if (!Array.isArray(repos)) return;
+      // Flutter apps are often tagged "C++" by GitHub because of their windows/ runner folder
+      const map = { Dart: 'Flutter / Dart', 'C++': 'Flutter / Dart' };
+      const colors = { 'Flutter / Dart': '#00b4ab', TypeScript: '#3178c6', JavaScript: '#f1e05a', HTML: '#e34c26', Python: '#3572a5', CSS: '#663399' };
+      const count = {};
+      repos.forEach((r) => { if (!r.language || r.fork) return; const k = map[r.language] || r.language; count[k] = (count[k] || 0) + 1; });
+      const total = Object.values(count).reduce((a, b) => a + b, 0);
+      if (!total) return;
+      const rows = Object.entries(count).sort((a, b) => b[1] - a[1]).slice(0, 5)
+        .map(([k, n]) => ({ k, p: Math.round((n / total) * 100), c: colors[k] || '#94a3b8' }));
+      $('#ghLangs').innerHTML = `<div class="lang-bar">${rows.map((r) => `<i style="--w:${r.p}%;--c:${r.c}"></i>`).join('')}</div>
+        <span class="lang-legend">${rows.map((r) => `<em style="--c:${r.c}">${r.k} ${r.p}%</em>`).join('')}</span>`;
+    }).catch(() => {});
+  }
+
   /* ---------- Init ---------- */
   $('#year').textContent = new Date().getFullYear();
   applyTheme(root.getAttribute('data-theme') || 'light');
   bind();
   applyLang(lang);
   counters();
+  loadGitHub();
 })();

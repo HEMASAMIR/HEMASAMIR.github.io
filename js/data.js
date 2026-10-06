@@ -46,6 +46,8 @@ const I18N = {
     appStore: 'App Store', googlePlay: 'Google Play', liveSite: 'زيارة الموقع', code: 'الكود', screenshots: 'صورة',
     mobile: 'موبايل', web: 'ويب', system: 'أنظمة', practice: 'تدريب',
     fSystem: 'أنظمة وذكاء اصطناعي', fPractice: 'تدريبات وواجهات', showMore: 'عرض المزيد', showLess: 'عرض أقل', concept: 'تصميم توضيحي للمشروع — الصور الحقيقية من داخل التطبيق قريبًا', projectsCount: 'مشروع',
+    brandsTitle: 'براندات ومنتجات اشتغلت عليها', brManara: 'منارة', brAladeeb: 'الأديب', brMetro: 'مترو مصر',
+    ghEyebrow: 'شغّال كل يوم', ghTitle: 'نشاطي على GitHub', ghSub: 'الأرقام دي بتتحدث لوحدها من GitHub — كود حقيقي، مشاريع حقيقية.', ghRepos: 'مشروع عام', ghFollowers: 'متابع', ghYears: 'سنين على GitHub', ghFollow: 'تابعني على GitHub',
     wallEyebrow: 'من المعرض', wallTitle: 'مشروع بين موبايل وويب وأنظمة ذكية',
   },
   en: {
@@ -88,6 +90,8 @@ const I18N = {
     appStore: 'App Store', googlePlay: 'Google Play', liveSite: 'Visit website', code: 'Code', screenshots: 'screenshots',
     mobile: 'Mobile', web: 'Web', system: 'Systems', practice: 'Practice',
     fSystem: 'Systems & AI', fPractice: 'Practice & UI', showMore: 'Show more', showLess: 'Show less', concept: 'Concept cover designed for this project', projectsCount: 'projects',
+    brandsTitle: 'Brands & products I have built for', brManara: 'Manara', brAladeeb: 'Al-Adeeb', brMetro: 'Metro Masr',
+    ghEyebrow: 'Shipping every day', ghTitle: 'My GitHub activity', ghSub: 'These numbers update live from GitHub — real code, real projects.', ghRepos: 'Public repos', ghFollowers: 'Followers', ghYears: 'Years on GitHub', ghFollow: 'Follow me on GitHub',
     wallEyebrow: 'From the portfolio', wallTitle: 'projects across mobile, web & smart systems',
   },
 };
